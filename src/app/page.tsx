@@ -1,14 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Banknote, MessageCircle } from "lucide-react";
+import { Banknote, MessageCircle } from "lucide-react";
 import { BlogGrid } from "@/components/blog-card";
+import { HomeHero } from "@/components/home-hero";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { ProductGrid } from "@/components/product-grid";
-import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
+import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { getBlogPosts } from "@/lib/blog";
 import { getCategories, getFeaturedProducts } from "@/lib/commerce";
-import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export default function HomePage() {
@@ -19,60 +19,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={localBusinessJsonLd()} />
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(8,56,32,0.12),transparent_42%),radial-gradient(circle_at_bottom_right,rgba(108,125,95,0.16),transparent_40%)]" />
-        <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-12 lg:grid-cols-[1.15fr_0.85fr] lg:py-20">
-          <div className="space-y-6">
-            <p className="text-xs font-medium tracking-[0.28em] text-primary/70 uppercase">
-              Abianbase · Badung · Bali
-            </p>
-            <h1 className="font-heading text-5xl leading-[0.95] tracking-wide text-primary sm:text-7xl">
-              A family shop.
-              <br />
-              Neighborhood prices.
-            </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-foreground/80">
-              MadeBrings is a small local shop run by {siteConfig.owner}. Browse the
-              shelf, then chat first to confirm your order. Pay cash or bank transfer.
-            </p>
-            <div className="flex flex-wrap gap-3">
-              <Link
-                href="/shop"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
-                )}
-              >
-                Browse the shop
-                <ArrowRight data-icon="inline-end" />
-              </Link>
-              <a
-                href={whatsappHref(defaultWhatsappGreeting)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ size: "lg" }),
-                  whatsappButtonClass,
-                  "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
-                )}
-              >
-                <WhatsAppIcon data-icon="inline-start" className="size-4" />
-                {ORDER_NOW_LABEL}
-              </a>
-            </div>
-          </div>
-          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
-            <Image
-              src="/hero-delivery.jpg"
-              alt="MadeBrings delivery in Abianbase: a courier in a MadeBrings polo and udeng handing drinks to a guest at a Balinese villa"
-              width={1536}
-              height={1024}
-              priority
-              className="relative w-full object-cover"
-            />
-          </div>
-        </div>
-      </section>
+      <HomeHero />
 
       <section className="border-y border-primary/10 bg-primary text-primary-foreground">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:grid-cols-3">
