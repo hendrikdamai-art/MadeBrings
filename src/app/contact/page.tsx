@@ -47,7 +47,7 @@ export default function ContactPage() {
             )}
           >
             <WhatsAppIcon className="size-4" />
-            Chat first to confirm
+            Order Now
           </a>
           <div>
             <h3 className="font-heading text-xl tracking-wide">The shop</h3>

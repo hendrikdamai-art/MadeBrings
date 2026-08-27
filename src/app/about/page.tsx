@@ -73,7 +73,7 @@ export default function AboutPage() {
           )}
         >
           <WhatsAppIcon className="size-4" />
-          Chat first to confirm
+          Order Now
         </a>
         <a
           href={siteConfig.social.maps}

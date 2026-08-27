@@ -57,7 +57,7 @@ export default function HomePage() {
                 )}
               >
                 <WhatsAppIcon data-icon="inline-start" className="size-4" />
-                Chat first to confirm
+                Order Now
               </a>
             </div>
           </div>

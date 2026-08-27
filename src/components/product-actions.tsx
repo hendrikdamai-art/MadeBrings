@@ -38,7 +38,7 @@ export function ProductActions({ product }: { product: Product }) {
           onClick={() => add(product.id, quantity)}
         >
           <WhatsAppIcon data-icon="inline-start" className="size-4" />
-          Chat to confirm
+          Order Now
         </Button>
       </div>
       <a

@@ -137,7 +137,7 @@ export function OrderSheet() {
               )}
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Chat first to confirm
+              Order Now
             </Button>
           ) : (
             <Button
@@ -149,7 +149,7 @@ export function OrderSheet() {
               disabled
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Chat first to confirm
+              Order Now
             </Button>
           )}
           {itemCount > 0 ? (

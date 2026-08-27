@@ -88,7 +88,7 @@ export function SiteHeader() {
               onClick={() => setOpen(true)}
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Confirm order
+              Order Now
               {itemCount > 0 ? (
                 <span className="ml-1 inline-flex size-5 items-center justify-center rounded-full bg-white text-xs text-[#128C7E]">
                   {itemCount}
