@@ -11,7 +11,7 @@ export function HomeHero() {
     <section className="relative isolate overflow-hidden">
       <div className="absolute inset-0">
         <Image
-          src="/hero-scooter.jpg"
+          src="/hero-courier.jpg"
           alt="MadeBrings courier in an udeng on a scooter, holding a box with the MadeBrings emblem"
           fill
           priority
