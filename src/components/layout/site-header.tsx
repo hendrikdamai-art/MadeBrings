@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { useCart } from "@/components/cart/cart-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -74,23 +74,20 @@ export function SiteHeader() {
             <Button
               nativeButton={false}
               render={<a href={whatsappHref(defaultWhatsappGreeting)} target="_blank" rel="noopener noreferrer" />}
-              className={cn(
-                "hidden h-9 rounded-full sm:inline-flex",
-                whatsappButtonClass,
-              )}
+              className={cn("h-9 rounded-full", whatsappButtonClass)}
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Chat Made
+              {ORDER_NOW_LABEL}
             </Button>
             <Button
               type="button"
-              className={cn("h-9 rounded-full font-heading tracking-wide", whatsappButtonClass)}
+              variant="outline"
+              className="h-9 rounded-full border-primary/30"
               onClick={() => setOpen(true)}
             >
-              <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Order Now
+              List
               {itemCount > 0 ? (
-                <span className="ml-1 inline-flex size-5 items-center justify-center rounded-full bg-white text-xs text-[#128C7E]">
+                <span className="ml-1 inline-flex size-5 items-center justify-center rounded-full bg-primary text-xs text-primary-foreground">
                   {itemCount}
                 </span>
               ) : null}

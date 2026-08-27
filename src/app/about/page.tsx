@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
 import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
@@ -73,7 +73,7 @@ export default function AboutPage() {
           )}
         >
           <WhatsAppIcon className="size-4" />
-          Order Now
+          {ORDER_NOW_LABEL}
         </a>
         <a
           href={siteConfig.social.maps}

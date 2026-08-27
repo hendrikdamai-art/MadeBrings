@@ -1,20 +1,19 @@
 "use client";
 
 import { useState } from "react";
-import { useCart } from "@/components/cart/cart-provider";
 import { QuantityStepper } from "@/components/quantity-stepper";
 import { Button } from "@/components/ui/button";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
-import { whatsappHref } from "@/lib/site";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
+import { orderWhatsappHref } from "@/lib/whatsapp";
 import { formatIdr } from "@/lib/format";
 import type { Product } from "@/lib/commerce";
 import { cn } from "@/lib/utils";
 
 export function ProductActions({ product }: { product: Product }) {
-  const { add } = useCart();
   const [quantity, setQuantity] = useState(1);
-  const askHref = whatsappHref(
-    `Hi MadeBrings, I would like to chat first to confirm my order for ${product.name}. I am in / around Abianbase.`,
+  const orderHref = orderWhatsappHref(
+    [{ productId: product.id, quantity }],
+    "",
   );
 
   return (
@@ -29,27 +28,20 @@ export function ProductActions({ product }: { product: Product }) {
       <div className="flex flex-wrap items-center gap-3">
         <QuantityStepper value={quantity} onChange={setQuantity} />
         <Button
-          type="button"
+          nativeButton={false}
+          render={
+            <a href={orderHref} target="_blank" rel="noopener noreferrer" />
+          }
           size="lg"
           className={cn(
-            "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
+            "h-11 rounded-full px-5 text-lg",
             whatsappButtonClass,
           )}
-          onClick={() => add(product.id, quantity)}
         >
           <WhatsAppIcon data-icon="inline-start" className="size-4" />
-          Order Now
+          {ORDER_NOW_LABEL}
         </Button>
       </div>
-      <a
-        href={askHref}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 text-sm font-medium text-primary underline-offset-4 hover:underline"
-      >
-        <WhatsAppIcon className="size-3.5" />
-        Message Made about this bottle
-      </a>
     </div>
   );
 }

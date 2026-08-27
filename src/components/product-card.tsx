@@ -4,16 +4,19 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { QuantityStepper } from "@/components/quantity-stepper";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { Button } from "@/components/ui/button";
-import { useCart } from "@/components/cart/cart-provider";
 import type { Product } from "@/lib/commerce";
 import { formatIdr } from "@/lib/format";
+import { orderWhatsappHref } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { add } = useCart();
   const [quantity, setQuantity] = useState(1);
+  const orderHref = orderWhatsappHref(
+    [{ productId: product.id, quantity }],
+    "",
+  );
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-card shadow-[0_10px_30px_-18px_rgba(8,56,32,0.45)]">
@@ -55,15 +58,17 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="flex items-center gap-2">
           <QuantityStepper value={quantity} onChange={setQuantity} />
           <Button
-            type="button"
+            nativeButton={false}
+            render={
+              <a href={orderHref} target="_blank" rel="noopener noreferrer" />
+            }
             className={cn(
-              "h-9 flex-1 rounded-full font-heading text-base tracking-wide",
+              "h-9 flex-1 rounded-full text-base",
               whatsappButtonClass,
             )}
-            onClick={() => add(product.id, quantity)}
           >
             <WhatsAppIcon data-icon="inline-start" className="size-4" />
-            Order Now
+            {ORDER_NOW_LABEL}
           </Button>
         </div>
       </div>

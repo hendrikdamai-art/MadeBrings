@@ -1,5 +1,5 @@
 import { SocialLinks } from "@/components/social-links";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
 import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
@@ -47,7 +47,7 @@ export default function ContactPage() {
             )}
           >
             <WhatsAppIcon className="size-4" />
-            Order Now
+            {ORDER_NOW_LABEL}
           </a>
           <div>
             <h3 className="font-heading text-xl tracking-wide">The shop</h3>

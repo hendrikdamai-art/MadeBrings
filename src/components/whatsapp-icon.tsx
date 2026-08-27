@@ -13,4 +13,6 @@ export function WhatsAppIcon({ className }: { className?: string }) {
 }
 
 export const whatsappButtonClass =
-  "bg-[#25D366] text-white hover:bg-[#20bd5a] border-transparent";
+  "bg-[#25D366] text-white hover:bg-[#20bd5a] border-transparent font-heading tracking-wide uppercase";
+
+export const ORDER_NOW_LABEL = "ORDER NOW";

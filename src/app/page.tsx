@@ -4,7 +4,7 @@ import { ArrowRight, Banknote, MessageCircle } from "lucide-react";
 import { BlogGrid } from "@/components/blog-card";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { ProductGrid } from "@/components/product-grid";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { getBlogPosts } from "@/lib/blog";
 import { getCategories, getFeaturedProducts } from "@/lib/commerce";
@@ -57,7 +57,7 @@ export default function HomePage() {
                 )}
               >
                 <WhatsAppIcon data-icon="inline-start" className="size-4" />
-                Order Now
+                {ORDER_NOW_LABEL}
               </a>
             </div>
           </div>
@@ -174,7 +174,7 @@ export default function HomePage() {
               </li>
               <li>
                 <span className="font-heading text-2xl">2.</span> Tap{" "}
-                <strong>Order Now</strong> on what you want.
+                <strong>ORDER NOW</strong> on what you want.
               </li>
               <li>
                 <span className="font-heading text-2xl">3.</span> Chat first to

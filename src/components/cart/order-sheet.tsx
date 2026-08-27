@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Trash2 } from "lucide-react";
-import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { useCart } from "@/components/cart/cart-provider";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -137,7 +137,7 @@ export function OrderSheet() {
               )}
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Order Now
+              {ORDER_NOW_LABEL}
             </Button>
           ) : (
             <Button
@@ -149,7 +149,7 @@ export function OrderSheet() {
               disabled
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              Order Now
+              {ORDER_NOW_LABEL}
             </Button>
           )}
           {itemCount > 0 ? (
