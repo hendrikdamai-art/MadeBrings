@@ -9,6 +9,7 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "res.cloudinary.com" },
     ],
   },
+  allowedDevOrigins: ["127.0.0.1"],
 };
 
 export default nextConfig;
