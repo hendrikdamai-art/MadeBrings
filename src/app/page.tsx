@@ -61,15 +61,14 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-md">
-            <div className="absolute inset-8 rounded-full bg-primary/10 blur-2xl" />
+          <div className="relative mx-auto w-full max-w-lg">
             <Image
-              src="/logo.png"
-              alt="MadeBrings emblem with Made Hendrik"
-              width={520}
-              height={520}
+              src="/hero-delivery.png"
+              alt="MadeBrings delivery: a man in a Bintang shirt and udeng handing a box of Bintang to a guest at a Balinese villa"
+              width={1200}
+              height={900}
               priority
-              className="relative mx-auto w-full max-w-sm"
+              className="relative w-full rounded-3xl object-cover shadow-[0_24px_50px_-24px_rgba(8,56,32,0.55)] ring-1 ring-primary/10"
             />
           </div>
         </div>
