@@ -2,7 +2,7 @@
 
 A customer-facing website for **MadeBrings**, a family liquor and beer shop in Abianbase, Badung, Bali, run by Made Hendrik.
 
-People browse the shelf on the site, then send an order list on **WhatsApp**. There is no trolley checkout. Payment is **cash or bank transfer**. Delivery is arranged in the chat and **is not free**.
+People browse the shelf on the site, then **chat first to confirm your order** on WhatsApp. There is no trolley checkout. Payment is **cash or bank transfer**.
 
 ## Run locally
 
@@ -49,7 +49,8 @@ The site ships ready to submit:
 - `https://your-domain/sitemap.xml` — pages, categories, and products
 - `https://your-domain/robots.txt` — allows Googlebot and points at the sitemap
 - Unique titles, descriptions, and canonical URLs on every page
-- Open Graph tags and JSON-LD (`LiquorStore` + `Product`)
+- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`)
+- Blog posts for Bali holiday, tour-guide, and Arak Bali keywords
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` for the Search Console meta tag
 
 After deploy: add the property in Search Console, paste the verification token into the env var, redeploy, then submit the sitemap.
@@ -75,6 +76,10 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/product/[slug]` Product
 - `/about` Family shop story
 - `/contact` WhatsApp + map
+- `/blog` Journal
+- `/blog/bali-holiday-guide-badung`
+- `/blog/bali-tour-guide-selaras` (links to [Selaras Bali Guide](https://www.selarasbaliguide.com))
+- `/blog/arak-bali-traditional-drink`
 
 Alcohol sales require confirming you are 21 or older (Indonesian law).
 

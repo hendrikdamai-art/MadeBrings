@@ -20,8 +20,8 @@ export function SiteFooter() {
           </Link>
           <p className="max-w-sm text-sm leading-relaxed text-primary-foreground/80">
             A local family shop in Abianbase, Badung, Bali, run by {siteConfig.owner}.
-            Neighborhood prices on beer, mixers, ice, and everyday extras. Chat us on
-            WhatsApp for stock and delivery — delivery is not free.
+            Neighborhood prices on beer, mixers, ice, and everyday extras. Chat first
+            to confirm your order.
           </p>
           <SocialLinks invert />
         </div>
@@ -59,8 +59,8 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-primary-foreground/15 px-4 py-4 text-center text-xs leading-relaxed text-primary-foreground/70">
-        Prices are in Indonesian rupiah. Stock changes — always confirm on WhatsApp.
-        Delivery is arranged per order and is not free. MadeBrings supports the
+        Prices are in Indonesian rupiah. Chat first to confirm your order.
+        MadeBrings supports the
         responsible service of alcohol and does not sell to anyone under {siteConfig.ageLimit}.
       </div>
     </footer>

@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Shop",
   description:
-    "Browse beer, bottled drinks, mixers, ice, and snacks from MadeBrings, a family shop in Abianbase, Badung, Bali. Chat WhatsApp to confirm stock and arrange delivery.",
+    "Browse beer, bottled drinks, mixers, ice, and snacks from MadeBrings, a family shop in Abianbase, Badung, Bali. Chat first to confirm your order.",
   path: "/shop",
 });
 
@@ -16,7 +16,7 @@ export default function ShopPage() {
     <div className="mx-auto max-w-6xl px-4 py-12">
       <ShopBrowser
         heading="The shop"
-        intro="This is what we usually keep. It is a small shelf, not a warehouse. Add what you want to your list, then send it on WhatsApp so we can check stock and quote delivery. Delivery is not free."
+        intro="This is what we usually keep. It is a small shelf, not a warehouse. Chat first to confirm your order — we will tell you what is actually here today."
         products={products}
       />
     </div>

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { MessageCircle, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { useCart } from "@/components/cart/cart-provider";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -18,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { getProductById } from "@/lib/commerce";
 import { formatIdr } from "@/lib/format";
 import { orderWhatsappHref } from "@/lib/whatsapp";
+import { cn } from "@/lib/utils";
 
 export function OrderSheet() {
   const { lines, setQuantity, remove, clear, subtotal, open, setOpen, itemCount } =
@@ -37,14 +39,15 @@ export function OrderSheet() {
             WhatsApp order list
           </SheetTitle>
           <SheetDescription>
-            There is no trolley checkout. Send this list to Made on WhatsApp so we
-            can confirm stock, quote delivery, and take cash or bank transfer.
+            Chat first to confirm your order. Send this list to Made on WhatsApp
+            so we can confirm what is in, then arrange cash or bank transfer.
           </SheetDescription>
         </SheetHeader>
 
         {itemCount === 0 ? (
           <div className="px-4 py-10 text-center text-sm text-muted-foreground">
-            Your list is empty. Add a few things from the shop, then chat us.
+            Your list is empty. Pick a few things from the shop, then chat first
+            to confirm your order.
           </div>
         ) : (
           <ScrollArea className="min-h-0 flex-1">
@@ -108,7 +111,7 @@ export function OrderSheet() {
             id="order-note"
             value={note}
             onChange={(event) => setNote(event.target.value)}
-            placeholder="Abianbase / Mengwi / villa name. We will confirm stock and delivery cost."
+            placeholder="Abianbase / Mengwi / villa name. Chat first to confirm your order."
             className="min-h-20 bg-card"
           />
           <div className="flex items-center justify-between text-sm">
@@ -118,8 +121,8 @@ export function OrderSheet() {
             </span>
           </div>
           <p className="text-xs leading-relaxed text-muted-foreground">
-            Delivery is not free. Prices are in rupiah. Payment is cash or bank
-            transfer after we confirm the order.
+            Prices are in rupiah. Payment is cash or bank transfer after we confirm
+            the order.
           </p>
           {href ? (
             <Button
@@ -128,19 +131,25 @@ export function OrderSheet() {
                 <a href={href} target="_blank" rel="noopener noreferrer" />
               }
               size="lg"
-              className="h-11 w-full rounded-full font-heading text-lg tracking-wide"
+              className={cn(
+                "h-11 w-full rounded-full font-heading text-lg tracking-wide",
+                whatsappButtonClass,
+              )}
             >
-              <MessageCircle data-icon="inline-start" />
-              Check stock on WhatsApp
+              <WhatsAppIcon data-icon="inline-start" className="size-4" />
+              Chat first to confirm
             </Button>
           ) : (
             <Button
               size="lg"
-              className="h-11 w-full rounded-full font-heading text-lg tracking-wide"
+              className={cn(
+                "h-11 w-full rounded-full font-heading text-lg tracking-wide",
+                whatsappButtonClass,
+              )}
               disabled
             >
-              <MessageCircle data-icon="inline-start" />
-              Check stock on WhatsApp
+              <WhatsAppIcon data-icon="inline-start" className="size-4" />
+              Chat first to confirm
             </Button>
           )}
           {itemCount > 0 ? (

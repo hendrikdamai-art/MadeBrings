@@ -3,11 +3,13 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 import { QuantityStepper } from "@/components/quantity-stepper";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
+import { Button } from "@/components/ui/button";
 import { useCart } from "@/components/cart/cart-provider";
 import type { Product } from "@/lib/commerce";
 import { formatIdr } from "@/lib/format";
+import { cn } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
   const { add } = useCart();
@@ -54,10 +56,14 @@ export function ProductCard({ product }: { product: Product }) {
           <QuantityStepper value={quantity} onChange={setQuantity} />
           <Button
             type="button"
-            className="h-9 flex-1 rounded-full font-heading text-base tracking-wide"
+            className={cn(
+              "h-9 flex-1 rounded-full font-heading text-base tracking-wide",
+              whatsappButtonClass,
+            )}
             onClick={() => add(product.id, quantity)}
           >
-            Add to list
+            <WhatsAppIcon data-icon="inline-start" className="size-4" />
+            Chat to confirm
           </Button>
         </div>
       </div>

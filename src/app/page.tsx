@@ -1,9 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Banknote, MessageCircle, Truck } from "lucide-react";
+import { ArrowRight, Banknote, MessageCircle } from "lucide-react";
+import { BlogGrid } from "@/components/blog-card";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { ProductGrid } from "@/components/product-grid";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
+import { getBlogPosts } from "@/lib/blog";
 import { getCategories, getFeaturedProducts } from "@/lib/commerce";
 import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -11,6 +14,7 @@ import { cn } from "@/lib/utils";
 export default function HomePage() {
   const featured = getFeaturedProducts();
   const categories = getCategories();
+  const posts = getBlogPosts();
 
   return (
     <>
@@ -29,8 +33,7 @@ export default function HomePage() {
             </h1>
             <p className="max-w-xl text-lg leading-relaxed text-foreground/80">
               MadeBrings is a small local shop run by {siteConfig.owner}. Browse the
-              shelf, then chat us on WhatsApp to check stock and arrange delivery.
-              We do not offer free delivery. Pay cash or bank transfer.
+              shelf, then chat first to confirm your order. Pay cash or bank transfer.
             </p>
             <div className="flex flex-wrap gap-3">
               <Link
@@ -48,12 +51,13 @@ export default function HomePage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "h-11 rounded-full border-primary/30 px-5 font-heading text-lg tracking-wide",
+                  buttonVariants({ size: "lg" }),
+                  whatsappButtonClass,
+                  "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
                 )}
               >
-                <MessageCircle data-icon="inline-start" />
-                Chat for stock
+                <WhatsAppIcon data-icon="inline-start" className="size-4" />
+                Chat first to confirm
               </a>
             </div>
           </div>
@@ -81,13 +85,13 @@ export default function HomePage() {
             },
             {
               icon: MessageCircle,
-              title: "WhatsApp first",
-              text: "Chat to confirm stock before you count on an item.",
+              title: "Chat first to confirm",
+              text: "WhatsApp us before you count on an item from the shelf.",
             },
             {
-              icon: Truck,
-              title: "Delivery is not free",
-              text: "We quote a delivery cost and arrange the ride in chat.",
+              icon: WhatsAppIcon,
+              title: "Cash or transfer",
+              text: "Pay cash or bank transfer after we confirm your order.",
             },
           ].map((item) => (
             <div key={item.title} className="flex gap-3">
@@ -143,26 +147,42 @@ export default function HomePage() {
         <ProductGrid products={featured} />
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
+              Journal
+            </p>
+            <h2 className="font-heading text-4xl tracking-wide text-primary">
+              Bali holiday, guides, and arak
+            </h2>
+          </div>
+          <Link href="/blog" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+            All posts
+          </Link>
+        </div>
+        <BlogGrid posts={posts} />
+      </section>
+
       <section className="bg-primary/95 text-primary-foreground">
         <div className="mx-auto grid max-w-6xl gap-8 px-4 py-14 lg:grid-cols-2">
           <div>
             <h2 className="font-heading text-4xl tracking-wide">How to buy from us</h2>
             <ol className="mt-6 space-y-4 text-primary-foreground/90">
               <li>
-                <span className="font-heading text-2xl">1.</span> Browse the shop and
-                add items to your WhatsApp list.
+                <span className="font-heading text-2xl">1.</span> Browse the shop.
               </li>
               <li>
-                <span className="font-heading text-2xl">2.</span> Send the list. We
-                confirm what is actually in stock.
+                <span className="font-heading text-2xl">2.</span> Tap the green
+                WhatsApp button on what you want.
               </li>
               <li>
-                <span className="font-heading text-2xl">3.</span> We quote delivery to
-                your area. Delivery is not free.
+                <span className="font-heading text-2xl">3.</span> Chat first to
+                confirm your order.
               </li>
               <li>
-                <span className="font-heading text-2xl">4.</span> Pay cash on delivery
-                or by bank transfer. Then we bring it.
+                <span className="font-heading text-2xl">4.</span> Pay cash or bank
+                transfer after we confirm.
               </li>
             </ol>
           </div>

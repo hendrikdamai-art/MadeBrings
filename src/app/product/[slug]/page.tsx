@@ -81,8 +81,8 @@ export default async function ProductPage({ params }: Props) {
           </p>
           <ProductActions product={product} />
           <div className="rounded-2xl border border-primary/15 bg-card p-4 text-sm leading-relaxed text-muted-foreground">
-            Chat WhatsApp to confirm this is on the shelf today, then we will quote
-            delivery to your area. MadeBrings does not offer free delivery.
+            Chat first to confirm this is on the shelf today. Payment is cash or
+            bank transfer after we confirm.
           </div>
         </div>
       </div>

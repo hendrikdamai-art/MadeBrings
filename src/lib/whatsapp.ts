@@ -34,9 +34,9 @@ export function buildOrderMessage(lines: OrderLine[], note: string) {
     "",
     `Subtotal: ${formatIdr(subtotal)}`,
     noteBlock,
-    "Please confirm:",
+    "Please confirm this order:",
     "1. Whether these items are in stock",
-    "2. Delivery cost to my area (I know delivery is not free)",
+    "2. How to arrange the order to my area",
     "3. Payment by cash or bank transfer",
   ].join("\n");
 }

@@ -3,9 +3,9 @@ export const siteConfig = {
   legalName: "MadeBrings",
   tagline: "Bali liquor and beer delivery from a family shop in Abianbase",
   shortPitch:
-    "A small local shop in Abianbase, Badung. Neighborhood prices. Chat us on WhatsApp for stock and delivery.",
+    "A small local shop in Abianbase, Badung. Neighborhood prices. Chat first to confirm your order.",
   description:
-    "MadeBrings is a family-run liquor and beer shop in Abianbase, Badung, Bali. Browse beer, bottled drinks, mixers, ice, and snacks, then chat on WhatsApp to check stock, arrange delivery, and pay by cash or bank transfer. Delivery is not free.",
+    "MadeBrings is a family-run liquor and beer shop in Abianbase, Badung, Bali. Browse beer, bottled drinks, mixers, ice, and snacks, then chat first on WhatsApp to confirm your order. Pay cash or bank transfer.",
   owner: "Made Hendrik",
   address: {
     line1: "Abianbase",
@@ -53,6 +53,7 @@ export const navLinks = [
   { href: "/shop/mixers", label: "Mixers" },
   { href: "/shop/ice-water", label: "Ice & water" },
   { href: "/shop/snacks", label: "Snacks" },
+  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About us" },
   { href: "/contact", label: "Contact" },
 ] as const;
@@ -64,4 +65,4 @@ export function whatsappHref(prefilledText?: string) {
 }
 
 export const defaultWhatsappGreeting =
-  "Hi MadeBrings, I would like to check stock and arrange delivery from your shop in Abianbase.";
+  "Hi MadeBrings, I would like to chat first to confirm my order from the shop in Abianbase.";

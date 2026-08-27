@@ -41,7 +41,7 @@ export const categories: Category[] = [
     slug: "ice-water",
     name: "Ice & water",
     shortName: "Ice",
-    description: "Bags of ice and drinking water. Delivery is arranged on WhatsApp and is not free.",
+    description: "Bags of ice and drinking water. Chat first to confirm your order.",
     href: "/shop/ice-water",
   },
   {
@@ -344,7 +344,7 @@ const products: Product[] = [
     name: "Aqua mineral water 1500ml",
     summary: "Big drinking water bottle for the villa table.",
     description:
-      "Aqua 1500ml mineral water. Easy to add onto a drinks delivery. Delivery itself is not free — we will quote it in the chat.",
+      "Aqua 1500ml mineral water. Easy to add onto a drinks order. Chat first to confirm your order.",
     priceIdr: 8000,
     size: "1500ml",
     origin: "Indonesia",
@@ -373,7 +373,7 @@ const products: Product[] = [
     name: "Ice bag 4kg",
     summary: "Bagged ice. Melt time depends on the ride.",
     description:
-      "A 4kg bag of ice. We do not offer free delivery, and ice should be arranged close to the time you need it. Message us with your area and when you want it.",
+      "A 4kg bag of ice. Ice should be arranged close to the time you need it. Chat first to confirm your order and tell us your area.",
     priceIdr: 15000,
     size: "4kg",
     category: "ice-water",

@@ -3,8 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, MessageCircle } from "lucide-react";
+import { Menu } from "lucide-react";
 import { SocialLinks } from "@/components/social-links";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { useCart } from "@/components/cart/cart-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,6 +15,7 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { navLinks, siteConfig, whatsappHref, defaultWhatsappGreeting } from "@/lib/site";
+import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const { itemCount, setOpen } = useCart();
@@ -24,7 +26,7 @@ export function SiteHeader() {
       <div className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2 text-xs sm:text-sm">
           <p className="min-w-0 truncate">
-            Family shop in {siteConfig.address.display} · Cash or bank transfer
+            Family shop in {siteConfig.address.display} · Chat first to confirm your order
           </p>
           <SocialLinks invert className="hidden sm:flex" iconClassName="size-8" />
         </div>
@@ -72,21 +74,23 @@ export function SiteHeader() {
             <Button
               nativeButton={false}
               render={<a href={whatsappHref(defaultWhatsappGreeting)} target="_blank" rel="noopener noreferrer" />}
-              variant="outline"
-              className="hidden h-9 rounded-full border-primary/30 sm:inline-flex"
+              className={cn(
+                "hidden h-9 rounded-full sm:inline-flex",
+                whatsappButtonClass,
+              )}
             >
-              <MessageCircle data-icon="inline-start" />
+              <WhatsAppIcon data-icon="inline-start" className="size-4" />
               Chat Made
             </Button>
             <Button
               type="button"
-              className="h-9 rounded-full font-heading tracking-wide"
+              className={cn("h-9 rounded-full font-heading tracking-wide", whatsappButtonClass)}
               onClick={() => setOpen(true)}
             >
-              <MessageCircle data-icon="inline-start" />
-              Order list
+              <WhatsAppIcon data-icon="inline-start" className="size-4" />
+              Confirm order
               {itemCount > 0 ? (
-                <span className="ml-1 inline-flex size-5 items-center justify-center rounded-full bg-primary-foreground text-xs text-primary">
+                <span className="ml-1 inline-flex size-5 items-center justify-center rounded-full bg-white text-xs text-[#128C7E]">
                   {itemCount}
                 </span>
               ) : null}
@@ -116,8 +120,7 @@ export function SiteHeader() {
           </nav>
           <div className="mt-auto space-y-3 p-4">
             <p className="text-sm text-muted-foreground">
-              Chat WhatsApp for stock and to arrange delivery. We do not offer free
-              delivery.
+              Chat first to confirm your order. Cash or bank transfer.
             </p>
             <SocialLinks />
           </div>

@@ -25,6 +25,9 @@ export const defaultMetadata: Metadata = {
     "beer delivery Bali",
     "family shop Bali",
     "WhatsApp order Bali",
+    "Bali holiday",
+    "Arak Bali",
+    "Bali tour guide",
   ],
   authors: [{ name: siteConfig.owner }],
   creator: siteConfig.owner,
@@ -79,20 +82,26 @@ export function pageMetadata({
   title,
   description,
   path,
+  keywords,
+  type = "website",
 }: {
   title: string;
   description: string;
   path: string;
+  keywords?: string[];
+  type?: "website" | "article";
 }): Metadata {
   const url = absoluteUrl(path);
   return {
     title,
     description,
+    keywords,
     alternates: { canonical: path },
     openGraph: {
       title,
       description,
       url,
+      type,
     },
   };
 }

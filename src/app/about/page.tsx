@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { pageMetadata } from "@/lib/seo";
 import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
@@ -8,7 +9,7 @@ import { cn } from "@/lib/utils";
 export const metadata = pageMetadata({
   title: "About us",
   description:
-    "MadeBrings is a local family shop in Abianbase, Badung, Bali, owned by Made Hendrik. Neighborhood prices, WhatsApp orders, cash or bank transfer. Delivery is not free.",
+    "MadeBrings is a local family shop in Abianbase, Badung, Bali, owned by Made Hendrik. Neighborhood prices, WhatsApp orders, cash or bank transfer. Chat first to confirm your order.",
   path: "/about",
 });
 
@@ -50,10 +51,9 @@ export default function AboutPage() {
           you honestly.
         </p>
         <p>
-          There is no trolley checkout here. Send your list on WhatsApp. We check
-          stock, quote delivery to your area, and take <strong>cash or bank
-          transfer</strong>. We do not offer free delivery. The ride is arranged
-          with you in the chat, at a cost that makes sense for a small shop.
+          There is no trolley checkout here. Chat first to confirm your order.
+          We check what is on the shelf, then take <strong>cash or bank
+          transfer</strong>. The ride is arranged with you in the chat.
         </p>
         <p>
           If you are close to Abianbase, come by. If you are further into Badung,
@@ -68,10 +68,12 @@ export default function AboutPage() {
           rel="noopener noreferrer"
           className={cn(
             buttonVariants({ size: "lg" }),
+            whatsappButtonClass,
             "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
           )}
         >
-          Chat Made on WhatsApp
+          <WhatsAppIcon className="size-4" />
+          Chat first to confirm
         </a>
         <a
           href={siteConfig.social.maps}
