@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, MapPin, Star } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
@@ -16,66 +16,13 @@ export function HomeHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[18%_center] sm:object-left"
+          className="object-cover object-[78%_center] lg:object-right"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background sm:via-transparent sm:to-background/80 lg:bg-gradient-to-r lg:from-transparent lg:via-background/15 lg:to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background/35 lg:bg-gradient-to-r lg:from-background lg:via-background/75 lg:to-transparent" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[34rem] max-w-6xl items-end px-4 pb-10 pt-44 sm:min-h-[38rem] sm:items-center sm:py-16 lg:min-h-[42rem] lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-        <div className="relative hidden h-full min-h-[22rem] lg:block">
-          <article className="absolute top-6 left-0 w-[15.5rem] rounded-2xl border border-primary/10 bg-[#f8ecd8]/95 p-3 shadow-[0_18px_40px_-24px_rgba(8,56,32,0.55)] backdrop-blur-sm">
-            <div className="flex items-start gap-3">
-              <span className="mt-0.5 flex size-10 shrink-0 items-center justify-center rounded-full bg-primary font-heading text-sm tracking-wide text-primary-foreground">
-                VG
-              </span>
-              <div className="min-w-0">
-                <p className="text-sm font-medium text-primary">Villa guest, Canggu</p>
-                <div className="mt-0.5 flex gap-0.5 text-[#c4a15a]">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="size-3.5 fill-current" />
-                  ))}
-                </div>
-                <p className="mt-1.5 text-xs leading-relaxed text-foreground/75">
-                  Cold drinks at the villa, neighborhood prices.
-                </p>
-              </div>
-            </div>
-          </article>
-
-          <article className="absolute right-2 bottom-10 w-[13.5rem] rounded-2xl border border-primary/10 bg-[#f8ecd8]/95 p-4 shadow-[0_18px_40px_-24px_rgba(8,56,32,0.55)] backdrop-blur-sm">
-            <div className="flex gap-3">
-              <div className="flex flex-col items-center pt-1">
-                <MapPin className="size-4 text-primary" />
-                <span className="my-1 w-px flex-1 border-l border-dashed border-primary/35" />
-                <MapPin className="size-4 text-[#25D366]" />
-              </div>
-              <div className="min-w-0 space-y-3 text-xs">
-                <div>
-                  <p className="font-heading text-sm tracking-wide text-primary">Origin</p>
-                  <p className="text-foreground/70">Abianbase shop</p>
-                </div>
-                <div>
-                  <p className="font-heading text-sm tracking-wide text-primary">Destination</p>
-                  <p className="text-foreground/70">Your villa</p>
-                </div>
-              </div>
-            </div>
-            <a
-              href={whatsappHref(defaultWhatsappGreeting)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={cn(
-                buttonVariants({ size: "sm" }),
-                whatsappButtonClass,
-                "mt-3 h-8 w-full rounded-full font-heading tracking-wide",
-              )}
-            >
-              {ORDER_NOW_LABEL}
-            </a>
-          </article>
-        </div>
-
-        <div className="space-y-6 rounded-3xl bg-background/85 p-5 backdrop-blur-[2px] sm:bg-background/70 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+      <div className="relative mx-auto grid min-h-[32rem] max-w-6xl items-center gap-8 px-4 py-12 sm:min-h-[36rem] lg:min-h-[42rem] lg:grid-cols-[0.95fr_1.05fr] lg:py-20">
+        <div className="space-y-6">
           <p className="text-xs font-medium tracking-[0.28em] text-primary/70 uppercase">
             Abianbase · Badung · Bali
           </p>
@@ -114,6 +61,7 @@ export function HomeHero() {
             </a>
           </div>
         </div>
+        <div className="hidden min-h-[18rem] lg:block" aria-hidden="true" />
       </div>
     </section>
   );
