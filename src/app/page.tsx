@@ -173,8 +173,8 @@ export default function HomePage() {
                 <span className="font-heading text-2xl">1.</span> Browse the shop.
               </li>
               <li>
-                <span className="font-heading text-2xl">2.</span> Tap the green
-                WhatsApp button on what you want.
+                <span className="font-heading text-2xl">2.</span> Tap{" "}
+                <strong>Order Now</strong> on what you want.
               </li>
               <li>
                 <span className="font-heading text-2xl">3.</span> Chat first to
