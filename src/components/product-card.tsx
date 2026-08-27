@@ -53,6 +53,7 @@ export function ProductCard({ product }: { product: Product }) {
         <div className="flex items-center gap-2">
           <QuantityStepper value={quantity} onChange={setQuantity} />
           <Button
+            type="button"
             className="h-9 flex-1 rounded-full font-heading text-base tracking-wide"
             onClick={() => add(product.id, quantity)}
           >

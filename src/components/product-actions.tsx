@@ -27,6 +27,7 @@ export function ProductActions({ product }: { product: Product }) {
       <div className="flex flex-wrap items-center gap-3">
         <QuantityStepper value={quantity} onChange={setQuantity} />
         <Button
+          type="button"
           size="lg"
           className="h-11 rounded-full px-5 font-heading text-lg tracking-wide"
           onClick={() => add(product.id, quantity)}

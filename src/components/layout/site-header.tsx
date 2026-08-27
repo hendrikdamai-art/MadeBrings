@@ -32,6 +32,7 @@ export function SiteHeader() {
       <div className="border-b border-primary/15 bg-[#f3e1c7]/95 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center gap-3 px-4 py-3">
           <Button
+            type="button"
             variant="ghost"
             size="icon"
             className="lg:hidden"
@@ -78,6 +79,7 @@ export function SiteHeader() {
               Chat Made
             </Button>
             <Button
+              type="button"
               className="h-9 rounded-full font-heading tracking-wide"
               onClick={() => setOpen(true)}
             >
