@@ -61,14 +61,14 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-          <div className="relative mx-auto w-full max-w-lg">
+          <div className="relative mx-auto w-full max-w-xl lg:max-w-none">
             <Image
-              src="/hero-delivery.png"
-              alt="MadeBrings delivery: a man in a Bintang shirt and udeng handing a box of Bintang to a guest at a Balinese villa"
-              width={1200}
-              height={900}
+              src="/hero-delivery.jpg"
+              alt="MadeBrings delivery in Abianbase: a courier in a MadeBrings polo and udeng handing drinks to a guest at a Balinese villa"
+              width={1536}
+              height={1024}
               priority
-              className="relative w-full rounded-3xl object-cover shadow-[0_24px_50px_-24px_rgba(8,56,32,0.55)] ring-1 ring-primary/10"
+              className="relative w-full object-cover"
             />
           </div>
         </div>
