@@ -16,12 +16,12 @@ export function HomeHero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[78%_center] lg:object-right"
+          className="object-cover object-[92%_center] lg:object-[100%_center]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/80 to-background/35 lg:bg-gradient-to-r lg:from-background lg:via-background/75 lg:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background via-background/75 to-transparent lg:bg-gradient-to-r lg:from-background lg:from-0% lg:via-background/85 lg:via-[38%] lg:to-transparent lg:to-[62%]" />
       </div>
 
-      <div className="relative mx-auto grid min-h-[32rem] max-w-6xl items-center gap-8 px-4 py-12 sm:min-h-[36rem] lg:min-h-[42rem] lg:grid-cols-[0.95fr_1.05fr] lg:py-20">
+      <div className="relative mx-auto grid min-h-[32rem] max-w-6xl items-center gap-8 px-4 py-12 sm:min-h-[36rem] lg:min-h-[42rem] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-20">
         <div className="space-y-6">
           <p className="text-xs font-medium tracking-[0.28em] text-primary/70 uppercase">
             Abianbase · Badung · Bali
