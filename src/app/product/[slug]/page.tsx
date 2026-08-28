@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { TranslatedText } from "@/components/translated";
 import { JsonLd, productJsonLd } from "@/components/json-ld";
 import { ProductActions } from "@/components/product-actions";
-import { ProductGrid } from "@/components/product-grid";
+import { RelatedProducts } from "@/components/related-products";
 import {
   getCategory,
   getProductBySlug,
@@ -84,14 +84,7 @@ export default async function ProductPage({ params }: Props) {
           <ProductActions product={product} />
         </div>
       </div>
-      {related.length > 0 ? (
-        <section className="mt-16">
-          <h2 className="mb-6 font-heading text-3xl tracking-wide text-primary">
-            <TranslatedText k="productRelated" />
-          </h2>
-          <ProductGrid products={related} />
-        </section>
-      ) : null}
+      <RelatedProducts products={related} />
     </div>
   );
 }
