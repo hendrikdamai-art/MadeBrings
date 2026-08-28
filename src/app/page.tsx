@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { Banknote, MessageCircle } from "lucide-react";
+import { Banknote, MessageCircle, Truck } from "lucide-react";
 import { BlogGrid } from "@/components/blog-card";
 import { HomeHero } from "@/components/home-hero";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { ProductGrid } from "@/components/product-grid";
-import { WhatsAppIcon } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { getBlogPosts } from "@/lib/blog";
 import { getCategories, getFeaturedProducts } from "@/lib/commerce";
@@ -31,13 +30,13 @@ export default function HomePage() {
             },
             {
               icon: MessageCircle,
-              title: "Chat first to confirm",
-              text: "WhatsApp us before you count on an item from the shelf.",
+              title: "Chat us to order & checkout",
+              text: "WhatsApp is the till. Tell us what you want and how you will pay.",
             },
             {
-              icon: WhatsAppIcon,
-              title: "Cash or transfer",
-              text: "Pay cash or bank transfer after we confirm your order.",
+              icon: Truck,
+              title: "Delivery to your door",
+              text: "We bring the order to your villa or home.",
             },
           ].map((item) => (
             <div key={item.title} className="flex gap-3">
@@ -116,19 +115,17 @@ export default function HomePage() {
             <h2 className="font-heading text-4xl tracking-wide">How to buy from us</h2>
             <ol className="mt-6 space-y-4 text-primary-foreground/90">
               <li>
-                <span className="font-heading text-2xl">1.</span> Browse the shop.
+                <span className="font-heading text-2xl">1.</span> Great local
+                prices — browse the shop at neighborhood rates.
               </li>
               <li>
-                <span className="font-heading text-2xl">2.</span> Tap{" "}
-                <strong>ORDER NOW</strong> on what you want.
+                <span className="font-heading text-2xl">2.</span> Chat us to order
+                &amp; checkout — tap <strong>ORDER NOW</strong> and we confirm on
+                WhatsApp.
               </li>
               <li>
-                <span className="font-heading text-2xl">3.</span> Chat first to
-                confirm your order.
-              </li>
-              <li>
-                <span className="font-heading text-2xl">4.</span> Pay cash or bank
-                transfer after we confirm.
+                <span className="font-heading text-2xl">3.</span> Delivery to your
+                door — we bring it to your villa or home.
               </li>
             </ol>
           </div>
