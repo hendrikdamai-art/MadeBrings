@@ -1,22 +1,18 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { QuantityStepper } from "@/components/quantity-stepper";
-import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/components/locale-provider";
 import type { Product } from "@/lib/commerce";
 import { formatIdr } from "@/lib/format";
 import { orderWhatsappHref } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
-  const [quantity, setQuantity] = useState(1);
-  const orderHref = orderWhatsappHref(
-    [{ productId: product.id, quantity }],
-    "",
-  );
+  const { t } = useLocale();
+  const orderHref = orderWhatsappHref([{ productId: product.id, quantity: 1 }], "");
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-card shadow-[0_10px_30px_-18px_rgba(8,56,32,0.45)]">
@@ -55,22 +51,16 @@ export function ProductCard({ product }: { product: Product }) {
         <p className="mt-auto font-heading text-2xl tracking-wide text-primary">
           {formatIdr(product.priceIdr)}
         </p>
-        <div className="flex items-center gap-2">
-          <QuantityStepper value={quantity} onChange={setQuantity} />
-          <Button
-            nativeButton={false}
-            render={
-              <a href={orderHref} target="_blank" rel="noopener noreferrer" />
-            }
-            className={cn(
-              "h-9 flex-1 rounded-full text-base",
-              whatsappButtonClass,
-            )}
-          >
-            <WhatsAppIcon data-icon="inline-start" className="size-4" />
-            {ORDER_NOW_LABEL}
-          </Button>
-        </div>
+        <Button
+          nativeButton={false}
+          render={
+            <a href={orderHref} target="_blank" rel="noopener noreferrer" />
+          }
+          className={cn("h-9 w-full rounded-full text-base", whatsappButtonClass)}
+        >
+          <WhatsAppIcon data-icon="inline-start" className="size-4" />
+          {t("orderNow")}
+        </Button>
       </div>
     </article>
   );

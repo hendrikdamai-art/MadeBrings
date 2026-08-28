@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Menu } from "lucide-react";
+import { useState } from "react";
+import { LanguageSwitch } from "@/components/language-switch";
+import { useLocale } from "@/components/locale-provider";
 import { SocialLinks } from "@/components/social-links";
-import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
-import { useCart } from "@/components/cart/cart-provider";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -14,20 +15,30 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
-import { navLinks, siteConfig, whatsappHref, defaultWhatsappGreeting } from "@/lib/site";
+import { navLinks } from "@/lib/site";
 import { cn } from "@/lib/utils";
+import type { MessageKey } from "@/lib/i18n";
+
+const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/shop": "navShop",
+  "/shop/beer-cider": "navBeer",
+  "/shop/mixers": "navMixers",
+  "/shop/ice-water": "navIce",
+  "/shop/snacks": "navSnacks",
+  "/blog": "navBlog",
+  "/about": "navAbout",
+  "/contact": "navContact",
+};
 
 export function SiteHeader() {
-  const { itemCount, setOpen } = useCart();
+  const { t, orderHref } = useLocale();
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <header className="sticky top-0 z-40">
       <div className="bg-primary text-primary-foreground">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-2 text-xs sm:text-sm">
-          <p className="min-w-0 truncate">
-            Family shop in {siteConfig.address.display} · Chat first to confirm your order
-          </p>
+          <p className="min-w-0 truncate">{t("topbar")}</p>
           <SocialLinks invert className="hidden sm:flex" iconClassName="size-8" />
         </div>
       </div>
@@ -38,7 +49,7 @@ export function SiteHeader() {
             variant="ghost"
             size="icon"
             className="lg:hidden"
-            aria-label="Open menu"
+            aria-label={t("menuOpen")}
             onClick={() => setMenuOpen(true)}
           >
             <Menu />
@@ -65,32 +76,20 @@ export function SiteHeader() {
                 href={link.href}
                 className="text-sm font-medium text-primary/80 transition-colors hover:text-primary"
               >
-                {link.label}
+                {t(navKeys[link.href])}
               </Link>
             ))}
           </nav>
 
           <div className="ml-auto flex items-center gap-2">
+            <LanguageSwitch />
             <Button
               nativeButton={false}
-              render={<a href={whatsappHref(defaultWhatsappGreeting)} target="_blank" rel="noopener noreferrer" />}
+              render={<a href={orderHref} target="_blank" rel="noopener noreferrer" />}
               className={cn("h-9 rounded-full", whatsappButtonClass)}
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              {ORDER_NOW_LABEL}
-            </Button>
-            <Button
-              type="button"
-              variant="outline"
-              className="h-9 rounded-full border-primary/30"
-              onClick={() => setOpen(true)}
-            >
-              List
-              {itemCount > 0 ? (
-                <span className="ml-1 inline-flex size-5 items-center justify-center rounded-full bg-primary text-xs text-primary-foreground">
-                  {itemCount}
-                </span>
-              ) : null}
+              {t("orderNow")}
             </Button>
           </div>
         </div>
@@ -100,7 +99,7 @@ export function SiteHeader() {
         <SheetContent side="left" className="bg-[#f8ecd8]">
           <SheetHeader>
             <SheetTitle className="font-heading text-2xl tracking-wide">
-              MadeBrings
+              {t("menuTitle")}
             </SheetTitle>
           </SheetHeader>
           <nav className="flex flex-col gap-1 px-4">
@@ -111,14 +110,13 @@ export function SiteHeader() {
                 className="rounded-xl px-3 py-2 text-base font-medium hover:bg-primary/10"
                 onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                {t(navKeys[link.href])}
               </Link>
             ))}
           </nav>
           <div className="mt-auto space-y-3 p-4">
-            <p className="text-sm text-muted-foreground">
-              Chat first to confirm your order. Cash or bank transfer.
-            </p>
+            <LanguageSwitch />
+            <p className="text-sm text-muted-foreground">{t("menuNote")}</p>
             <SocialLinks />
           </div>
         </SheetContent>

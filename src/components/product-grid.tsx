@@ -1,19 +1,18 @@
+"use client";
+
 import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
+import { useLocale } from "@/components/locale-provider";
 import { categories, type Product } from "@/lib/commerce";
+import { categoryNameKey } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
 
-export function ProductGrid({
-  products,
-  emptyText = "Nothing on this shelf right now. Chat us on WhatsApp — we may still have it in the shop.",
-}: {
-  products: Product[];
-  emptyText?: string;
-}) {
+export function ProductGrid({ products }: { products: Product[] }) {
+  const { t } = useLocale();
   if (products.length === 0) {
     return (
       <p className="rounded-2xl border border-dashed border-primary/20 bg-card px-6 py-16 text-center text-muted-foreground">
-        {emptyText}
+        {t("shopEmpty")}
       </p>
     );
   }
@@ -28,6 +27,7 @@ export function ProductGrid({
 }
 
 export function CategoryPills({ active }: { active?: string }) {
+  const { t } = useLocale();
   return (
     <div className="flex flex-wrap gap-2">
       <Link
@@ -39,7 +39,7 @@ export function CategoryPills({ active }: { active?: string }) {
             : "border-primary/20 bg-card hover:border-primary/40",
         )}
       >
-        All
+        {t("shopAll")}
       </Link>
       {categories.map((category) => (
         <Link
@@ -52,7 +52,7 @@ export function CategoryPills({ active }: { active?: string }) {
               : "border-primary/20 bg-card hover:border-primary/40",
           )}
         >
-          {category.name}
+          {t(categoryNameKey[category.id] ?? "navShop")}
         </Link>
       ))}
     </div>

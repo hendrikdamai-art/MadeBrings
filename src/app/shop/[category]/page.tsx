@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: Props) {
   const category = getCategory(slug);
   if (!category) return {};
   return pageMetadata({
-    title: category.name,
-    description: category.description,
+    title: `${category.name} delivery in Bali`,
+    description: `${category.description} Alcohol delivery service from MadeBrings in Abianbase, Badung.`,
     path: category.href,
   });
 }
@@ -30,12 +30,7 @@ export default async function CategoryPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <ShopBrowser
-        heading={category.name}
-        intro={category.description}
-        products={products}
-        activeCategory={category.slug}
-      />
+      <ShopBrowser products={products} activeCategory={category.slug} />
     </div>
   );
 }

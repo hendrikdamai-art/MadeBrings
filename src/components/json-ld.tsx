@@ -22,10 +22,29 @@ export function localBusinessJsonLd() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: "ID",
     },
-    areaServed: "Badung, Bali",
+    areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak"],
     priceRange: "Rp",
     paymentAccepted: "Cash, Bank Transfer",
     currenciesAccepted: "IDR",
+    knowsAbout: [
+      "alcohol delivery service",
+      "beer delivery Bali",
+      "liquor delivery Bali",
+      "mixers",
+    ],
+    makesOffer: {
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: "Alcohol delivery service",
+        serviceType: "Alcohol delivery",
+        areaServed: "Badung, Bali",
+        provider: {
+          "@type": "Organization",
+          name: siteConfig.name,
+        },
+      },
+    },
     sameAs: [
       siteConfig.social.instagram,
       siteConfig.social.facebook,

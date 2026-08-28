@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TranslatedText } from "@/components/translated";
 import { JsonLd, productJsonLd } from "@/components/json-ld";
 import { ProductActions } from "@/components/product-actions";
 import { ProductGrid } from "@/components/product-grid";
@@ -10,6 +11,7 @@ import {
   getProducts,
   getProductsByCategory,
 } from "@/lib/commerce";
+import { categoryNameKey } from "@/lib/i18n";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = {
@@ -26,7 +28,7 @@ export async function generateMetadata({ params }: Props) {
   if (!product) return {};
   return pageMetadata({
     title: product.name,
-    description: product.summary,
+    description: `${product.summary} Order via WhatsApp from MadeBrings alcohol delivery in Abianbase, Bali.`,
     path: `/product/${product.slug}`,
   });
 }
@@ -45,13 +47,13 @@ export default async function ProductPage({ params }: Props) {
       <JsonLd data={productJsonLd(product)} />
       <p className="text-sm text-muted-foreground">
         <Link href="/shop" className="hover:text-primary">
-          Shop
+          <TranslatedText k="navShop" />
         </Link>
         {category ? (
           <>
             {" / "}
             <Link href={category.href} className="hover:text-primary">
-              {category.name}
+              <TranslatedText k={categoryNameKey[category.id] ?? "navShop"} />
             </Link>
           </>
         ) : null}
@@ -80,16 +82,12 @@ export default async function ProductPage({ params }: Props) {
             {product.description}
           </p>
           <ProductActions product={product} />
-          <div className="rounded-2xl border border-primary/15 bg-card p-4 text-sm leading-relaxed text-muted-foreground">
-            Chat first to confirm this is on the shelf today. Payment is cash or
-            bank transfer after we confirm.
-          </div>
         </div>
       </div>
       {related.length > 0 ? (
         <section className="mt-16">
           <h2 className="mb-6 font-heading text-3xl tracking-wide text-primary">
-            Nearby on the same shelf
+            <TranslatedText k="productRelated" />
           </h2>
           <ProductGrid products={related} />
         </section>

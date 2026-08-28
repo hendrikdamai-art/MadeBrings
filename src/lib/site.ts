@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "MadeBrings",
   legalName: "MadeBrings",
-  tagline: "Bali liquor and beer delivery from a family shop in Abianbase",
+  tagline: "Alcohol delivery service in Abianbase, Bali — beer, liquor, and mixers to your door",
   shortPitch:
-    "A small local shop in Abianbase, Badung. Neighborhood prices. Chat first to confirm your order.",
+    "Family alcohol delivery service in Abianbase, Badung. Neighborhood prices on beer, liquor, and mixers. Chat us to order.",
   description:
-    "MadeBrings is a family-run liquor and beer shop in Abianbase, Badung, Bali. Browse beer, bottled drinks, mixers, ice, and snacks, then chat first on WhatsApp to confirm your order. Pay cash or bank transfer.",
+    "MadeBrings is a family-run alcohol delivery service in Abianbase, Badung, Bali. Order beer, liquor, mixers, ice, and snacks on WhatsApp. We deliver to your villa or home. Pay cash or bank transfer.",
   owner: "Made Hendrik",
   address: {
     line1: "Abianbase",

@@ -3,10 +3,16 @@ import { getProducts } from "@/lib/commerce";
 import { pageMetadata } from "@/lib/seo";
 
 export const metadata = pageMetadata({
-  title: "Shop",
+  title: "Shop beer, liquor & mixers",
   description:
-    "Browse beer, bottled drinks, mixers, ice, and snacks from MadeBrings, a family shop in Abianbase, Badung, Bali. Chat first to confirm your order.",
+    "Browse beer, liquor, mixers, ice, and snacks from MadeBrings, an alcohol delivery service in Abianbase, Badung, Bali. WhatsApp checkout and delivery to your door.",
   path: "/shop",
+  keywords: [
+    "alcohol delivery Bali",
+    "beer delivery Bali",
+    "liquor delivery Bali",
+    "buy beer Abianbase",
+  ],
 });
 
 export default function ShopPage() {
@@ -14,11 +20,7 @@ export default function ShopPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <ShopBrowser
-        heading="The shop"
-        intro="This is what we usually keep. It is a small shelf, not a warehouse. Chat first to confirm your order — we will tell you what is actually here today."
-        products={products}
-      />
+      <ShopBrowser products={products} />
     </div>
   );
 }

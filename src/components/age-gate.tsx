@@ -3,6 +3,7 @@
 import { useSyncExternalStore } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
+import { useLocale } from "@/components/locale-provider";
 import { siteConfig } from "@/lib/site";
 
 const STORAGE_KEY = "madebrings-age-ok";
@@ -28,6 +29,7 @@ function confirmAge() {
 
 export function AgeGate() {
   const confirmed = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
+  const { t } = useLocale();
   if (confirmed) return null;
 
   return (
@@ -47,11 +49,10 @@ export function AgeGate() {
           className="mx-auto size-24 rounded-full"
         />
         <h2 id="age-gate-title" className="mt-4 font-heading text-3xl tracking-wide text-primary">
-          Are you {siteConfig.ageLimit} or older?
+          {t("ageTitle", { age: siteConfig.ageLimit })}
         </h2>
         <p id="age-gate-copy" className="mt-3 text-base text-foreground/80">
-          Indonesian law only allows alcohol sales to people {siteConfig.ageLimit} and
-          over. MadeBrings is a small family shop — please be honest with us.
+          {t("ageBody", { age: siteConfig.ageLimit })}
         </p>
         <Button
           type="button"
@@ -59,13 +60,13 @@ export function AgeGate() {
           className="mt-6 h-11 w-full font-heading text-lg tracking-wide"
           onClick={confirmAge}
         >
-          Yes, I am {siteConfig.ageLimit}+
+          {t("ageYes", { age: siteConfig.ageLimit })}
         </Button>
         <a
           href="https://www.google.com"
           className="mt-3 inline-block text-sm text-muted-foreground underline-offset-4 hover:underline"
         >
-          No, take me elsewhere
+          {t("ageNo")}
         </a>
       </div>
     </div>

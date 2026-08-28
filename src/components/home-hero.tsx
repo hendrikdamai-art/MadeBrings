@@ -1,18 +1,23 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { WhatsAppIcon, whatsappButtonClass, ORDER_NOW_LABEL } from "@/components/whatsapp-icon";
+import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
-import { defaultWhatsappGreeting, siteConfig, whatsappHref } from "@/lib/site";
+import { useLocale } from "@/components/locale-provider";
+import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function HomeHero() {
+  const { t, orderHref } = useLocale();
+
   return (
     <section className="relative isolate overflow-hidden">
       <div className="absolute inset-0">
         <Image
           src="/hero-courier.jpg"
-          alt="MadeBrings courier in an udeng on a scooter, holding a box with the MadeBrings emblem"
+          alt={t("heroAlt")}
           fill
           priority
           sizes="100vw"
@@ -24,16 +29,15 @@ export function HomeHero() {
       <div className="relative mx-auto grid min-h-[32rem] max-w-6xl items-center gap-8 px-4 py-12 sm:min-h-[36rem] lg:min-h-[42rem] lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:py-20">
         <div className="space-y-6">
           <p className="text-xs font-medium tracking-[0.28em] text-primary/70 uppercase">
-            Abianbase · Badung · Bali
+            {t("heroKicker")}
           </p>
           <h1 className="font-heading text-5xl leading-[0.95] tracking-wide text-primary sm:text-7xl">
-            A family shop.
+            {t("heroTitle1")}
             <br />
-            Neighborhood prices.
+            {t("heroTitle2")}
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-foreground/80">
-            MadeBrings is a small local shop run by {siteConfig.owner}. Browse the
-            shelf, then chat first to confirm your order. Pay cash or bank transfer.
+            {t("heroBody", { owner: siteConfig.owner })}
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
@@ -43,11 +47,11 @@ export function HomeHero() {
                 "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
               )}
             >
-              Browse the shop
+              {t("heroBrowse")}
               <ArrowRight data-icon="inline-end" />
             </Link>
             <a
-              href={whatsappHref(defaultWhatsappGreeting)}
+              href={orderHref}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -57,7 +61,7 @@ export function HomeHero() {
               )}
             >
               <WhatsAppIcon data-icon="inline-start" className="size-4" />
-              {ORDER_NOW_LABEL}
+              {t("orderNow")}
             </a>
           </div>
         </div>
