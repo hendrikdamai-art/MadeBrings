@@ -22,6 +22,7 @@ import type { MessageKey } from "@/lib/i18n";
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
+  "/shop/rtd": "navRtd",
   "/shop/mixers": "navMixers",
   "/shop/ice-water": "navIce",
   "/shop/snacks": "navSnacks",

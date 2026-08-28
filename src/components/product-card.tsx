@@ -16,13 +16,13 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-card shadow-[0_10px_30px_-18px_rgba(8,56,32,0.45)]">
-      <Link href={`/product/${product.slug}`} className="relative block aspect-[4/3] overflow-hidden bg-[#efe0c4]">
+      <Link href={`/product/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-white">
         <Image
           src={product.image}
           alt={product.imageAlt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.03]"
         />
         {product.packNote ? (
           <span className="absolute top-3 left-3 rounded-full bg-primary px-2.5 py-1 font-heading text-xs tracking-wider text-primary-foreground">

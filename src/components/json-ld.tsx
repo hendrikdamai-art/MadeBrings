@@ -60,7 +60,9 @@ export function productJsonLd(product: Product) {
     "@type": "Product",
     name: product.name,
     description: product.description,
-    image: product.image,
+    image: product.image.startsWith("http")
+      ? product.image
+      : `${siteConfig.url}${product.image}`,
     sku: product.id,
     brand: {
       "@type": "Brand",

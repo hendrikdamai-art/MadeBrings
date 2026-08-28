@@ -23,7 +23,7 @@ This is a standard Next.js App Router project. It needs no database, no serverle
 3. Set the environment variables below.
 4. Deploy.
 
-Product photos are loaded from an **external image CDN** (Unsplash today; Cloudinary is already allowed). They are not stored in the Vercel deployment.
+Product photos live in `public/products`. Each file is the matching photo from the supplier listing, with the MadeBrings emblem in the top-right corner. Regenerating them: `python3 scripts/brand-product-images.py`.
 
 ## Environment variables
 
@@ -38,7 +38,6 @@ Copy `.env.example` to `.env.local`.
 | `NEXT_PUBLIC_TRIPADVISOR_URL` | TripAdvisor listing. |
 | `NEXT_PUBLIC_MAPS_URL` | Google Maps link to the shop. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Token from Google Search Console HTML-tag verification. |
-| `NEXT_PUBLIC_IMAGE_CDN` | Optional. Defaults to `https://images.unsplash.com`. |
 
 Until those social URLs are set, the header and footer still show the five icons using placeholder links.
 
@@ -60,11 +59,11 @@ After deploy: add the property in Search Console, paste the verification token i
 ```
 src/lib/commerce/     Catalog types + in-memory adapter
 src/lib/whatsapp.ts   Checkout adapter (WhatsApp deep link)
-src/components/cart/  Client order list (localStorage)
+public/products/      Branded product photos (MadeBrings emblem top-right)
 src/app/              Storefront routes
 ```
 
-Today the catalog is a typed TypeScript module so the first version stays on the Vercel free plan. Swap `src/lib/commerce/catalog.ts` later for Sanity, Shopify, Medusa, or a database API without rewriting the UI. Keep `Product.image` as an absolute CDN URL so photos never live on the Vercel server.
+Today the catalog is a typed TypeScript module so the first version stays on the Vercel free plan. Swap `src/lib/commerce/catalog.ts` later for Sanity, Shopify, Medusa, or a database API without rewriting the UI.
 
 Checkout is already a separate adapter. Replacing WhatsApp with another payment flow later does not require a new storefront.
 
@@ -72,7 +71,7 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 
 - `/` Home
 - `/shop` Full shelf
-- `/shop/[category]` Beer & cider, bottled drinks, RTD, mixers, ice & water, snacks, everyday extras
+- `/shop/[category]` Beer & cider, RTD, mixers, ice & water, snacks
 - `/product/[slug]` Product
 - `/about` Family shop story
 - `/contact` WhatsApp + map

@@ -50,6 +50,7 @@ export const siteConfig = {
 export const navLinks = [
   { href: "/shop", label: "Shop" },
   { href: "/shop/beer-cider", label: "Beer & cider" },
+  { href: "/shop/rtd", label: "RTD" },
   { href: "/shop/mixers", label: "Mixers" },
   { href: "/shop/ice-water", label: "Ice & water" },
   { href: "/shop/snacks", label: "Snacks" },

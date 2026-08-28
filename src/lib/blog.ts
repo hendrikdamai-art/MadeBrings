@@ -248,8 +248,8 @@ export const blogPosts: BlogPost[] = [
           "MadeBrings is a small shop. We do not pretend to hold a full arak cellar. If you want a licensed local bottle with your beer and ice, chat first to confirm your order. We will tell you honestly what is on the shelf that day.",
         ],
         link: {
-          href: "/shop/bottled-drinks",
-          label: "See the bottled drinks we usually keep",
+          href: "/shop",
+          label: "Browse the shop we keep in Abianbase",
         },
       },
       {

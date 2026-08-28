@@ -14,6 +14,7 @@ const en = {
   menuNote: "Chat us on WhatsApp to order and checkout. Cash or bank transfer.",
   navShop: "Shop",
   navBeer: "Beer & cider",
+  navRtd: "RTD",
   navMixers: "Mixers",
   navIce: "Ice & water",
   navSnacks: "Snacks",
@@ -68,7 +69,7 @@ const en = {
   shopKicker: "Neighborhood shelf",
   shopHeading: "The shop",
   shopIntro:
-    "Browse beer, liquor, mixers, ice, and snacks from our Abianbase bottle shop. This is what we usually keep — chat us to confirm stock, then we arrange alcohol delivery to your door.",
+    "Browse beer, Smirnoff Ice, mixers, ice, and snacks from our Abianbase shop. This is what we usually keep — chat us to confirm stock, then we arrange alcohol delivery to your door.",
   shopSearch: "Search the shelf",
   shopAll: "All",
   shopEmpty:
@@ -112,22 +113,22 @@ const en = {
   catBeer: "Beer & cider",
   catBottles: "Bottled drinks",
   catRtd: "Ready to drink",
-  catMixers: "Mixers & soft drinks",
-  catIce: "Ice & water",
+  catMixers: "Mixer / juice",
+  catIce: "Water / ice / esky",
   catSnacks: "Snacks",
   catEveryday: "Everyday extras",
   catBeerIntro:
-    "Cold beer and cider at neighborhood prices — Bintang, Singaraja, and packs for villa nights. Chat us before you order; stock moves.",
+    "Cold beer at neighborhood prices — Singaraja, Bintang, San Miguel, six-packs, and boxes. Chat us before you order; stock moves.",
   catBottlesIntro:
     "A short liquor shelf we keep for regulars. Ask Made on WhatsApp if you need a specific bottle.",
   catRtdIntro:
-    "Ready-to-drink cans and bottles you can open as they are. Good for villa nights without a full bar.",
+    "Smirnoff Ice singles, six-packs, and a full box. Open as they are — no mixer needed.",
   catMixersIntro:
-    "Cola, tonic, soda, and juice to go with beer or liquor you already have at home.",
+    "Tonic, ginger ale, cola, Sprite, Red Bull, and limes to sit next to whatever you already have at home.",
   catIceIntro:
-    "Bags of ice and drinking water to add onto an alcohol delivery.",
+    "Ice bags, a 3-day esky rental, and a box of Aqua to add onto a drinks run.",
   catSnacksIntro:
-    "Simple snacks for the table while the drinks arrive.",
+    "Crisps for the table while the drinks arrive.",
   catEverydayIntro:
     "Small extras we keep beside the drinks — the kind of thing a villa run forgets.",
 } as const;
@@ -143,6 +144,7 @@ const id: { [K in keyof typeof en]: string } = {
   menuNote: "Chat WhatsApp untuk pesan dan bayar. Tunai atau transfer bank.",
   navShop: "Toko",
   navBeer: "Bir & sider",
+  navRtd: "Siap minum",
   navMixers: "Mixer",
   navIce: "Es & air",
   navSnacks: "Cemilan",
@@ -197,7 +199,7 @@ const id: { [K in keyof typeof en]: string } = {
   shopKicker: "Rak tetangga",
   shopHeading: "Toko",
   shopIntro:
-    "Lihat bir, minuman keras, mixer, es, dan cemilan dari toko botol kami di Abianbase. Ini stok biasa kami — chat untuk konfirmasi, lalu kami atur pengantaran ke rumah.",
+    "Lihat bir, Smirnoff Ice, mixer, es, dan cemilan dari toko kami di Abianbase. Ini stok biasa kami — chat untuk konfirmasi, lalu kami atur pengantaran ke rumah.",
   shopSearch: "Cari di rak",
   shopAll: "Semua",
   shopEmpty:
@@ -241,22 +243,22 @@ const id: { [K in keyof typeof en]: string } = {
   catBeer: "Bir & sider",
   catBottles: "Minuman botol",
   catRtd: "Siap minum",
-  catMixers: "Mixer & minuman ringan",
-  catIce: "Es & air",
+  catMixers: "Mixer / jus",
+  catIce: "Air / es / esky",
   catSnacks: "Cemilan",
   catEveryday: "Kebutuhan harian",
   catBeerIntro:
-    "Bir dan sider dingin dengan harga tetangga — Bintang, Singaraja, dan pak untuk malam di villa. Chat dulu; stok bergerak.",
+    "Bir dingin dengan harga tetangga — Singaraja, Bintang, San Miguel, pak isi enam, dan dus. Chat dulu; stok bergerak.",
   catBottlesIntro:
     "Rak minuman keras singkat untuk pelanggan tetap. Tanya Made di WhatsApp jika butuh botol tertentu.",
   catRtdIntro:
-    "Kaleng dan botol siap minum. Cocok untuk malam villa tanpa bar lengkap.",
+    "Smirnoff Ice satuan, pak isi enam, dan dus penuh. Langsung minum — tanpa mixer.",
   catMixersIntro:
-    "Kola, tonik, soda, dan jus untuk bir atau minuman keras yang sudah ada di rumah.",
+    "Tonik, ginger ale, kola, Sprite, Red Bull, dan jeruk nipis untuk minuman yang sudah ada di rumah.",
   catIceIntro:
-    "Es batu dan air minum untuk ditambahkan pada pengantaran alkohol.",
+    "Es batu, sewa esky 3 hari, dan dus Aqua untuk ditambahkan pada pengantaran minuman.",
   catSnacksIntro:
-    "Cemilan sederhana di meja sambil minuman diantar.",
+    "Keripik di meja sambil minuman diantar.",
   catEverydayIntro:
     "Pelengkap kecil di samping minuman — yang sering terlupa saat belanja villa.",
 };
@@ -267,22 +269,18 @@ export type MessageKey = keyof typeof en;
 
 export const categoryNameKey: Record<string, MessageKey> = {
   "beer-cider": "catBeer",
-  "bottled-drinks": "catBottles",
   rtd: "catRtd",
   mixers: "catMixers",
   "ice-water": "catIce",
   snacks: "catSnacks",
-  everyday: "catEveryday",
 };
 
 export const categoryIntroKey: Record<string, MessageKey> = {
   "beer-cider": "catBeerIntro",
-  "bottled-drinks": "catBottlesIntro",
   rtd: "catRtdIntro",
   mixers: "catMixersIntro",
   "ice-water": "catIceIntro",
   snacks: "catSnacksIntro",
-  everyday: "catEverydayIntro",
 };
 
 export function interpolate(

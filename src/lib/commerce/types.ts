@@ -1,11 +1,9 @@
 export type CategoryId =
   | "beer-cider"
-  | "bottled-drinks"
   | "rtd"
   | "mixers"
   | "ice-water"
-  | "snacks"
-  | "everyday";
+  | "snacks";
 
 export type Product = {
   id: string;
@@ -17,7 +15,7 @@ export type Product = {
   size: string;
   origin?: string;
   category: CategoryId;
-  /** Full CDN URL. Product photos are not stored on Vercel. */
+  /** Local branded photo in /public/products, MadeBrings emblem top-right. */
   image: string;
   imageAlt: string;
   featured?: boolean;
