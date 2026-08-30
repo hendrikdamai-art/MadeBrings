@@ -25,13 +25,13 @@ export const siteConfig = {
       ? `https://${process.env.VERCEL_URL}`
       : "http://127.0.0.1:43127"),
   whatsappNumber:
-    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890",
+    process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285117333835",
   googleSiteVerification:
     process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || "",
   social: {
     whatsapp:
       process.env.NEXT_PUBLIC_WHATSAPP_URL ||
-      `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6281234567890"}`,
+      `https://wa.me/${process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "6285117333835"}`,
     instagram:
       process.env.NEXT_PUBLIC_INSTAGRAM_URL ||
       "https://www.instagram.com/madebrings",
