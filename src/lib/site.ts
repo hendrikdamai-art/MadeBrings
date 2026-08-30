@@ -43,8 +43,12 @@ export const siteConfig = {
       "https://www.tripadvisor.com/Search?q=MadeBrings%20Abianbase%20Bali",
     maps:
       process.env.NEXT_PUBLIC_MAPS_URL ||
-      "https://www.google.com/maps/search/?api=1&query=Abianbase+Badung+Bali",
+      "https://share.google/BA3dCsTbfDdiqMSzL",
   },
+  /** Contact-page embed pinned to the Made Brings Google Business listing. */
+  mapsEmbed:
+    process.env.NEXT_PUBLIC_MAPS_EMBED_URL ||
+    "https://maps.google.com/maps?q=Made+Brings+Abianbase+Bali&z=16&output=embed",
 } as const;
 
 export const navLinks = [

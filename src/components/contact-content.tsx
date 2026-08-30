@@ -68,8 +68,8 @@ export function ContactContent() {
         </div>
         <div className="overflow-hidden rounded-3xl border border-primary/10 bg-[#efe0c4]">
           <iframe
-            title="MadeBrings on Google Maps, Abianbase Badung Bali"
-            src="https://maps.google.com/maps?q=Abianbase,+Badung,+Bali&z=14&output=embed"
+            title="Made Brings on Google Maps"
+            src={siteConfig.mapsEmbed}
             className="h-[420px] w-full border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"

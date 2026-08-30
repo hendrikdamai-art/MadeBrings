@@ -22,6 +22,7 @@ export function localBusinessJsonLd() {
       postalCode: siteConfig.address.postalCode,
       addressCountry: "ID",
     },
+    hasMap: siteConfig.social.maps,
     areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak"],
     priceRange: "Rp",
     paymentAccepted: "Cash, Bank Transfer",
