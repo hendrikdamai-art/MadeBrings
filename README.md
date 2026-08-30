@@ -36,7 +36,7 @@ Copy `.env.example` to `.env.local`.
 | `NEXT_PUBLIC_INSTAGRAM_URL` | Instagram profile. |
 | `NEXT_PUBLIC_FACEBOOK_URL` | Facebook page. |
 | `NEXT_PUBLIC_TRIPADVISOR_URL` | TripAdvisor listing. |
-| `NEXT_PUBLIC_MAPS_URL` | Google Maps link to the shop. |
+| `NEXT_PUBLIC_MAPS_URL` | Google Maps / Business Profile link for the shop. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Token from Google Search Console HTML-tag verification. |
 
 Until those social URLs are set, the header and footer still show the five icons using placeholder links.
