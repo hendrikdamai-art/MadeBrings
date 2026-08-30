@@ -80,8 +80,12 @@ export const defaultMetadata: Metadata = {
     ? { google: siteConfig.googleSiteVerification }
     : undefined,
   icons: {
-    icon: "/logo.png",
-    apple: "/apple-touch-icon.png",
+    icon: [
+      { url: "/favicon.ico", sizes: "48x48" },
+      { url: "/icon.png", type: "image/png", sizes: "192x192" },
+    ],
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
   },
 };
 
