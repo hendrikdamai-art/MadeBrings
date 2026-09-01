@@ -43,16 +43,20 @@ Until those social URLs are set, the header and footer still show the five icons
 
 ## Google Search Console
 
-The site ships ready to submit:
+The HTML file verification file is in the repo at `public/google65b51532d9d28066.html`. After deploy it is served at:
+
+`https://your-domain/google65b51532d9d28066.html`
+
+In Search Console, choose **HTML file** verification and click Verify. Then submit the sitemap at `https://your-domain/sitemap.xml`.
+
+The site also ships:
 
 - `https://your-domain/sitemap.xml` — pages, categories, and products
 - `https://your-domain/robots.txt` — allows Googlebot and points at the sitemap
 - Unique titles, descriptions, and canonical URLs on every page
 - Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`)
 - Blog posts for Bali holiday, tour-guide, and Arak Bali keywords
-- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` for the Search Console meta tag
-
-After deploy: add the property in Search Console, paste the verification token into the env var, redeploy, then submit the sitemap.
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
 
 ## Architecture (ready to grow)
 
