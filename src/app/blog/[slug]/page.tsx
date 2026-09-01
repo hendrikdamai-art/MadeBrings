@@ -24,6 +24,7 @@ export async function generateMetadata({ params }: Props) {
     keywords: post.keywords,
     type: "article",
     locale,
+    dateModified: post.dateModified,
   });
 }
 
@@ -31,5 +32,6 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) notFound();
-  return <BlogArticle post={post} />;
+  const locale = await getRequestLocale();
+  return <BlogArticle post={post} locale={locale} />;
 }

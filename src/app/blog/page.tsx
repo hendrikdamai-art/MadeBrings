@@ -1,4 +1,5 @@
 import { BlogGrid } from "@/components/blog-card";
+import { LocaleLink } from "@/components/locale-link";
 import { TranslatedText } from "@/components/translated";
 import { getBlogPosts } from "@/lib/blog";
 import { getRequestLocale } from "@/lib/request-locale";
@@ -29,6 +30,14 @@ export default function BlogIndexPage() {
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/80">
         <TranslatedText k="blogIndexBody" />
+      </p>
+      <p className="mt-4">
+        <LocaleLink
+          href="/alcohol-delivery-service"
+          className="font-medium text-primary underline-offset-4 hover:underline"
+        >
+          <TranslatedText k="footerDelivery" />
+        </LocaleLink>
       </p>
       <div className="mt-10">
         <BlogGrid posts={posts} />

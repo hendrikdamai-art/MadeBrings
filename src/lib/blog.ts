@@ -1,4 +1,6 @@
+import { commercialPosts } from "@/lib/blog-commercial";
 import { cdnImage } from "@/lib/commerce/images";
+import { MONEY_PATH } from "@/lib/seo/facts";
 import { siteConfig } from "@/lib/site";
 
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
@@ -8,6 +10,11 @@ export type BlogSection = {
   paragraphs: string[];
   list?: string[];
   link?: { href: string; label: string };
+};
+
+export type BlogFaq = {
+  question: string;
+  answer: string;
 };
 
 export type BlogPost = {
@@ -22,9 +29,13 @@ export type BlogPost = {
   heroImage: string;
   heroAlt: string;
   sections: BlogSection[];
+  intent?: "commercial" | "editorial";
+  speakable?: string;
+  faqs?: BlogFaq[];
+  inclusions?: string[];
 };
 
-export const blogPosts: BlogPost[] = [
+export const editorialPosts: BlogPost[] = [
   {
     slug: "bali-holiday-guide-badung",
     title: "Bali holiday guide 2026: a slower stay in Badung, beyond the beach clubs",
@@ -85,7 +96,7 @@ export const blogPosts: BlogPost[] = [
         heading: "What to put in a Bali villa fridge",
         paragraphs: [
           "You do not need to land with a suitcase of snacks. You do need drinking water, ice, and something cold for the first evening. Bintang, mixers, and a bag of ice are the three things villa groups run out of first. Mosquito coils are a close fourth.",
-          "Chat first to confirm your order. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike.",
+          "Chat first to confirm your order. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike. The booking page for this alcohol delivery service lists areas, catalog prices, and FAQs.",
         ],
         list: [
           "Drinking water (1.5L bottles or a gallon if the villa has a dispenser)",
@@ -95,8 +106,8 @@ export const blogPosts: BlogPost[] = [
           "Mosquito coils or repellent for after dusk",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the MadeBrings shop",
+          href: MONEY_PATH,
+          label: "Book alcohol delivery — prices, areas, and FAQs",
         },
       },
       {
@@ -179,6 +190,16 @@ export const blogPosts: BlogPost[] = [
         },
       },
       {
+        heading: "Stock the villa fridge before you get back",
+        paragraphs: [
+          "Browse beer, water, and ice on MadeBrings, then WhatsApp a pin. That booking lives on the alcohol delivery service page — one place for prices, areas, and FAQs.",
+        ],
+        link: {
+          href: MONEY_PATH,
+          label: "Order villa drinks from our alcohol delivery service",
+        },
+      },
+      {
         heading: "Pair a trail day with a quiet night in Abianbase",
         paragraphs: [
           "A Kintamani day starts early. Eat a proper breakfast, wear long sleeves for the cool highland morning, and do not plan a second big activity. Come back to Badung, shower, and keep the evening simple: warung food or a villa cook-up, licensed drinks only, and an early sleep.",
@@ -248,8 +269,8 @@ export const blogPosts: BlogPost[] = [
           "MadeBrings is a small shop. We do not pretend to hold a full arak cellar. If you want a licensed local bottle with your beer and ice, chat first to confirm your order. We will tell you honestly what is on the shelf that day.",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the shop we keep in Abianbase",
+          href: MONEY_PATH,
+          label: "Ask on the alcohol delivery service page, then WhatsApp",
         },
       },
       {
@@ -265,6 +286,8 @@ export const blogPosts: BlogPost[] = [
     ],
   },
 ];
+
+export const blogPosts: BlogPost[] = [...commercialPosts, ...editorialPosts];
 
 export function getBlogPosts() {
   return blogPosts;
@@ -287,6 +310,12 @@ export function blogJsonLd(post: BlogPost) {
     image: post.heroImage,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
+    speakable: post.speakable
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
     author: {
       "@type": "Person",
       name: siteConfig.owner,

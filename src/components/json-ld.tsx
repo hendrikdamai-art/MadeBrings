@@ -3,19 +3,32 @@ import type { Product } from "@/lib/commerce";
 import { productCopy } from "@/lib/commerce";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/locale-path";
+import { absoluteUrl } from "@/lib/seo";
 import { seoCopy } from "@/lib/seo-copy";
+import {
+  CONTENT_UPDATED,
+  LLMS_FULL_PATH,
+  LLMS_PATH,
+  touristAreas,
+} from "@/lib/seo/facts";
+import type { FaqItem } from "@/lib/seo/money";
+
+function siteOrigin() {
+  return siteConfig.url.replace(/\/$/, "");
+}
 
 export function localBusinessJsonLd(locale: Locale = "en") {
   const copy = seoCopy[locale];
   const url =
-    locale === "id" ? `${siteConfig.url.replace(/\/$/, "")}/id` : siteConfig.url;
+    locale === "id" ? `${siteOrigin()}/id` : siteConfig.url;
   return {
     "@context": "https://schema.org",
     "@type": "LiquorStore",
+    "@id": `${siteOrigin()}#business`,
     name: siteConfig.name,
     alternateName: locale === "id" ? "Jasa antar alkohol MadeBrings" : undefined,
     inLanguage: locale === "id" ? "id-ID" : "en-ID",
-    image: `${siteConfig.url}/logo.png`,
+    image: `${siteOrigin()}/logo.png`,
     url,
     telephone: `+${siteConfig.whatsappNumber}`,
     description: copy.homeDescription,
@@ -32,7 +45,7 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       addressCountry: "ID",
     },
     hasMap: siteConfig.social.maps,
-    areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak", "Mengwi"],
+    areaServed: [...touristAreas, "Mengwi", "Badung", "Bali"],
     priceRange: "Rp",
     paymentAccepted: locale === "id" ? "Tunai, Transfer Bank" : "Cash, Bank Transfer",
     currenciesAccepted: "IDR",
@@ -49,6 +62,7 @@ export function localBusinessJsonLd(locale: Locale = "en") {
             "alcohol delivery service",
             "beer delivery Bali",
             "liquor delivery Bali",
+            "alcohol near me",
             "mixers",
           ],
     availableLanguage: ["id", "en"],
@@ -60,7 +74,7 @@ export function localBusinessJsonLd(locale: Locale = "en") {
           locale === "id" ? "Jasa antar alkohol" : "Alcohol delivery service",
         serviceType:
           locale === "id" ? "Pengantaran alkohol" : "Alcohol delivery",
-        areaServed: "Badung, Bali",
+        areaServed: touristAreas.join(", "),
         provider: {
           "@type": "Organization",
           name: siteConfig.name,
@@ -72,7 +86,85 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       siteConfig.social.facebook,
       siteConfig.social.tripadvisor,
       siteConfig.social.maps,
+      `${siteOrigin()}${LLMS_PATH}`,
+      `${siteOrigin()}${LLMS_FULL_PATH}`,
     ],
+    subjectOf: {
+      "@type": "CreativeWork",
+      url: `${siteOrigin()}${LLMS_PATH}`,
+      name: "MadeBrings AI index (llms.txt)",
+    },
+  };
+}
+
+export function faqJsonLd(faqs: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function webPageJsonLd({
+  title,
+  description,
+  path,
+  locale = "en",
+  dateModified = CONTENT_UPDATED,
+  speakable = true,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  locale?: Locale;
+  dateModified?: string;
+  speakable?: boolean;
+}) {
+  const url = absoluteUrl(localizedPath(locale, path));
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url,
+    inLanguage: locale === "id" ? "id-ID" : "en-ID",
+    dateModified,
+    speakable: speakable
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
+    describedBy: `${siteOrigin()}${LLMS_PATH}`,
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteOrigin(),
+    },
+    about: { "@id": `${siteOrigin()}#business` },
+  };
+}
+
+export function breadcrumbJsonLd(
+  items: { name: string; path: string }[],
+  locale: Locale = "en",
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(localizedPath(locale, item.path)),
+    })),
   };
 }
 
