@@ -13,6 +13,7 @@ const en = {
   menuTitle: "MadeBrings",
   menuNote: "Chat us on WhatsApp to order and checkout. Cash or bank transfer.",
   navShop: "Shop",
+  navDelivery: "Delivery",
   navBeer: "Beer & cider",
   navRtd: "RTD",
   navMixers: "Mixers",
@@ -27,6 +28,7 @@ const en = {
   heroBody:
     "MadeBrings is an alcohol delivery service in Abianbase, Badung, run by {owner}. Order beer, liquor, mixers, ice, and snacks, then chat us on WhatsApp to checkout. Pay cash or bank transfer — we deliver to your villa or home.",
   heroBrowse: "Browse the shop",
+  heroDelivery: "Alcohol delivery",
   heroAlt:
     "MadeBrings alcohol delivery in Bali: a courier in an udeng on a scooter, holding a box with the MadeBrings emblem",
   step1Title: "Great local prices",
@@ -41,7 +43,7 @@ const en = {
   featuredKicker: "From the cooler",
   featuredTitle: "A few things people ask for",
   journalKicker: "Journal",
-  journalTitle: "Bali holiday, guides, and arak",
+  journalTitle: "Delivery guides, Bali notes, and arak",
   journalAll: "All posts",
   howTitle: "How to buy from us",
   how1: "Great local prices — browse beer, liquor, and mixers at neighborhood rates.",
@@ -57,6 +59,17 @@ const en = {
   footerPay: "Pay cash or bank transfer",
   footerAge: "Must be {age}+ to buy alcohol",
   footerShop: "Shop",
+  footerDelivery: "Alcohol delivery service",
+  footerCompare: "Comparison method",
+  footerPress: "Press kit",
+  footerAiIndex: "AI index",
+  footerLlms: "llms.txt",
+  footerLlmsFull: "Full Q&A",
+  moneyStripKicker: "Alcohol near me · Bali villas",
+  moneyStripTitle: "Alcohol delivery to Canggu, Seminyak, Kuta, Ubud, Tanah Lot",
+  moneyStripBody:
+    "Family shop in Abianbase. Browse prices, then WhatsApp a villa pin. 21+. Cash or bank transfer.",
+  moneyStripCta: "Prices, areas, and FAQs",
   footerBlurb:
     "A local family shop in Abianbase, Badung, Bali, run by {owner}. Alcohol delivery service for beer, liquor, mixers, ice, and everyday extras. Chat us to order.",
   footerLegal:
@@ -113,7 +126,7 @@ const en = {
   blogIndexKicker: "From Abianbase",
   blogIndexTitle: "Blog",
   blogIndexBody:
-    "Practical notes for a Bali holiday, who to contact for a tour guide, and how Balinese families use arak. Written by a small shop — not a travel brochure.",
+    "Start with alcohol delivery in Canggu, Seminyak, Kuta, Ubud, and Tanah Lot — then Bali holiday notes, a tour guide to contact, and arak. Chat first to confirm your order.",
   catBeer: "Beer & cider",
   catBottles: "Bottled drinks",
   catRtd: "Ready to drink",
@@ -147,6 +160,7 @@ const id: { [K in keyof typeof en]: string } = {
   menuTitle: "MadeBrings",
   menuNote: "Chat WhatsApp untuk pesan dan bayar. Tunai atau transfer bank.",
   navShop: "Toko",
+  navDelivery: "Antar",
   navBeer: "Bir & sider",
   navRtd: "Siap minum",
   navMixers: "Mixer",
@@ -161,6 +175,7 @@ const id: { [K in keyof typeof en]: string } = {
   heroBody:
     "MadeBrings adalah layanan antar alkohol di Abianbase, Badung, dikelola {owner}. Pesan bir, minuman keras, mixer, es, dan cemilan, lalu chat WhatsApp untuk checkout. Bayar tunai atau transfer — kami antar ke villa atau rumah Anda.",
   heroBrowse: "Lihat toko",
+  heroDelivery: "Antar alkohol",
   heroAlt:
     "Layanan antar alkohol MadeBrings di Bali: kurir berudeng di skuter membawa kotak dengan emblem MadeBrings",
   step1Title: "Harga lokal yang bersahabat",
@@ -175,7 +190,7 @@ const id: { [K in keyof typeof en]: string } = {
   featuredKicker: "Dari pendingin",
   featuredTitle: "Yang sering ditanya",
   journalKicker: "Catatan",
-  journalTitle: "Liburan Bali, pemandu, dan arak",
+  journalTitle: "Panduan antar, catatan Bali, dan arak",
   journalAll: "Semua tulisan",
   howTitle: "Cara beli dari kami",
   how1: "Harga lokal yang bersahabat — bir, minuman keras, dan mixer dengan tarif tetangga.",
@@ -191,6 +206,17 @@ const id: { [K in keyof typeof en]: string } = {
   footerPay: "Bayar tunai atau transfer bank",
   footerAge: "Harus {age}+ untuk membeli alkohol",
   footerShop: "Toko",
+  footerDelivery: "Jasa antar alkohol",
+  footerCompare: "Metode perbandingan",
+  footerPress: "Kit pers",
+  footerAiIndex: "Indeks AI",
+  footerLlms: "llms.txt",
+  footerLlmsFull: "Tanya jawab lengkap",
+  moneyStripKicker: "Alkohol near me · villa Bali",
+  moneyStripTitle: "Antar alkohol ke Canggu, Seminyak, Kuta, Ubud, Tanah Lot",
+  moneyStripBody:
+    "Toko keluarga di Abianbase. Lihat harga, lalu WhatsApp pin villa. 21+. Tunai atau transfer.",
+  moneyStripCta: "Harga, wilayah, dan FAQ",
   footerBlurb:
     "Toko keluarga di Abianbase, Badung, Bali, dikelola {owner}. Layanan antar alkohol untuk bir, minuman keras, mixer, es, dan kebutuhan harian. Chat untuk pesan.",
   footerLegal:
@@ -247,7 +273,7 @@ const id: { [K in keyof typeof en]: string } = {
   blogIndexKicker: "Dari Abianbase",
   blogIndexTitle: "Blog",
   blogIndexBody:
-    "Catatan praktis untuk liburan Bali, siapa yang dihubungi untuk pemandu, dan bagaimana keluarga Bali memakai arak. Ditulis toko kecil — bukan brosur wisata.",
+    "Mulai dari antar alkohol di Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot — lalu catatan liburan, pemandu, dan arak. Chat dulu untuk konfirmasi pesanan.",
   catBeer: "Bir & sider",
   catBottles: "Minuman botol",
   catRtd: "Siap minum",

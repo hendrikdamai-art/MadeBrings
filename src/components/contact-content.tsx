@@ -1,5 +1,6 @@
 "use client";
 
+import { LocaleLink } from "@/components/locale-link";
 import { SocialLinks } from "@/components/social-links";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
@@ -21,6 +22,14 @@ export function ContactContent() {
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-foreground/80">
           {t("contactLead")}
+        </p>
+        <p className="mt-3">
+          <LocaleLink
+            href="/alcohol-delivery-service"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            {t("footerDelivery")}
+          </LocaleLink>
         </p>
       </div>
 
