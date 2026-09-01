@@ -16,23 +16,40 @@ function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {})
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact"];
-  const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
-    {
-      ...entry(path, {
+  const staticPaths = [
+    "/",
+    "/shop",
+    "/blog",
+    "/about",
+    "/contact",
+    "/alcohol-delivery-service",
+    "/compare-alcohol-delivery-bali",
+    "/press",
+  ];
+  const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => {
+    const priority =
+      path === "/"
+        ? 1
+        : path === "/alcohol-delivery-service"
+          ? 0.98
+          : 0.9;
+    return [
+      {
+        ...entry(path, {
+          lastModified: now,
+          changeFrequency: "weekly",
+          priority,
+        }),
+      },
+      {
+        url: absoluteUrl(localizedPath("id", path)),
         lastModified: now,
-        changeFrequency: "weekly",
-        priority: path === "/" ? 1 : 0.9,
-      }),
-    },
-    {
-      url: absoluteUrl(localizedPath("id", path)),
-      lastModified: now,
-      changeFrequency: "weekly" as const,
-      priority: path === "/" ? 0.95 : 0.85,
-      alternates: { languages: languageAlternates(path, "id").languages },
-    },
-  ]);
+        changeFrequency: "weekly" as const,
+        priority: path === "/" ? 0.95 : path === "/alcohol-delivery-service" ? 0.96 : 0.85,
+        alternates: { languages: languageAlternates(path, "id").languages },
+      },
+    ];
+  });
 
   const categories = getCategories().flatMap((category) => [
     {
@@ -73,19 +90,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const posts = getBlogPosts().flatMap((post) => {
     const path = `/blog/${post.slug}`;
+    const commercial = post.intent === "commercial";
     return [
       {
         ...entry(path, {
           lastModified: new Date(post.dateModified),
           changeFrequency: "monthly" as const,
-          priority: 0.7,
+          priority: commercial ? 0.8 : 0.7,
         }),
       },
       {
         url: absoluteUrl(localizedPath("id", path)),
         lastModified: new Date(post.dateModified),
         changeFrequency: "monthly" as const,
-        priority: 0.65,
+        priority: commercial ? 0.75 : 0.65,
         alternates: { languages: languageAlternates(path, "id").languages },
       },
     ];

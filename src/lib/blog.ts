@@ -1,4 +1,7 @@
+import { getCommercialPosts } from "@/lib/blog-commercial";
 import { cdnImage } from "@/lib/commerce/images";
+import type { Locale } from "@/lib/i18n";
+import { MONEY_PATH } from "@/lib/seo/facts";
 import { siteConfig } from "@/lib/site";
 
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
@@ -8,6 +11,22 @@ export type BlogSection = {
   paragraphs: string[];
   list?: string[];
   link?: { href: string; label: string };
+};
+
+export type BlogFaq = {
+  question: string;
+  answer: string;
+};
+
+export type LocalizedBlogCopy = {
+  title: string;
+  description: string;
+  excerpt: string;
+  speakable?: string;
+  sections: BlogSection[];
+  faqs?: BlogFaq[];
+  inclusions?: string[];
+  heroAlt?: string;
 };
 
 export type BlogPost = {
@@ -22,9 +41,14 @@ export type BlogPost = {
   heroImage: string;
   heroAlt: string;
   sections: BlogSection[];
+  intent?: "commercial" | "editorial";
+  speakable?: string;
+  faqs?: BlogFaq[];
+  inclusions?: string[];
+  idCopy?: LocalizedBlogCopy;
 };
 
-export const blogPosts: BlogPost[] = [
+export const editorialPosts: BlogPost[] = [
   {
     slug: "bali-holiday-guide-badung",
     title: "Bali holiday guide 2026: a slower stay in Badung, beyond the beach clubs",
@@ -95,8 +119,8 @@ export const blogPosts: BlogPost[] = [
           "Mosquito coils or repellent for after dusk",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the MadeBrings shop",
+          href: MONEY_PATH,
+          label: "Book alcohol delivery from Abianbase",
         },
       },
       {
@@ -174,8 +198,8 @@ export const blogPosts: BlogPost[] = [
           "After the ride, you will want water, ice, and something cold. That is our part. Chat MadeBrings first to confirm your order so the villa is ready when you get back dusty and hungry.",
         ],
         link: {
-          href: SELARAS_GUIDE_URL,
-          label: "Message Selaras on their website",
+          href: MONEY_PATH,
+          label: "Book alcohol delivery for the villa fridge",
         },
       },
       {
@@ -248,8 +272,8 @@ export const blogPosts: BlogPost[] = [
           "MadeBrings is a small shop. We do not pretend to hold a full arak cellar. If you want a licensed local bottle with your beer and ice, chat first to confirm your order. We will tell you honestly what is on the shelf that day.",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the shop we keep in Abianbase",
+          href: MONEY_PATH,
+          label: "Book a licensed bottle with beer and ice from Abianbase",
         },
       },
       {
@@ -266,16 +290,38 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+export function localizeBlogPost(post: BlogPost, locale: Locale): BlogPost {
+  if (locale !== "id" || !post.idCopy) return post;
+  return {
+    ...post,
+    title: post.idCopy.title,
+    description: post.idCopy.description,
+    excerpt: post.idCopy.excerpt,
+    speakable: post.idCopy.speakable ?? post.speakable,
+    sections: post.idCopy.sections,
+    faqs: post.idCopy.faqs ?? post.faqs,
+    inclusions: post.idCopy.inclusions ?? post.inclusions,
+    heroAlt: post.idCopy.heroAlt ?? post.heroAlt,
+  };
+}
+
 export function getBlogPosts() {
-  return blogPosts;
+  return [...getCommercialPosts(), ...editorialPosts];
 }
 
 export function getBlogPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+  return getBlogPosts().find((post) => post.slug === slug);
 }
 
 export function getRelatedPosts(slug: string) {
-  return blogPosts.filter((post) => post.slug !== slug);
+  const all = getBlogPosts();
+  const current = all.find((post) => post.slug === slug);
+  const rest = all.filter((post) => post.slug !== slug);
+  if (!current) return rest;
+  const intent = current.intent ?? "editorial";
+  const same = rest.filter((post) => (post.intent ?? "editorial") === intent);
+  const other = rest.filter((post) => (post.intent ?? "editorial") !== intent);
+  return [...same, ...other];
 }
 
 export function blogJsonLd(post: BlogPost) {
@@ -301,5 +347,11 @@ export function blogJsonLd(post: BlogPost) {
     },
     mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
     keywords: post.keywords.join(", "),
+    speakable: post.speakable
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
   };
 }

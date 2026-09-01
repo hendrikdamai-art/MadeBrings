@@ -52,6 +52,7 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
+  { href: "/alcohol-delivery-service", label: "Delivery" },
   { href: "/shop", label: "Shop" },
   { href: "/shop/beer-cider", label: "Beer & cider" },
   { href: "/shop/rtd", label: "RTD" },

@@ -38,6 +38,7 @@ Copy `.env.example` to `.env.local`.
 | `NEXT_PUBLIC_TRIPADVISOR_URL` | TripAdvisor listing. |
 | `NEXT_PUBLIC_MAPS_URL` | Google Maps / Business Profile link for the shop. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Token from Google Search Console HTML-tag verification. |
+| `CRON_SECRET` | Shared secret for the bi-daily SEO revalidate cron at `/api/seo/cron`. Vercel sends `Authorization: Bearer $CRON_SECRET`. |
 
 Until those social URLs are set, the header and footer still show the five icons using placeholder links.
 
@@ -54,9 +55,10 @@ The site also ships:
 - `https://your-domain/sitemap.xml` — pages, categories, and products
 - `https://your-domain/robots.txt` — allows Googlebot and points at the sitemap
 - Unique titles, descriptions, and canonical URLs on every page
-- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`)
-- Blog posts for Bali holiday, tour-guide, and Arak Bali keywords
-- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
+- Open Graph tags and JSON-LD (`LiquorStore`, `FAQPage`, `HowTo`, `WebPage` speakable, `Product`, `BlogPosting`)
+- Money page `/alcohol-delivery-service` for the main keyword, plus commercial delivery guides
+- `/llms.txt` and `/llms-full.txt` for AI citation; AI crawlers allowed in `robots.txt`
+- `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead of the HTML file
 
 ## Architecture (ready to grow)
 
@@ -76,12 +78,21 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/` Home (English)
 - `/id` Indonesian home — crawlable copy for Indonesian Google queries
 - `/id/shop`, `/id/product/[slug]`, `/id/about`, `/id/contact` Indonesian versions of the same pages
+- `/alcohol-delivery-service` and `/id/alcohol-delivery-service` — money/booking page
+- `/compare-alcohol-delivery-bali` — qualitative comparison methodology (no invented competitor prices)
+- `/press` — media kit
+- `/llms.txt`, `/llms-full.txt` — AI citation indexes
 - `/shop` Full shelf
 - `/shop/[category]` Beer & cider, RTD, mixers, ice & water, snacks
 - `/product/[slug]` Product
 - `/about` Family shop story
 - `/contact` WhatsApp + map
-- `/blog` Journal
+- `/blog` Journal (commercial guides first)
+- `/blog/alcohol-delivery-canggu`
+- `/blog/alcohol-delivery-seminyak-kuta`
+- `/blog/villa-alcohol-delivery-whatsapp`
+- `/blog/alcohol-delivery-ubud-tanah-lot`
+- `/blog/beer-run-vs-minimarket-bali`
 - `/blog/bali-holiday-guide-badung`
 - `/blog/bali-tour-guide-selaras` (links to [Selaras Bali Guide](https://www.selarasbaliguide.com))
 - `/blog/arak-bali-traditional-drink`

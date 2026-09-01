@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/alcohol-delivery-service": "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
