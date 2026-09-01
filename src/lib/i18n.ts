@@ -110,6 +110,10 @@ const en = {
   notFoundCta: "Back to the shop",
   waGreeting:
     "Hi MadeBrings, I would like to order from your alcohol delivery service in Abianbase. Please confirm stock and delivery to my villa or home.",
+  blogIndexKicker: "From Abianbase",
+  blogIndexTitle: "Blog",
+  blogIndexBody:
+    "Practical notes for a Bali holiday, who to contact for a tour guide, and how Balinese families use arak. Written by a small shop — not a travel brochure.",
   catBeer: "Beer & cider",
   catBottles: "Bottled drinks",
   catRtd: "Ready to drink",
@@ -240,6 +244,10 @@ const id: { [K in keyof typeof en]: string } = {
   notFoundCta: "Kembali ke toko",
   waGreeting:
     "Halo MadeBrings, saya ingin pesan dari layanan antar alkohol di Abianbase. Mohon konfirmasi stok dan pengantaran ke villa atau rumah saya.",
+  blogIndexKicker: "Dari Abianbase",
+  blogIndexTitle: "Blog",
+  blogIndexBody:
+    "Catatan praktis untuk liburan Bali, siapa yang dihubungi untuk pemandu, dan bagaimana keluarga Bali memakai arak. Ditulis toko kecil — bukan brosur wisata.",
   catBeer: "Bir & sider",
   catBottles: "Minuman botol",
   catRtd: "Siap minum",

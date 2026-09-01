@@ -1,17 +1,18 @@
 import { AboutContent } from "@/components/about-content";
+import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
+import { seoCopy } from "@/lib/seo-copy";
 
-export const metadata = pageMetadata({
-  title: "About our alcohol delivery service",
-  description:
-    "MadeBrings is a family alcohol delivery service in Abianbase, Badung, Bali, owned by Made Hendrik. Beer, liquor, and mixers to your door. WhatsApp checkout, cash or bank transfer.",
-  path: "/about",
-  keywords: [
-    "alcohol delivery service Bali",
-    "family liquor shop Abianbase",
-    "Made Hendrik MadeBrings",
-  ],
-});
+export async function generateMetadata() {
+  const locale = await getRequestLocale();
+  const copy = seoCopy[locale];
+  return pageMetadata({
+    title: copy.aboutTitle,
+    description: copy.aboutDescription,
+    path: "/about",
+    locale,
+  });
+}
 
 export default function AboutPage() {
   return <AboutContent />;

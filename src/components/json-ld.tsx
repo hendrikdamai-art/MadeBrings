@@ -1,15 +1,24 @@
 import { siteConfig } from "@/lib/site";
 import type { Product } from "@/lib/commerce";
+import { productCopy } from "@/lib/commerce";
+import type { Locale } from "@/lib/i18n";
+import { localizedPath } from "@/lib/locale-path";
+import { seoCopy } from "@/lib/seo-copy";
 
-export function localBusinessJsonLd() {
+export function localBusinessJsonLd(locale: Locale = "en") {
+  const copy = seoCopy[locale];
+  const url =
+    locale === "id" ? `${siteConfig.url.replace(/\/$/, "")}/id` : siteConfig.url;
   return {
     "@context": "https://schema.org",
     "@type": "LiquorStore",
     name: siteConfig.name,
+    alternateName: locale === "id" ? "Jasa antar alkohol MadeBrings" : undefined,
+    inLanguage: locale === "id" ? "id-ID" : "en-ID",
     image: `${siteConfig.url}/logo.png`,
-    url: siteConfig.url,
+    url,
     telephone: `+${siteConfig.whatsappNumber}`,
-    description: siteConfig.description,
+    description: copy.homeDescription,
     founder: {
       "@type": "Person",
       name: siteConfig.owner,
@@ -23,22 +32,34 @@ export function localBusinessJsonLd() {
       addressCountry: "ID",
     },
     hasMap: siteConfig.social.maps,
-    areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak"],
+    areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak", "Mengwi"],
     priceRange: "Rp",
-    paymentAccepted: "Cash, Bank Transfer",
+    paymentAccepted: locale === "id" ? "Tunai, Transfer Bank" : "Cash, Bank Transfer",
     currenciesAccepted: "IDR",
-    knowsAbout: [
-      "alcohol delivery service",
-      "beer delivery Bali",
-      "liquor delivery Bali",
-      "mixers",
-    ],
+    knowsAbout:
+      locale === "id"
+        ? [
+            "jasa antar alkohol",
+            "antar bir Bali",
+            "kirim minuman keras Bali",
+            "pesan bir WhatsApp",
+            "toko bir Abianbase",
+          ]
+        : [
+            "alcohol delivery service",
+            "beer delivery Bali",
+            "liquor delivery Bali",
+            "mixers",
+          ],
+    availableLanguage: ["id", "en"],
     makesOffer: {
       "@type": "Offer",
       itemOffered: {
         "@type": "Service",
-        name: "Alcohol delivery service",
-        serviceType: "Alcohol delivery",
+        name:
+          locale === "id" ? "Jasa antar alkohol" : "Alcohol delivery service",
+        serviceType:
+          locale === "id" ? "Pengantaran alkohol" : "Alcohol delivery",
         areaServed: "Badung, Bali",
         provider: {
           "@type": "Organization",
@@ -55,12 +76,15 @@ export function localBusinessJsonLd() {
   };
 }
 
-export function productJsonLd(product: Product) {
+export function productJsonLd(product: Product, locale: Locale = "en") {
+  const copy = productCopy(product, locale);
+  const path = localizedPath(locale, `/product/${product.slug}`);
   return {
     "@context": "https://schema.org",
     "@type": "Product",
     name: product.name,
-    description: product.description,
+    description: copy.description,
+    inLanguage: locale === "id" ? "id-ID" : "en-ID",
     image: product.image.startsWith("http")
       ? product.image
       : `${siteConfig.url}${product.image}`,
@@ -74,7 +98,7 @@ export function productJsonLd(product: Product) {
       priceCurrency: "IDR",
       price: product.priceIdr,
       availability: "https://schema.org/LimitedAvailability",
-      url: `${siteConfig.url}/product/${product.slug}`,
+      url: `${siteConfig.url.replace(/\/$/, "")}${path}`,
       seller: {
         "@type": "Organization",
         name: siteConfig.name,

@@ -1,19 +1,19 @@
 import { ShopBrowser } from "@/components/shop-browser";
 import { getProducts } from "@/lib/commerce";
+import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
+import { seoCopy } from "@/lib/seo-copy";
 
-export const metadata = pageMetadata({
-  title: "Shop beer, liquor & mixers",
-  description:
-    "Browse beer, liquor, mixers, ice, and snacks from MadeBrings, an alcohol delivery service in Abianbase, Badung, Bali. WhatsApp checkout and delivery to your door.",
-  path: "/shop",
-  keywords: [
-    "alcohol delivery Bali",
-    "beer delivery Bali",
-    "liquor delivery Bali",
-    "buy beer Abianbase",
-  ],
-});
+export async function generateMetadata() {
+  const locale = await getRequestLocale();
+  const copy = seoCopy[locale];
+  return pageMetadata({
+    title: copy.shopTitle,
+    description: copy.shopDescription,
+    path: "/shop",
+    locale,
+  });
+}
 
 export default function ShopPage() {
   const products = getProducts();

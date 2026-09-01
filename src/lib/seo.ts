@@ -1,4 +1,7 @@
 import type { Metadata } from "next";
+import type { Locale } from "@/lib/i18n";
+import { localizedPath } from "@/lib/locale-path";
+import { seoCopy } from "@/lib/seo-copy";
 import { siteConfig } from "@/lib/site";
 
 const titleTemplate = `%s · ${siteConfig.name}`;
@@ -9,85 +12,86 @@ export function absoluteUrl(path = "/") {
   return `${base}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
-export const defaultMetadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: `${siteConfig.name} · Alcohol delivery service in Abianbase, Bali`,
-    template: titleTemplate,
-  },
-  description: siteConfig.description,
-  applicationName: siteConfig.name,
-  keywords: [
-    "MadeBrings",
-    "alcohol delivery service",
-    "alcohol delivery Bali",
-    "liquor delivery Bali",
-    "beer delivery Bali",
-    "wine delivery Bali",
-    "spirits delivery Bali",
-    "bottle shop Bali",
-    "Abianbase",
-    "Badung",
-    "Canggu alcohol delivery",
-    "Seminyak liquor delivery",
-    "villa drinks delivery Bali",
-    "WhatsApp alcohol order Bali",
-    "Bintang delivery Bali",
-    "Arak Bali",
-    "family shop Bali",
-  ],
-  authors: [{ name: siteConfig.owner }],
-  creator: siteConfig.owner,
-  publisher: siteConfig.name,
-  category: "shopping",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    type: "website",
-    locale: "en_ID",
-    url: siteConfig.url,
-    siteName: siteConfig.name,
-    title: `${siteConfig.name} · Alcohol delivery in Abianbase, Bali`,
-    description: siteConfig.description,
-    images: [
-      {
-        url: "/logo.png",
-        width: 1024,
-        height: 1024,
-        alt: "MadeBrings emblem",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary",
-    title: `${siteConfig.name} · Abianbase, Bali`,
-    description: siteConfig.shortPitch,
-    images: ["/logo.png"],
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
+export function languageAlternates(path: string, locale: Locale = "en") {
+  const englishPath = path === "/id" ? "/" : path.replace(/^\/id/, "") || "/";
+  const indonesianPath = localizedPath("id", englishPath);
+  const canonical = locale === "id" ? indonesianPath : englishPath;
+  return {
+    canonical,
+    languages: {
+      en: absoluteUrl(englishPath),
+      id: absoluteUrl(indonesianPath),
+      "x-default": absoluteUrl(englishPath),
+    },
+  };
+}
+
+export function defaultMetadataFor(locale: Locale = "en"): Metadata {
+  const copy = seoCopy[locale];
+  const homePath = locale === "id" ? "/id" : "/";
+  return {
+    metadataBase: new URL(siteConfig.url),
+    title: {
+      default: copy.homeTitle,
+      template: titleTemplate,
+    },
+    description: copy.homeDescription,
+    applicationName: siteConfig.name,
+    keywords: copy.keywords,
+    authors: [{ name: siteConfig.owner }],
+    creator: siteConfig.owner,
+    publisher: siteConfig.name,
+    category: "shopping",
+    alternates: languageAlternates("/", locale),
+    openGraph: {
+      type: "website",
+      locale: locale === "id" ? "id_ID" : "en_ID",
+      alternateLocale: locale === "id" ? ["en_ID"] : ["id_ID"],
+      url: absoluteUrl(homePath),
+      siteName: siteConfig.name,
+      title: copy.ogTitle,
+      description: copy.homeDescription,
+      images: [
+        {
+          url: "/logo.png",
+          width: 1024,
+          height: 1024,
+          alt: "MadeBrings emblem",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary",
+      title: copy.ogTitle,
+      description: copy.shortPitch,
+      images: ["/logo.png"],
+    },
+    robots: {
       index: true,
       follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+        "max-video-preview": -1,
+      },
     },
-  },
-  verification: siteConfig.googleSiteVerification
-    ? { google: siteConfig.googleSiteVerification }
-    : undefined,
-  icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "48x48" },
-      { url: "/icon.png", type: "image/png", sizes: "192x192" },
-    ],
-    apple: "/apple-icon.png",
-    shortcut: "/favicon.ico",
-  },
-};
+    verification: siteConfig.googleSiteVerification
+      ? { google: siteConfig.googleSiteVerification }
+      : undefined,
+    icons: {
+      icon: [
+        { url: "/favicon.ico", sizes: "48x48" },
+        { url: "/icon.png", type: "image/png", sizes: "192x192" },
+      ],
+      apple: "/apple-icon.png",
+      shortcut: "/favicon.ico",
+    },
+  };
+}
+
+export const defaultMetadata: Metadata = defaultMetadataFor("en");
 
 export function pageMetadata({
   title,
@@ -95,23 +99,29 @@ export function pageMetadata({
   path,
   keywords,
   type = "website",
+  locale = "en",
 }: {
   title: string;
   description: string;
   path: string;
   keywords?: string[];
   type?: "website" | "article";
+  locale?: Locale;
 }): Metadata {
-  const url = absoluteUrl(path);
+  const localized = localizedPath(locale, path);
+  const url = absoluteUrl(localized);
+  const copy = seoCopy[locale];
   return {
     title,
     description,
-    keywords,
-    alternates: { canonical: path },
+    keywords: keywords ?? copy.keywords,
+    alternates: languageAlternates(path, locale),
     openGraph: {
       title,
       description,
       url,
+      locale: locale === "id" ? "id_ID" : "en_ID",
+      alternateLocale: locale === "id" ? ["en_ID"] : ["id_ID"],
       type,
     },
   };

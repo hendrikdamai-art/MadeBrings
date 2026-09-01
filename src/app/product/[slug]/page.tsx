@@ -1,8 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TranslatedText } from "@/components/translated";
 import { JsonLd, productJsonLd } from "@/components/json-ld";
+import { LocaleLink } from "@/components/locale-link";
 import { ProductActions } from "@/components/product-actions";
 import { RelatedProducts } from "@/components/related-products";
 import {
@@ -10,9 +10,12 @@ import {
   getProductBySlug,
   getProducts,
   getProductsByCategory,
+  productCopy,
 } from "@/lib/commerce";
 import { categoryNameKey } from "@/lib/i18n";
+import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
+import { seoCopy } from "@/lib/seo-copy";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -26,10 +29,18 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) return {};
+  const locale = await getRequestLocale();
+  const copy = productCopy(product, locale);
+  const description =
+    locale === "id"
+      ? `${copy.summary} Pesan antar alkohol MadeBrings di Abianbase, Bali, lewat WhatsApp.`
+      : `${product.summary} Order via WhatsApp from MadeBrings alcohol delivery in Abianbase, Bali.`;
   return pageMetadata({
     title: product.name,
-    description: `${product.summary} Order via WhatsApp from MadeBrings alcohol delivery in Abianbase, Bali.`,
+    description,
     path: `/product/${product.slug}`,
+    keywords: seoCopy[locale].keywords,
+    locale,
   });
 }
 
@@ -37,6 +48,8 @@ export default async function ProductPage({ params }: Props) {
   const { slug } = await params;
   const product = getProductBySlug(slug);
   if (!product) notFound();
+  const locale = await getRequestLocale();
+  const copy = productCopy(product, locale);
   const category = getCategory(product.category);
   const related = getProductsByCategory(product.category)
     .filter((item) => item.id !== product.id)
@@ -44,17 +57,17 @@ export default async function ProductPage({ params }: Props) {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-12">
-      <JsonLd data={productJsonLd(product)} />
+      <JsonLd data={productJsonLd(product, locale)} />
       <p className="text-sm text-muted-foreground">
-        <Link href="/shop" className="hover:text-primary">
+        <LocaleLink href="/shop" className="hover:text-primary">
           <TranslatedText k="navShop" />
-        </Link>
+        </LocaleLink>
         {category ? (
           <>
             {" / "}
-            <Link href={category.href} className="hover:text-primary">
+            <LocaleLink href={category.href} className="hover:text-primary">
               <TranslatedText k={categoryNameKey[category.id] ?? "navShop"} />
-            </Link>
+            </LocaleLink>
           </>
         ) : null}
       </p>
@@ -62,7 +75,7 @@ export default async function ProductPage({ params }: Props) {
         <div className="relative aspect-[4/5] overflow-hidden rounded-3xl bg-white">
           <Image
             src={product.image}
-            alt={product.imageAlt}
+            alt={copy.imageAlt}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
@@ -79,7 +92,7 @@ export default async function ProductPage({ params }: Props) {
             {product.name}
           </h1>
           <p className="text-lg leading-relaxed text-foreground/80">
-            {product.description}
+            {copy.description}
           </p>
           <ProductActions product={product} />
         </div>

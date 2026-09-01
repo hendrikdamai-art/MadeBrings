@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { cn } from "@/lib/utils";
 
@@ -16,7 +16,7 @@ export default function NotFound() {
         {t("notFoundTitle")}
       </h1>
       <p className="mt-4 text-muted-foreground">{t("notFoundBody")}</p>
-      <Link
+      <LocaleLink
         href="/shop"
         className={cn(
           buttonVariants({ size: "lg" }),
@@ -24,7 +24,7 @@ export default function NotFound() {
         )}
       >
         {t("notFoundCta")}
-      </Link>
+      </LocaleLink>
     </div>
   );
 }

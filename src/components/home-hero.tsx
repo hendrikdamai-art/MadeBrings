@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { LocaleLink } from "@/components/locale-link";
 import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
@@ -40,7 +40,7 @@ export function HomeHero() {
             {t("heroBody", { owner: siteConfig.owner })}
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link
+            <LocaleLink
               href="/shop"
               className={cn(
                 buttonVariants({ size: "lg" }),
@@ -49,7 +49,7 @@ export function HomeHero() {
             >
               {t("heroBrowse")}
               <ArrowRight data-icon="inline-end" />
-            </Link>
+            </LocaleLink>
             <a
               href={orderHref}
               target="_blank"

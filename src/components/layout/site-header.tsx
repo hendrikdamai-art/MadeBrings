@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { Menu } from "lucide-react";
 import { useState } from "react";
 import { LanguageSwitch } from "@/components/language-switch";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { SocialLinks } from "@/components/social-links";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
@@ -56,7 +56,7 @@ export function SiteHeader() {
             <Menu />
           </Button>
 
-          <Link href="/" className="flex items-center gap-3">
+          <LocaleLink href="/" className="flex items-center gap-3">
             <Image
               src="/logo.png"
               alt="MadeBrings logo"
@@ -68,17 +68,17 @@ export function SiteHeader() {
             <span className="font-heading text-3xl tracking-[0.12em] text-primary sm:text-4xl">
               MADEBRINGS
             </span>
-          </Link>
+          </LocaleLink>
 
           <nav className="ml-6 hidden items-center gap-5 lg:flex">
             {navLinks.map((link) => (
-              <Link
+              <LocaleLink
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-primary/80 transition-colors hover:text-primary"
               >
                 {t(navKeys[link.href])}
-              </Link>
+              </LocaleLink>
             ))}
           </nav>
 
@@ -105,14 +105,14 @@ export function SiteHeader() {
           </SheetHeader>
           <nav className="flex flex-col gap-1 px-4">
             {navLinks.map((link) => (
-              <Link
+              <LocaleLink
                 key={link.href}
                 href={link.href}
                 className="rounded-xl px-3 py-2 text-base font-medium hover:bg-primary/10"
                 onClick={() => setMenuOpen(false)}
               >
                 {t(navKeys[link.href])}
-              </Link>
+              </LocaleLink>
             ))}
           </nav>
           <div className="mt-auto space-y-3 p-4">

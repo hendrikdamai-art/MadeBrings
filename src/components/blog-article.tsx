@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { JsonLd } from "@/components/json-ld";
 import { BlogGrid } from "@/components/blog-card";
+import { LocaleLink } from "@/components/locale-link";
 import { buttonVariants } from "@/components/ui/button";
 import { blogJsonLd, getRelatedPosts, type BlogPost } from "@/lib/blog";
 import { cn } from "@/lib/utils";
@@ -13,9 +13,9 @@ export function BlogArticle({ post }: { post: BlogPost }) {
     <article className="mx-auto max-w-3xl px-4 py-14">
       <JsonLd data={blogJsonLd(post)} />
       <p className="text-sm text-muted-foreground">
-        <Link href="/blog" className="hover:text-primary">
+        <LocaleLink href="/blog" className="hover:text-primary">
           Blog
-        </Link>
+        </LocaleLink>
         {" / "}
         {post.datePublished}
       </p>
@@ -68,12 +68,12 @@ export function BlogArticle({ post }: { post: BlogPost }) {
                     {section.link.label}
                   </a>
                 ) : (
-                  <Link
+                  <LocaleLink
                     href={section.link.href}
                     className="font-medium text-primary underline-offset-4 hover:underline"
                   >
                     {section.link.label}
-                  </Link>
+                  </LocaleLink>
                 )}
               </p>
             ) : null}
@@ -86,7 +86,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           MadeBrings is a family shop in Abianbase. Tell us what you need on WhatsApp
           before you count on the shelf.
         </p>
-        <Link
+        <LocaleLink
           href="/shop"
           className={cn(
             buttonVariants({ size: "lg" }),
@@ -94,7 +94,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           )}
         >
           Open the shop
-        </Link>
+        </LocaleLink>
       </div>
       {related.length > 0 ? (
         <section className="mt-16">

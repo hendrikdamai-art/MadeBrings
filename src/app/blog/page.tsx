@@ -1,13 +1,20 @@
 import { BlogGrid } from "@/components/blog-card";
+import { TranslatedText } from "@/components/translated";
 import { getBlogPosts } from "@/lib/blog";
+import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
+import { seoCopy } from "@/lib/seo-copy";
 
-export const metadata = pageMetadata({
-  title: "Blog",
-  description:
-    "Notes from MadeBrings in Abianbase: Bali holiday tips, a Bali tour guide to contact, and Arak Bali as a traditional drink. Chat first to confirm your order.",
-  path: "/blog",
-});
+export async function generateMetadata() {
+  const locale = await getRequestLocale();
+  const copy = seoCopy[locale];
+  return pageMetadata({
+    title: copy.blogTitle,
+    description: copy.blogDescription,
+    path: "/blog",
+    locale,
+  });
+}
 
 export default function BlogIndexPage() {
   const posts = getBlogPosts();
@@ -15,15 +22,13 @@ export default function BlogIndexPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-14">
       <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
-        From Abianbase
+        <TranslatedText k="blogIndexKicker" />
       </p>
       <h1 className="mt-3 font-heading text-5xl tracking-wide text-primary sm:text-6xl">
-        Blog
+        <TranslatedText k="blogIndexTitle" />
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/80">
-        Practical notes for a Bali holiday, who to contact for a tour guide, and
-        how Balinese families use arak. Written by a small shop — not a travel
-        brochure.
+        <TranslatedText k="blogIndexBody" />
       </p>
       <div className="mt-10">
         <BlogGrid posts={posts} />

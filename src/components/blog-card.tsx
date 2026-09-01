@@ -1,11 +1,11 @@
-import Link from "next/link";
+import { LocaleLink } from "@/components/locale-link";
 import Image from "next/image";
 import { getBlogPosts, type BlogPost } from "@/lib/blog";
 
 export function BlogCard({ post }: { post: BlogPost }) {
   return (
     <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-card">
-      <Link href={`/blog/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-[#efe0c4]">
+      <LocaleLink href={`/blog/${post.slug}`} className="relative block aspect-[16/10] overflow-hidden bg-[#efe0c4]">
         <Image
           src={post.heroImage}
           alt={post.heroAlt}
@@ -13,23 +13,23 @@ export function BlogCard({ post }: { post: BlogPost }) {
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover"
         />
-      </Link>
+      </LocaleLink>
       <div className="flex flex-1 flex-col gap-2 p-5">
         <p className="text-[11px] font-medium tracking-[0.18em] text-primary/70 uppercase">
           {post.readingMinutes} min read
         </p>
         <h2 className="font-heading text-2xl leading-tight tracking-wide text-primary">
-          <Link href={`/blog/${post.slug}`} className="hover:underline">
+          <LocaleLink href={`/blog/${post.slug}`} className="hover:underline">
             {post.title}
-          </Link>
+          </LocaleLink>
         </h2>
         <p className="text-sm leading-relaxed text-muted-foreground">{post.excerpt}</p>
-        <Link
+        <LocaleLink
           href={`/blog/${post.slug}`}
           className="mt-auto pt-2 text-sm font-medium text-primary underline-offset-4 hover:underline"
         >
           Read the guide
-        </Link>
+        </LocaleLink>
       </div>
     </article>
   );

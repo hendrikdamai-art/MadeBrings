@@ -1,25 +1,26 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { Button } from "@/components/ui/button";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
-import type { Product } from "@/lib/commerce";
+import { productCopy, type Product } from "@/lib/commerce";
 import { formatIdr } from "@/lib/format";
 import { orderWhatsappHref } from "@/lib/whatsapp";
 import { cn } from "@/lib/utils";
 
 export function ProductCard({ product }: { product: Product }) {
-  const { t } = useLocale();
+  const { t, locale } = useLocale();
+  const copy = productCopy(product, locale);
   const orderHref = orderWhatsappHref([{ productId: product.id, quantity: 1 }], "");
 
   return (
     <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-primary/10 bg-card shadow-[0_10px_30px_-18px_rgba(8,56,32,0.45)]">
-      <Link href={`/product/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-white">
+      <LocaleLink href={`/product/${product.slug}`} className="relative block aspect-[4/5] overflow-hidden bg-white">
         <Image
           src={product.image}
-          alt={product.imageAlt}
+          alt={copy.imageAlt}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           className="object-contain p-2 transition-transform duration-500 group-hover:scale-[1.03]"
@@ -29,7 +30,7 @@ export function ProductCard({ product }: { product: Product }) {
             {product.packNote}
           </span>
         ) : null}
-      </Link>
+      </LocaleLink>
       <div className="flex flex-1 flex-col gap-3 p-4">
         <div className="space-y-1">
           {product.origin ? (
@@ -42,11 +43,11 @@ export function ProductCard({ product }: { product: Product }) {
             </p>
           )}
           <h3 className="font-heading text-xl leading-tight tracking-wide">
-            <Link href={`/product/${product.slug}`} className="hover:underline">
+            <LocaleLink href={`/product/${product.slug}`} className="hover:underline">
               {product.name}
-            </Link>
+            </LocaleLink>
           </h3>
-          <p className="text-sm leading-relaxed text-muted-foreground">{product.summary}</p>
+          <p className="text-sm leading-relaxed text-muted-foreground">{copy.summary}</p>
         </div>
         <p className="mt-auto font-heading text-2xl tracking-wide text-primary">
           {formatIdr(product.priceIdr)}

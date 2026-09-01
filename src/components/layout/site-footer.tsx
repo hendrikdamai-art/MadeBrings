@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { LanguageSwitch } from "@/components/language-switch";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { SocialLinks } from "@/components/social-links";
 import { navLinks, siteConfig } from "@/lib/site";
@@ -27,7 +27,7 @@ export function SiteFooter() {
     <footer className="mt-auto bg-primary text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 md:grid-cols-[1.3fr_1fr_1fr]">
         <div className="space-y-4">
-          <Link href="/" className="inline-flex items-center gap-3">
+          <LocaleLink href="/" className="inline-flex items-center gap-3">
             <Image
               src="/logo.png"
               alt="MadeBrings logo"
@@ -36,7 +36,7 @@ export function SiteFooter() {
               className="size-16 rounded-full bg-[#f3e1c7]"
             />
             <span className="font-heading text-3xl tracking-[0.12em]">MADEBRINGS</span>
-          </Link>
+          </LocaleLink>
           <p className="max-w-sm text-sm leading-relaxed text-primary-foreground/80">
             {t("footerBlurb", { owner: siteConfig.owner })}
           </p>
@@ -67,9 +67,9 @@ export function SiteFooter() {
           <ul className="mt-3 space-y-2 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="text-primary-foreground/80 hover:text-primary-foreground">
+                <LocaleLink href={link.href} className="text-primary-foreground/80 hover:text-primary-foreground">
                   {t(navKeys[link.href])}
-                </Link>
+                </LocaleLink>
               </li>
             ))}
           </ul>

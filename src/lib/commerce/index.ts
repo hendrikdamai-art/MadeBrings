@@ -9,5 +9,5 @@ export {
   getProductsByCategory,
   searchProducts,
 } from "./catalog";
-export { cdnImage, imageRemoteHosts } from "./images";
+export { productCopy, productIdCopy } from "./id-copy";
 export type { Category, CategoryId, Product } from "./types";

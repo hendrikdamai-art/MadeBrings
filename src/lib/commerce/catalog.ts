@@ -1,3 +1,4 @@
+import { productIdCopy } from "./id-copy";
 import type { Category, CategoryId, Product } from "./types";
 
 const photo = (slug: string) => `/products/${slug}.jpg`;
@@ -622,16 +623,49 @@ export function getFeaturedProducts() {
   return products.filter((product) => product.featured);
 }
 
+const indonesianQueryTerms: Record<string, string> = {
+  bir: "beer bintang singaraja san miguel radler crystal",
+  alkohol: "beer liquor rtd smirnoff",
+  "minuman keras": "beer liquor rtd",
+  es: "ice esky bag",
+  "es batu": "ice bag",
+  air: "aqua water mineral",
+  keripik: "crisps pringles chitato snacks",
+  cemilan: "snacks pringles crisps",
+  kola: "coca-cola coke",
+  tonik: "tonic schweppes",
+  jeruk: "limes lime",
+  dus: "box pack",
+  pak: "pack 6",
+};
+
+function searchHaystack(product: Product) {
+  const idCopy = productIdCopy[product.id];
+  return [
+    product.name,
+    product.summary,
+    product.description,
+    product.origin,
+    product.size,
+    idCopy?.summary,
+    idCopy?.description,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
 export function searchProducts(query: string) {
   const needle = query.trim().toLowerCase();
   if (!needle) return products;
-  return products.filter((product) =>
-    [product.name, product.summary, product.origin, product.size]
-      .filter(Boolean)
-      .join(" ")
-      .toLowerCase()
-      .includes(needle),
-  );
+  const expansions = Object.entries(indonesianQueryTerms)
+    .filter(([term]) => needle.includes(term))
+    .flatMap(([, expansion]) => expansion.split(/\s+/));
+  return products.filter((product) => {
+    const haystack = searchHaystack(product);
+    if (haystack.includes(needle)) return true;
+    return expansions.some((term) => term.length > 1 && haystack.includes(term));
+  });
 }
 
 export type { Category, CategoryId, Product };

@@ -1,17 +1,18 @@
 import { ContactContent } from "@/components/contact-content";
+import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
+import { seoCopy } from "@/lib/seo-copy";
 
-export const metadata = pageMetadata({
-  title: "Contact",
-  description:
-    "Contact MadeBrings alcohol delivery in Abianbase, Badung, Bali. Chat on WhatsApp to order beer, liquor, or mixers and arrange delivery to your door.",
-  path: "/contact",
-  keywords: [
-    "WhatsApp alcohol delivery Bali",
-    "liquor delivery Abianbase",
-    "beer delivery Badung",
-  ],
-});
+export async function generateMetadata() {
+  const locale = await getRequestLocale();
+  const copy = seoCopy[locale];
+  return pageMetadata({
+    title: copy.contactTitle,
+    description: copy.contactDescription,
+    path: "/contact",
+    locale,
+  });
+}
 
 export default function ContactPage() {
   return <ContactContent />;

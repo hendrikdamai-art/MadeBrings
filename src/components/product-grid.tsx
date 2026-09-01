@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { ProductCard } from "@/components/product-card";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { categories, type Product } from "@/lib/commerce";
 import { categoryNameKey } from "@/lib/i18n";
@@ -30,7 +30,7 @@ export function CategoryPills({ active }: { active?: string }) {
   const { t } = useLocale();
   return (
     <div className="flex flex-wrap gap-2">
-      <Link
+      <LocaleLink
         href="/shop"
         className={cn(
           "rounded-full border px-3 py-1.5 text-sm",
@@ -40,9 +40,9 @@ export function CategoryPills({ active }: { active?: string }) {
         )}
       >
         {t("shopAll")}
-      </Link>
+      </LocaleLink>
       {categories.map((category) => (
-        <Link
+        <LocaleLink
           key={category.id}
           href={category.href}
           className={cn(
@@ -53,7 +53,7 @@ export function CategoryPills({ active }: { active?: string }) {
           )}
         >
           {t(categoryNameKey[category.id] ?? "navShop")}
-        </Link>
+        </LocaleLink>
       ))}
     </div>
   );

@@ -69,7 +69,9 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 
 ## Pages
 
-- `/` Home
+- `/` Home (English)
+- `/id` Indonesian home — crawlable copy for Indonesian Google queries
+- `/id/shop`, `/id/product/[slug]`, `/id/about`, `/id/contact` Indonesian versions of the same pages
 - `/shop` Full shelf
 - `/shop/[category]` Beer & cider, RTD, mixers, ice & water, snacks
 - `/product/[slug]` Product

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { BlogArticle } from "@/components/blog-article";
 import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
 
 type Props = {
@@ -15,12 +16,14 @@ export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) return {};
+  const locale = await getRequestLocale();
   return pageMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,
     type: "article",
+    locale,
   });
 }
 

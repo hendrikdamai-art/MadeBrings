@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Outfit } from "next/font/google";
 import { SiteShell } from "@/components/layout/site-shell";
-import { defaultMetadata } from "@/lib/seo";
+import { defaultMetadataFor } from "@/lib/seo";
+import { getRequestLocale } from "@/lib/request-locale";
 import "./globals.css";
 
 export const viewport: Viewport = {
@@ -21,16 +22,24 @@ const bebasNeue = Bebas_Neue({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = defaultMetadata;
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getRequestLocale();
+  return defaultMetadataFor(locale);
+}
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const locale = await getRequestLocale();
   return (
     <html
-      lang="en"
+      lang={locale === "id" ? "id" : "en"}
       className={`${outfit.variable} ${bebasNeue.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col font-sans">
-        <SiteShell>{children}</SiteShell>
+        <SiteShell initialLocale={locale}>{children}</SiteShell>
       </body>
     </html>
   );

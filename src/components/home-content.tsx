@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { LocaleLink } from "@/components/locale-link";
 import { Banknote, MessageCircle, Truck } from "lucide-react";
 import { BlogGrid } from "@/components/blog-card";
 import { HomeHero } from "@/components/home-hero";
@@ -57,13 +57,13 @@ export function HomeContent({
               {t("shelvesTitle")}
             </h2>
           </div>
-          <Link href="/shop" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+          <LocaleLink href="/shop" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
             {t("shelvesSee")}
-          </Link>
+          </LocaleLink>
         </div>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categories.map((category) => (
-            <Link
+            <LocaleLink
               key={category.id}
               href={category.href}
               className="rounded-2xl border border-primary/10 bg-card p-5 transition-transform hover:-translate-y-0.5"
@@ -74,7 +74,7 @@ export function HomeContent({
               <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
                 {t(categoryIntroKey[category.id] ?? "shopIntro")}
               </p>
-            </Link>
+            </LocaleLink>
           ))}
         </div>
       </section>
@@ -101,9 +101,9 @@ export function HomeContent({
               {t("journalTitle")}
             </h2>
           </div>
-          <Link href="/blog" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+          <LocaleLink href="/blog" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
             {t("journalAll")}
-          </Link>
+          </LocaleLink>
         </div>
         <BlogGrid posts={posts} />
       </section>
@@ -141,7 +141,7 @@ export function HomeContent({
               >
                 {t("maps")}
               </a>
-              <Link
+              <LocaleLink
                 href="/about"
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
@@ -149,7 +149,7 @@ export function HomeContent({
                 )}
               >
                 {t("aboutFamily")}
-              </Link>
+              </LocaleLink>
             </div>
           </div>
         </div>
