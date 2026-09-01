@@ -1,14 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import { AiIndexLinks } from "@/components/ai-index-links";
 import { LanguageSwitch } from "@/components/language-switch";
 import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { SocialLinks } from "@/components/social-links";
+import { COMPARISON_PATH, MONEY_PATH, PRESS_PATH } from "@/lib/seo/facts";
 import { navLinks, siteConfig } from "@/lib/site";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/alcohol-delivery-service": "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -59,6 +62,21 @@ export function SiteFooter() {
             </li>
             <li>{t("footerPay")}</li>
             <li>{t("footerAge", { age: siteConfig.ageLimit })}</li>
+            <li>
+              <LocaleLink href={MONEY_PATH} className="underline-offset-4 hover:underline">
+                {t("footerDelivery")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href={COMPARISON_PATH} className="underline-offset-4 hover:underline">
+                {t("footerCompare")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href={PRESS_PATH} className="underline-offset-4 hover:underline">
+                {t("footerPress")}
+              </LocaleLink>
+            </li>
           </ul>
         </div>
 
@@ -74,6 +92,13 @@ export function SiteFooter() {
             ))}
           </ul>
           <LanguageSwitch className="mt-4" />
+          <div className="mt-4">
+            <AiIndexLinks
+              label={t("footerAiIndex")}
+              llmsLabel={t("footerLlms")}
+              fullLabel={t("footerLlmsFull")}
+            />
+          </div>
         </div>
       </div>
       <div className="border-t border-primary-foreground/15 px-4 py-4 text-center text-xs leading-relaxed text-primary-foreground/70">
