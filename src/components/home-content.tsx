@@ -33,6 +33,31 @@ export function HomeContent({
     <>
       <HomeHero />
 
+      <section className="border-b border-primary/10 bg-card">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
+              {t("moneyStripKicker")}
+            </p>
+            <h2 className="mt-2 font-heading text-3xl tracking-wide text-primary sm:text-4xl">
+              {t("moneyStripTitle")}
+            </h2>
+            <p className="mt-2 max-w-2xl text-sm leading-relaxed text-foreground/80">
+              {t("moneyStripBody")}
+            </p>
+          </div>
+          <LocaleLink
+            href="/alcohol-delivery-service"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "h-11 shrink-0 rounded-full px-5 font-heading text-lg tracking-wide",
+            )}
+          >
+            {t("moneyStripCta")}
+          </LocaleLink>
+        </div>
+      </section>
+
       <section className="border-y border-primary/10 bg-primary text-primary-foreground">
         <div className="mx-auto grid max-w-6xl gap-6 px-4 py-6 sm:grid-cols-3">
           {steps.map((item) => (
@@ -123,6 +148,15 @@ export function HomeContent({
                 <span className="font-heading text-2xl">3.</span> {t("how3")}
               </li>
             </ol>
+            <LocaleLink
+              href="/alcohol-delivery-service"
+              className={cn(
+                buttonVariants({ size: "lg" }),
+                "mt-6 inline-flex h-11 rounded-full px-5 font-heading text-lg tracking-wide",
+              )}
+            >
+              {t("heroDelivery")}
+            </LocaleLink>
           </div>
           <div className="rounded-3xl bg-[#f8ecd8] p-6 text-primary">
             <h3 className="font-heading text-3xl tracking-wide">{t("findTitle")}</h3>

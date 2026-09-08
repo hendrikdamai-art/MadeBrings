@@ -38,6 +38,10 @@ export default async function RootLayout({
       lang={locale === "id" ? "id" : "en"}
       className={`${outfit.variable} ${bebasNeue.variable} h-full antialiased`}
     >
+      <head>
+        <link rel="describedby" href="/llms.txt" />
+        <link rel="alternate" type="text/plain" href="/llms-full.txt" title="MadeBrings AI Q&A" />
+      </head>
       <body className="flex min-h-full flex-col font-sans">
         <SiteShell initialLocale={locale}>{children}</SiteShell>
       </body>
