@@ -1,6 +1,7 @@
 import { BlogGrid } from "@/components/blog-card";
+import { LocaleLink } from "@/components/locale-link";
 import { TranslatedText } from "@/components/translated";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts, localizeBlogPost } from "@/lib/blog";
 import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
 import { seoCopy } from "@/lib/seo-copy";
@@ -16,8 +17,9 @@ export async function generateMetadata() {
   });
 }
 
-export default function BlogIndexPage() {
-  const posts = getBlogPosts();
+export default async function BlogIndexPage() {
+  const locale = await getRequestLocale();
+  const posts = getBlogPosts().map((post) => localizeBlogPost(post, locale));
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14">
@@ -29,6 +31,14 @@ export default function BlogIndexPage() {
       </h1>
       <p className="mt-4 max-w-2xl text-lg leading-relaxed text-foreground/80">
         <TranslatedText k="blogIndexBody" />
+      </p>
+      <p className="mt-4 text-sm">
+        <LocaleLink
+          href="/alcohol-delivery-service"
+          className="font-medium text-primary underline-offset-4 hover:underline"
+        >
+          <TranslatedText k="shopDeliveryLink" />
+        </LocaleLink>
       </p>
       <div className="mt-10">
         <BlogGrid posts={posts} />

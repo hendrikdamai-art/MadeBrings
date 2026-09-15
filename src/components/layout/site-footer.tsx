@@ -9,6 +9,7 @@ import { navLinks, siteConfig } from "@/lib/site";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/alcohol-delivery-service": "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -72,6 +73,32 @@ export function SiteFooter() {
                 </LocaleLink>
               </li>
             ))}
+          </ul>
+          <h2 className="mt-8 font-heading text-xl tracking-wide">{t("footerResources")}</h2>
+          <ul className="mt-3 space-y-2 text-sm">
+            <li>
+              <LocaleLink
+                href="/compare-alcohol-delivery-bali"
+                className="text-primary-foreground/80 hover:text-primary-foreground"
+              >
+                {t("footerCompare")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/press" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerPress")}
+              </LocaleLink>
+            </li>
+            <li>
+              <a href="/llms.txt" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerAiIndex")}
+              </a>
+            </li>
+            <li>
+              <a href="/llms-full.txt" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerAiIndexFull")}
+              </a>
+            </li>
           </ul>
           <LanguageSwitch className="mt-4" />
         </div>

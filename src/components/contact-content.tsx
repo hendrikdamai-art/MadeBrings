@@ -1,6 +1,7 @@
 "use client";
 
 import { SocialLinks } from "@/components/social-links";
+import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { useLocale } from "@/components/locale-provider";
@@ -8,10 +9,11 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function ContactContent() {
-  const { t, orderHref } = useLocale();
+  const { t, orderHref, locale } = useLocale();
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14">
+      <JsonLd data={localBusinessJsonLd(locale)} />
       <div className="max-w-2xl">
         <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
           {t("contactKicker")}

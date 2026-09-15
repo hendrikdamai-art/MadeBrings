@@ -17,6 +17,10 @@ export const indonesianKeywords = [
   "layanan antar alkohol",
   "pesan alkohol Bali",
   "antar minuman Seminyak",
+  "alkohol dekat saya Bali",
+  "antar alkohol Ubud",
+  "antar alkohol Tanah Lot",
+  "antar alkohol Kuta",
 ];
 
 export const englishKeywords = [
@@ -32,6 +36,10 @@ export const englishKeywords = [
   "Badung",
   "Canggu alcohol delivery",
   "Seminyak liquor delivery",
+  "Kuta alcohol delivery",
+  "Ubud alcohol delivery",
+  "Tanah Lot alcohol delivery",
+  "alcohol near me Bali",
   "villa drinks delivery Bali",
   "WhatsApp alcohol order Bali",
   "Bintang delivery Bali",
@@ -58,43 +66,43 @@ export const seoCopy: Record<
   }
 > = {
   en: {
-    homeTitle: "MadeBrings · Alcohol delivery service in Abianbase, Bali",
+    homeTitle: "Alcohol delivery Bali · MadeBrings in Abianbase",
     homeDescription:
-      "MadeBrings is a family-run alcohol delivery service in Abianbase, Badung, Bali. Order beer, liquor, mixers, ice, and snacks on WhatsApp. We deliver to your villa or home. Pay cash or bank transfer.",
-    shopTitle: "Shop beer, mixers & ice",
+      "Neighborhood-price alcohol delivery in Abianbase, Bali. Beer, Ice, mixers, and ice to villas around Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. WhatsApp checkout. 21+.",
+    shopTitle: "Shop beer & mixers for alcohol delivery Bali",
     shopDescription:
-      "Browse beer, Smirnoff Ice, mixers, ice, and snacks from MadeBrings, an alcohol delivery service in Abianbase, Badung, Bali. WhatsApp checkout and delivery to your door.",
+      "Catalog prices for Bintang, Singaraja, Smirnoff Ice, cola, and ice from MadeBrings in Abianbase. Chat WhatsApp to confirm stock and book alcohol delivery.",
     aboutTitle: "About our alcohol delivery service",
     aboutDescription:
       "MadeBrings is a family alcohol delivery service in Abianbase, Badung, Bali, owned by Made Hendrik. Beer, liquor, and mixers to your door. WhatsApp checkout, cash or bank transfer.",
     contactTitle: "Contact",
     contactDescription:
       "Contact MadeBrings alcohol delivery in Abianbase, Badung, Bali. Chat on WhatsApp to order beer, liquor, or mixers and arrange delivery to your door.",
-    blogTitle: "Blog",
+    blogTitle: "Bali alcohol delivery guides",
     blogDescription:
-      "Notes from MadeBrings in Abianbase: Bali holiday tips, a Bali tour guide to contact, and Arak Bali as a traditional drink. Chat first to confirm your order.",
-    ogTitle: "MadeBrings · Alcohol delivery in Abianbase, Bali",
+      "Commercial guides for alcohol delivery in Canggu, beer delivery Bali, alcohol near me, Ubud and Tanah Lot, plus villa fridge restock checklists from MadeBrings.",
+    ogTitle: "Alcohol delivery Bali · MadeBrings Abianbase",
     shortPitch:
       "Family alcohol delivery service in Abianbase, Badung. Neighborhood prices on beer, liquor, and mixers. Chat us to order.",
     keywords: [...englishKeywords, ...indonesianKeywords],
   },
   id: {
-    homeTitle: "MadeBrings · Jasa antar alkohol di Abianbase, Bali",
+    homeTitle: "Jasa antar alkohol Bali · MadeBrings di Abianbase",
     homeDescription:
-      "MadeBrings adalah layanan antar alkohol keluarga di Abianbase, Badung, Bali. Pesan bir, minuman keras, mixer, es, dan cemilan lewat WhatsApp. Kami antar ke villa atau rumah. Bayar tunai atau transfer bank.",
-    shopTitle: "Toko bir, mixer, dan es",
+      "Antar alkohol harga tetangga di Abianbase, Bali. Bir, Ice, mixer, dan es ke villa sekitar Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot. Checkout WhatsApp. 21+.",
+    shopTitle: "Toko bir & mixer untuk antar alkohol Bali",
     shopDescription:
-      "Lihat bir, Smirnoff Ice, mixer, es, dan cemilan dari MadeBrings, jasa antar alkohol di Abianbase, Badung, Bali. Checkout WhatsApp dan antar ke rumah.",
+      "Harga katalog Bintang, Singaraja, Smirnoff Ice, kola, dan es dari MadeBrings di Abianbase. Chat WhatsApp untuk stok dan pesan antar alkohol.",
     aboutTitle: "Tentang jasa antar alkohol kami",
     aboutDescription:
       "MadeBrings adalah layanan antar alkohol keluarga di Abianbase, Badung, Bali, milik Made Hendrik. Bir, minuman keras, dan mixer diantar ke rumah. Checkout WhatsApp, tunai atau transfer.",
     contactTitle: "Kontak",
     contactDescription:
       "Hubungi MadeBrings jasa antar alkohol di Abianbase, Badung, Bali. Chat WhatsApp untuk pesan bir, minuman keras, atau mixer dan atur pengantaran ke rumah.",
-    blogTitle: "Blog",
+    blogTitle: "Panduan antar alkohol Bali",
     blogDescription:
-      "Catatan MadeBrings di Abianbase: tips liburan Bali, pemandu wisata, dan arak Bali sebagai minuman tradisional. Chat dulu untuk konfirmasi pesanan.",
-    ogTitle: "MadeBrings · Jasa antar alkohol di Abianbase, Bali",
+      "Panduan komersial antar alkohol Canggu, antar bir Bali, alkohol dekat saya, Ubud dan Tanah Lot, plus daftar isi ulang kulkas villa dari MadeBrings.",
+    ogTitle: "Jasa antar alkohol Bali · MadeBrings Abianbase",
     shortPitch:
       "Layanan antar alkohol keluarga di Abianbase, Badung. Harga tetangga untuk bir, minuman keras, dan mixer. Chat untuk pesan.",
     keywords: [...indonesianKeywords, ...englishKeywords],

@@ -48,6 +48,24 @@ export function HomeContent({
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-14">
+        <div className="rounded-3xl bg-primary px-6 py-10 text-primary-foreground md:px-10">
+          <h2 className="font-heading text-4xl tracking-wide">{t("moneyBandTitle")}</h2>
+          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-primary-foreground/85">
+            {t("moneyBandBody")}
+          </p>
+          <LocaleLink
+            href="/alcohol-delivery-service"
+            className={cn(
+              buttonVariants({ size: "lg" }),
+              "mt-5 h-11 rounded-full bg-[#f3e1c7] px-5 font-heading text-lg tracking-wide text-primary hover:bg-[#efe0c4]",
+            )}
+          >
+            {t("moneyBandCta")}
+          </LocaleLink>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-14">
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">

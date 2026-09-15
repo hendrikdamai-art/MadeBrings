@@ -1,6 +1,8 @@
 import { siteConfig } from "@/lib/site";
 import type { Product } from "@/lib/commerce";
 import { productCopy } from "@/lib/commerce";
+import { absoluteUrl } from "@/lib/seo";
+import { LLMS_FULL_PATH, LLMS_PATH, serviceAreas } from "@/lib/geo";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/locale-path";
 import { seoCopy } from "@/lib/seo-copy";
@@ -32,7 +34,7 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       addressCountry: "ID",
     },
     hasMap: siteConfig.social.maps,
-    areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak", "Mengwi"],
+    areaServed: [...serviceAreas, "Mengwi", "Badung", "Bali"],
     priceRange: "Rp",
     paymentAccepted: locale === "id" ? "Tunai, Transfer Bank" : "Cash, Bank Transfer",
     currenciesAccepted: "IDR",
@@ -60,7 +62,8 @@ export function localBusinessJsonLd(locale: Locale = "en") {
           locale === "id" ? "Jasa antar alkohol" : "Alcohol delivery service",
         serviceType:
           locale === "id" ? "Pengantaran alkohol" : "Alcohol delivery",
-        areaServed: "Badung, Bali",
+        areaServed: [...serviceAreas, "Badung", "Bali"],
+        url: absoluteUrl(localizedPath(locale, "/alcohol-delivery-service")),
         provider: {
           "@type": "Organization",
           name: siteConfig.name,
@@ -72,7 +75,14 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       siteConfig.social.facebook,
       siteConfig.social.tripadvisor,
       siteConfig.social.maps,
+      absoluteUrl(LLMS_PATH),
+      absoluteUrl(LLMS_FULL_PATH),
     ],
+    subjectOf: {
+      "@type": "CreativeWork",
+      name: "MadeBrings AI index",
+      url: absoluteUrl(LLMS_PATH),
+    },
   };
 }
 
@@ -108,6 +118,7 @@ export function productJsonLd(product: Product, locale: Locale = "en") {
 }
 
 export function JsonLd({ data }: { data: unknown }) {
+  if (!data) return null;
   return (
     <script
       type="application/ld+json"

@@ -1,13 +1,22 @@
+import { commercialBlogPosts } from "@/lib/blog-commercial";
+import type { ContentSection, FaqItem } from "@/lib/commercial";
 import { cdnImage } from "@/lib/commerce/images";
+import type { Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
 
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
 
-export type BlogSection = {
-  heading?: string;
-  paragraphs: string[];
-  list?: string[];
-  link?: { href: string; label: string };
+export type BlogSection = ContentSection;
+
+export type LocalizedBlogCopy = {
+  title: string;
+  description: string;
+  excerpt: string;
+  heroAlt?: string;
+  speakable?: string;
+  inclusions?: string[];
+  faqs?: FaqItem[];
+  sections: BlogSection[];
 };
 
 export type BlogPost = {
@@ -22,6 +31,12 @@ export type BlogPost = {
   heroImage: string;
   heroAlt: string;
   sections: BlogSection[];
+  intent?: "journal" | "commercial";
+  speakable?: string;
+  inclusions?: string[];
+  faqs?: FaqItem[];
+  bookingPath?: string;
+  idCopy?: LocalizedBlogCopy;
 };
 
 export const blogPosts: BlogPost[] = [
@@ -49,6 +64,8 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 8,
     heroImage: cdnImage("photo-1537996194471-e657df975ab4"),
     heroAlt: "Temple gates and tropical trees on a Bali holiday",
+    speakable:
+      "A Bali holiday still means warm evenings and a villa fridge that empties fast, but many groups now sleep in inland Badung — Mengwi and Abianbase — instead of inside Canggu traffic. MadeBrings is a family shop in Abianbase. Dry season from April to October is the easiest first visit; wet season is greener with afternoon storms. Nyepi shuts the island for a day. Grab and Gojek cover south Bali; for temples or Kintamani, use a driver. Stock water, ice, and cold beer on night one, then chat the shop to confirm what is on the shelf. Pay cash or bank transfer. Alcohol is twenty-one and over. Inland villas sit between the airport, Ubud, and the west-coast beaches without beach-club rent. A simple week is land and restock, one beach day, one temple or rice-field day, one rest day, then pack with time for the airport road. If you want the cultural drink of the island, read the arak note and only buy licensed bottles.",
     sections: [
       {
         paragraphs: [
@@ -135,6 +152,8 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 7,
     heroImage: cdnImage("photo-1558981806-ec527fa84c39"),
     heroAlt: "Motorcycle on an open road, the kind of ride a Bali dirt bike tour chases",
+    speakable:
+      "A Bali tour guide search often returns the same temple loop. For volcanic trails and a guide who rides, MadeBrings points guests to Selaras Bali Guide for Kintamani dirt-bike days with gear and hotel pickup, plus slower village days. We are a shop in Abianbase, not a tour desk. Book Selaras on their site, then chat us if you want water, ice, and beer waiting at the villa. Confirm stock before you count on the cooler. Licensed drinks only. You must be twenty-one to buy alcohol. Half-day rides run about three to four hours and full days stretch longer with lunch in the hills. Beginners are welcome when the guide matches the track. After the ride, keep the evening simple: warung food or a villa cook-up, then sleep. Do not stack a second big activity on the same day. Ask Selaras what is running on your dates because ceremony days and weather change the plan.",
     sections: [
       {
         paragraphs: [
@@ -214,6 +233,8 @@ export const blogPosts: BlogPost[] = [
     readingMinutes: 8,
     heroImage: cdnImage("photo-1514362545857-3bc16c4c7d1b"),
     heroAlt: "A clear spirit served with citrus, the way visitors often meet arak in Bali",
+    speakable:
+      "Arak Bali is a clear distilled spirit usually made from coconut-flower or sugar-palm sap. Balinese families pour a little in offerings as well as in the glass. Drink only licensed, sealed bottles from a named producer. Unmarked roadside arak has been linked to methanol poisoning. MadeBrings is a small shop in Abianbase and will tell you honestly if a licensed bottle is on the shelf that day. Chat on WhatsApp first. You must be twenty-one. Never buy an unlabeled plastic bottle because the price looks low. Bali marks Arak Bali Day around late January as a reminder this is heritage, not a loophole. In a warung, arak often meets lime, honey, or ginger. If the pour burns in a chemical way, stop. We do not pretend to hold a full arak cellar; ask, and we will say what is actually here.",
     sections: [
       {
         paragraphs: [
@@ -266,27 +287,53 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+const allPosts: BlogPost[] = [...commercialBlogPosts, ...blogPosts];
+
 export function getBlogPosts() {
-  return blogPosts;
+  return allPosts;
 }
 
 export function getBlogPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+  return allPosts.find((post) => post.slug === slug);
 }
 
 export function getRelatedPosts(slug: string) {
-  return blogPosts.filter((post) => post.slug !== slug);
+  const current = getBlogPost(slug);
+  const rest = allPosts.filter((post) => post.slug !== slug);
+  if (!current) return rest;
+  const sameIntent = rest.filter((post) => (post.intent ?? "journal") === (current.intent ?? "journal"));
+  const others = rest.filter((post) => (post.intent ?? "journal") !== (current.intent ?? "journal"));
+  return [...sameIntent, ...others];
 }
 
-export function blogJsonLd(post: BlogPost) {
+export function localizeBlogPost(post: BlogPost, locale: Locale = "en"): BlogPost {
+  if (locale !== "id" || !post.idCopy) return post;
+  return {
+    ...post,
+    title: post.idCopy.title,
+    description: post.idCopy.description,
+    excerpt: post.idCopy.excerpt,
+    heroAlt: post.idCopy.heroAlt ?? post.heroAlt,
+    speakable: post.idCopy.speakable ?? post.speakable,
+    inclusions: post.idCopy.inclusions ?? post.inclusions,
+    faqs: post.idCopy.faqs ?? post.faqs,
+    sections: post.idCopy.sections,
+  };
+}
+
+export function blogJsonLd(post: BlogPost, locale: Locale = "en") {
+  const localized = localizeBlogPost(post, locale);
+  const urlBase = siteConfig.url.replace(/\/$/, "");
+  const path = locale === "id" ? `/id/blog/${post.slug}` : `/blog/${post.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    headline: post.title,
-    description: post.description,
-    image: post.heroImage,
-    datePublished: post.datePublished,
-    dateModified: post.dateModified,
+    headline: localized.title,
+    description: localized.description,
+    inLanguage: locale === "id" ? "id-ID" : "en-ID",
+    image: localized.heroImage,
+    datePublished: localized.datePublished,
+    dateModified: localized.dateModified,
     author: {
       "@type": "Person",
       name: siteConfig.owner,
@@ -296,10 +343,10 @@ export function blogJsonLd(post: BlogPost) {
       name: siteConfig.name,
       logo: {
         "@type": "ImageObject",
-        url: `${siteConfig.url}/logo.png`,
+        url: `${urlBase}/logo.png`,
       },
     },
-    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
-    keywords: post.keywords.join(", "),
+    mainEntityOfPage: `${urlBase}${path}`,
+    keywords: localized.keywords.join(", "),
   };
 }
