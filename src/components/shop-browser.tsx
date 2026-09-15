@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { CategoryPills, ProductGrid } from "@/components/product-grid";
 import { Input } from "@/components/ui/input";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { searchProducts, type Product } from "@/lib/commerce";
 import { categoryIntroKey, categoryNameKey, type MessageKey } from "@/lib/i18n";
@@ -47,6 +48,12 @@ export function ShopBrowser({
           {heading}
         </h1>
         <p className="text-base leading-relaxed text-foreground/80 sm:text-lg">{intro}</p>
+        <LocaleLink
+          href="/alcohol-delivery-service"
+          className="inline-block text-sm font-medium text-primary underline-offset-4 hover:underline"
+        >
+          {t("shopDeliveryLink")}
+        </LocaleLink>
       </div>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <CategoryPills active={activeCategory} />

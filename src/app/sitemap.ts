@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getCategories, getProducts } from "@/lib/commerce";
 import { getBlogPosts } from "@/lib/blog";
+import { commercialStaticPaths } from "@/lib/geo";
 import { localizedPath } from "@/lib/locale-path";
 import { absoluteUrl, languageAlternates } from "@/lib/seo";
 
@@ -16,20 +17,20 @@ function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {})
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact"];
+  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact", ...commercialStaticPaths];
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
     {
       ...entry(path, {
         lastModified: now,
         changeFrequency: "weekly",
-        priority: path === "/" ? 1 : 0.9,
+        priority: path === "/" ? 1 : path === "/alcohol-delivery-service" ? 0.98 : 0.9,
       }),
     },
     {
       url: absoluteUrl(localizedPath("id", path)),
       lastModified: now,
       changeFrequency: "weekly" as const,
-      priority: path === "/" ? 0.95 : 0.85,
+      priority: path === "/" ? 0.95 : path === "/alcohol-delivery-service" ? 0.93 : 0.85,
       alternates: { languages: languageAlternates(path, "id").languages },
     },
   ]);
@@ -78,14 +79,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
         ...entry(path, {
           lastModified: new Date(post.dateModified),
           changeFrequency: "monthly" as const,
-          priority: 0.7,
+          priority: post.intent === "commercial" ? 0.82 : 0.7,
         }),
       },
       {
         url: absoluteUrl(localizedPath("id", path)),
         lastModified: new Date(post.dateModified),
         changeFrequency: "monthly" as const,
-        priority: 0.65,
+        priority: post.intent === "commercial" ? 0.78 : 0.65,
         alternates: { languages: languageAlternates(path, "id").languages },
       },
     ];

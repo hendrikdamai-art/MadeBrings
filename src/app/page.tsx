@@ -1,6 +1,6 @@
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { HomeContent } from "@/components/home-content";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts, localizeBlogPost } from "@/lib/blog";
 import { getCategories, getFeaturedProducts } from "@/lib/commerce";
 import { getRequestLocale } from "@/lib/request-locale";
 
@@ -8,7 +8,9 @@ export default async function HomePage() {
   const locale = await getRequestLocale();
   const featured = getFeaturedProducts();
   const categories = getCategories();
-  const posts = getBlogPosts();
+  const posts = getBlogPosts()
+    .map((post) => localizeBlogPost(post, locale))
+    .slice(0, 6);
 
   return (
     <>
