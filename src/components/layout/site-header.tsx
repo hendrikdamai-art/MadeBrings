@@ -20,6 +20,7 @@ import { cn } from "@/lib/utils";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/alcohol-delivery-service": "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -30,6 +31,16 @@ const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
   "/about": "navAbout",
   "/contact": "navContact",
 };
+
+const headerLinks = navLinks.filter((link) =>
+  [
+    "/alcohol-delivery-service",
+    "/shop",
+    "/blog",
+    "/about",
+    "/contact",
+  ].includes(link.href),
+);
 
 export function SiteHeader() {
   const { t, orderHref } = useLocale();
@@ -71,7 +82,7 @@ export function SiteHeader() {
           </LocaleLink>
 
           <nav className="ml-6 hidden items-center gap-5 lg:flex">
-            {navLinks.map((link) => (
+            {headerLinks.map((link) => (
               <LocaleLink
                 key={link.href}
                 href={link.href}

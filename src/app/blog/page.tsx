@@ -1,6 +1,7 @@
 import { BlogGrid } from "@/components/blog-card";
+import { JsonLd, webPageJsonLd } from "@/components/json-ld";
 import { TranslatedText } from "@/components/translated";
-import { getBlogPosts } from "@/lib/blog";
+import { getBlogPosts, localizePost } from "@/lib/blog";
 import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
 import { seoCopy } from "@/lib/seo-copy";
@@ -16,11 +17,22 @@ export async function generateMetadata() {
   });
 }
 
-export default function BlogIndexPage() {
-  const posts = getBlogPosts();
+export default async function BlogIndexPage() {
+  const locale = await getRequestLocale();
+  const posts = getBlogPosts().map((post) => localizePost(post, locale));
+  const copy = seoCopy[locale];
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14">
+      <JsonLd
+        data={webPageJsonLd({
+          name: copy.blogTitle,
+          description: copy.blogDescription,
+          path: "/blog",
+          locale,
+          dateModified: posts[0]?.dateModified ?? "2026-09-22",
+        })}
+      />
       <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
         <TranslatedText k="blogIndexKicker" />
       </p>
