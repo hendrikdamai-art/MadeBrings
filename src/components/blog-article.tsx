@@ -1,20 +1,47 @@
 import Image from "next/image";
-import { JsonLd } from "@/components/json-ld";
+import { BookingBand } from "@/components/booking-band";
+import { FaqSection } from "@/components/faq-section";
+import { JsonLd, webPageJsonLd } from "@/components/json-ld";
 import { BlogGrid } from "@/components/blog-card";
 import { LocaleLink } from "@/components/locale-link";
-import { buttonVariants } from "@/components/ui/button";
-import { blogJsonLd, getRelatedPosts, type BlogPost } from "@/lib/blog";
-import { cn } from "@/lib/utils";
+import { SpeakableBlock } from "@/components/speakable-block";
+import {
+  blogJsonLd,
+  getRelatedPosts,
+  type BlogPost,
+} from "@/lib/blog";
+import type { Locale } from "@/lib/i18n";
+import { messages } from "@/lib/i18n";
+import { MONEY_PATH } from "@/lib/seo-paths";
+import { whatsappHref } from "@/lib/site";
 
-export function BlogArticle({ post }: { post: BlogPost }) {
-  const related = getRelatedPosts(post.slug);
+export function BlogArticle({
+  post,
+  locale,
+}: {
+  post: BlogPost;
+  locale: Locale;
+}) {
+  const related = getRelatedPosts(post.slug, locale).slice(0, 3);
+  const copy = messages[locale];
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-14">
-      <JsonLd data={blogJsonLd(post)} />
+      <JsonLd
+        data={[
+          blogJsonLd(post),
+          webPageJsonLd({
+            name: post.title,
+            description: post.description,
+            path: `/blog/${post.slug}`,
+            locale,
+            dateModified: post.dateModified,
+          }),
+        ].flat()}
+      />
       <p className="text-sm text-muted-foreground">
         <LocaleLink href="/blog" className="hover:text-primary">
-          Blog
+          {copy.navBlog}
         </LocaleLink>
         {" / "}
         {post.datePublished}
@@ -24,7 +51,7 @@ export function BlogArticle({ post }: { post: BlogPost }) {
       </h1>
       <p className="mt-4 text-lg leading-relaxed text-foreground/80">{post.excerpt}</p>
       <p className="mt-2 text-xs tracking-[0.18em] text-primary/70 uppercase">
-        {post.readingMinutes} min read · Made Hendrik, Abianbase
+        {post.readingMinutes} min · Made Hendrik, Abianbase
       </p>
       <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-3xl bg-[#efe0c4]">
         <Image
@@ -36,6 +63,13 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           className="object-cover"
         />
       </div>
+      {post.speakable ? (
+        <div className="mt-10">
+          <SpeakableBlock kicker={copy.blogSpeakableKicker}>
+            {post.speakable}
+          </SpeakableBlock>
+        </div>
+      ) : null}
       <div className="mt-10 space-y-8 text-lg leading-relaxed text-foreground/85">
         {post.sections.map((section) => (
           <section key={section.heading ?? section.paragraphs[0]?.slice(0, 24)}>
@@ -80,26 +114,41 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </section>
         ))}
       </div>
-      <div className="mt-12 rounded-3xl bg-primary p-6 text-primary-foreground">
-        <h2 className="font-heading text-3xl tracking-wide">Chat first to confirm your order</h2>
-        <p className="mt-2 text-sm text-primary-foreground/80">
-          MadeBrings is a family shop in Abianbase. Tell us what you need on WhatsApp
-          before you count on the shelf.
-        </p>
-        <LocaleLink
-          href="/shop"
-          className={cn(
-            buttonVariants({ size: "lg" }),
-            "mt-4 h-11 rounded-full px-5 font-heading text-lg tracking-wide",
-          )}
-        >
-          Open the shop
-        </LocaleLink>
+      {post.inclusions?.length ? (
+        <section className="mt-12">
+          <h2 className="font-heading text-3xl tracking-wide text-primary">
+            {copy.blogInclusions}
+          </h2>
+          <ul className="mt-4 list-disc space-y-1 pl-5 text-base">
+            {post.inclusions.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
+      {post.faqs?.length ? (
+        <div className="mt-12">
+          <FaqSection heading={copy.blogFaq} faqs={post.faqs} />
+        </div>
+      ) : null}
+      <div className="mt-12">
+        <BookingBand
+          title={copy.blogBook}
+          body={
+            locale === "id"
+              ? "Toko keluarga di Abianbase. Chat stok dulu, lalu tunai atau transfer."
+              : "Family shop in Abianbase. Chat stock first, then cash or transfer."
+          }
+          whatsappHref={whatsappHref(copy.waGreeting)}
+          whatsappLabel={copy.orderNow}
+          secondaryHref={post.bookingHref ?? MONEY_PATH}
+          secondaryLabel={copy.blogBook}
+        />
       </div>
       {related.length > 0 ? (
         <section className="mt-16">
           <h2 className="mb-6 font-heading text-3xl tracking-wide text-primary">
-            More from the journal
+            {copy.journalAll}
           </h2>
           <BlogGrid posts={related} />
         </section>

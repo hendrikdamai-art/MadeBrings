@@ -9,6 +9,7 @@ import { navLinks, siteConfig } from "@/lib/site";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/alcohol-delivery-service": "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -74,6 +75,40 @@ export function SiteFooter() {
             ))}
           </ul>
           <LanguageSwitch className="mt-4" />
+          <div className="mt-6 space-y-2 text-sm">
+            <p className="font-heading text-xl tracking-wide">{t("footerAi")}</p>
+            <p>
+              <a
+                href="/llms.txt"
+                className="text-primary-foreground/80 underline-offset-4 hover:underline"
+              >
+                {t("footerLlms")}
+              </a>
+              {" · "}
+              <a
+                href="/llms-full.txt"
+                className="text-primary-foreground/80 underline-offset-4 hover:underline"
+              >
+                {t("footerLlmsFull")}
+              </a>
+            </p>
+            <p>
+              <LocaleLink
+                href="/compare-alcohol-delivery-bali"
+                className="text-primary-foreground/80 hover:text-primary-foreground"
+              >
+                {t("footerCompare")}
+              </LocaleLink>
+            </p>
+            <p>
+              <LocaleLink
+                href="/press"
+                className="text-primary-foreground/80 hover:text-primary-foreground"
+              >
+                {t("footerPress")}
+              </LocaleLink>
+            </p>
+          </div>
         </div>
       </div>
       <div className="border-t border-primary-foreground/15 px-4 py-4 text-center text-xs leading-relaxed text-primary-foreground/70">

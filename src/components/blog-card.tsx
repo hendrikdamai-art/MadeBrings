@@ -1,4 +1,5 @@
 import { LocaleLink } from "@/components/locale-link";
+import { TranslatedText } from "@/components/translated";
 import Image from "next/image";
 import { getBlogPosts, type BlogPost } from "@/lib/blog";
 
@@ -28,7 +29,7 @@ export function BlogCard({ post }: { post: BlogPost }) {
           href={`/blog/${post.slug}`}
           className="mt-auto pt-2 text-sm font-medium text-primary underline-offset-4 hover:underline"
         >
-          Read the guide
+          <TranslatedText k="blogRead" />
         </LocaleLink>
       </div>
     </article>

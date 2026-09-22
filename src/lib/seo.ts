@@ -43,6 +43,9 @@ export function defaultMetadataFor(locale: Locale = "en"): Metadata {
     publisher: siteConfig.name,
     category: "shopping",
     alternates: languageAlternates("/", locale),
+    other: {
+      describedby: absoluteUrl("/llms.txt"),
+    },
     openGraph: {
       type: "website",
       locale: locale === "id" ? "id_ID" : "en_ID",
@@ -100,6 +103,7 @@ export function pageMetadata({
   keywords,
   type = "website",
   locale = "en",
+  dateModified,
 }: {
   title: string;
   description: string;
@@ -107,6 +111,7 @@ export function pageMetadata({
   keywords?: string[];
   type?: "website" | "article";
   locale?: Locale;
+  dateModified?: string;
 }): Metadata {
   const localized = localizedPath(locale, path);
   const url = absoluteUrl(localized);
@@ -115,7 +120,12 @@ export function pageMetadata({
     title,
     description,
     keywords: keywords ?? copy.keywords,
-    alternates: languageAlternates(path, locale),
+    alternates: {
+      ...languageAlternates(path, locale),
+      types: {
+        "text/plain": absoluteUrl("/llms.txt"),
+      },
+    },
     openGraph: {
       title,
       description,
@@ -123,6 +133,10 @@ export function pageMetadata({
       locale: locale === "id" ? "id_ID" : "en_ID",
       alternateLocale: locale === "id" ? ["en_ID"] : ["id_ID"],
       type,
+      ...(dateModified ? { modifiedTime: dateModified } : {}),
+    },
+    other: {
+      describedby: absoluteUrl("/llms.txt"),
     },
   };
 }
