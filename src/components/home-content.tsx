@@ -150,6 +150,15 @@ export function HomeContent({
               >
                 {t("aboutFamily")}
               </LocaleLink>
+              <LocaleLink
+                href="/alcohol-delivery-service"
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "h-10 rounded-full border-primary/30 px-4 font-heading tracking-wide",
+                )}
+              >
+                {t("navDelivery")}
+              </LocaleLink>
             </div>
           </div>
         </div>

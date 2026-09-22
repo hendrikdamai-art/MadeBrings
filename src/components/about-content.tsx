@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
+import { LocaleLink } from "@/components/locale-link";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { useLocale } from "@/components/locale-provider";
@@ -9,11 +10,11 @@ import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function AboutContent() {
-  const { t, orderHref } = useLocale();
+  const { t, orderHref, locale } = useLocale();
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-14">
-      <JsonLd data={localBusinessJsonLd()} />
+      <JsonLd data={localBusinessJsonLd(locale)} />
       <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
         {t("aboutKicker")}
       </p>
@@ -61,6 +62,15 @@ export function AboutContent() {
         >
           {t("aboutMaps")}
         </a>
+        <LocaleLink
+          href="/alcohol-delivery-service"
+          className={cn(
+            buttonVariants({ variant: "outline", size: "lg" }),
+            "h-11 rounded-full border-primary/30 px-5 font-heading text-lg tracking-wide",
+          )}
+        >
+          {t("navDelivery")}
+        </LocaleLink>
       </div>
     </div>
   );

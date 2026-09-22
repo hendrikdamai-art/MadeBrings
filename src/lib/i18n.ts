@@ -13,6 +13,7 @@ const en = {
   menuTitle: "MadeBrings",
   menuNote: "Chat us on WhatsApp to order and checkout. Cash or bank transfer.",
   navShop: "Shop",
+  navDelivery: "Alcohol delivery",
   navBeer: "Beer & cider",
   navRtd: "RTD",
   navMixers: "Mixers",
@@ -21,12 +22,13 @@ const en = {
   navBlog: "Blog",
   navAbout: "About us",
   navContact: "Contact",
-  heroKicker: "Abianbase · Badung · Bali",
-  heroTitle1: "A family shop.",
+  heroKicker: "Alcohol delivery · Abianbase · Bali",
+  heroTitle1: "Alcohol delivery in Bali.",
   heroTitle2: "Neighborhood prices.",
   heroBody:
-    "MadeBrings is an alcohol delivery service in Abianbase, Badung, run by {owner}. Order beer, liquor, mixers, ice, and snacks, then chat us on WhatsApp to checkout. Pay cash or bank transfer — we deliver to your villa or home.",
+    "MadeBrings is Made Hendrik’s family shop in Abianbase. WhatsApp for beer, Ice, Coke, water, and ice to villas around Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Pay cash or bank transfer.",
   heroBrowse: "Browse the shop",
+  heroDelivery: "Alcohol delivery",
   heroAlt:
     "MadeBrings alcohol delivery in Bali: a courier in an udeng on a scooter, holding a box with the MadeBrings emblem",
   step1Title: "Great local prices",
@@ -41,7 +43,7 @@ const en = {
   featuredKicker: "From the cooler",
   featuredTitle: "A few things people ask for",
   journalKicker: "Journal",
-  journalTitle: "Bali holiday, guides, and arak",
+  journalTitle: "Villa drinks, Canggu, and Bali notes",
   journalAll: "All posts",
   howTitle: "How to buy from us",
   how1: "Great local prices — browse beer, liquor, and mixers at neighborhood rates.",
@@ -57,6 +59,11 @@ const en = {
   footerPay: "Pay cash or bank transfer",
   footerAge: "Must be {age}+ to buy alcohol",
   footerShop: "Shop",
+  footerAi: "AI index",
+  footerLlms: "llms.txt",
+  footerLlmsFull: "llms-full.txt",
+  footerCompare: "How we compare shops",
+  footerPress: "Press kit",
   footerBlurb:
     "A local family shop in Abianbase, Badung, Bali, run by {owner}. Alcohol delivery service for beer, liquor, mixers, ice, and everyday extras. Chat us to order.",
   footerLegal:
@@ -70,6 +77,7 @@ const en = {
   shopHeading: "The shop",
   shopIntro:
     "Browse beer, Smirnoff Ice, mixers, ice, and snacks from our Abianbase shop. This is what we usually keep — chat us to confirm stock, then we arrange alcohol delivery to your door.",
+  shopMoneyLink: "Need it brought to the villa? Open alcohol delivery.",
   shopSearch: "Search the shelf",
   shopAll: "All",
   shopEmpty:
@@ -90,7 +98,7 @@ const en = {
   aboutP4:
     "There is no trolley checkout here. Chat us to order and checkout. We check what is on the shelf, then take cash or bank transfer. Delivery to your door is arranged in the chat.",
   aboutP5:
-    "If you are close to Abianbase, come by. If you need liquor delivery in Badung, Canggu, Seminyak, or a nearby villa, message first. You are buying from Made Hendrik’s family shop — not from a warehouse on the other side of the island.",
+    "If you are close to Abianbase, come by. If you need alcohol delivery around Canggu, Seminyak, Kuta, Ubud, Tanah Lot, or a nearby villa, message first. You are buying from Made Hendrik’s family shop — not from a warehouse on the other side of the island.",
   aboutMaps: "Open Google Maps",
   contactKicker: "Talk to the shop",
   contactTitle: "Contact MadeBrings",
@@ -109,11 +117,16 @@ const en = {
     "It may have been moved, or it was never a page in this small shop. Head back to the shelf or chat us on WhatsApp.",
   notFoundCta: "Back to the shop",
   waGreeting:
-    "Hi MadeBrings, I would like to order from your alcohol delivery service in Abianbase. Please confirm stock and delivery to my villa or home.",
+    "Hi MadeBrings, I would like alcohol delivery from Abianbase. Please confirm stock and whether you can deliver to my villa or home around Canggu, Seminyak, Kuta, Ubud, or Tanah Lot.",
   blogIndexKicker: "From Abianbase",
-  blogIndexTitle: "Blog",
+  blogIndexTitle: "Alcohol delivery guides",
   blogIndexBody:
-    "Practical notes for a Bali holiday, who to contact for a tour guide, and how Balinese families use arak. Written by a small shop — not a travel brochure.",
+    "High-intent pages for alcohol delivery Canggu, alcohol near me, beer runs, Ubud and Tanah Lot stays, and villa fridge restocks — plus slower notes on holidays, guides, and arak.",
+  blogRead: "Read the guide",
+  blogBook: "Book alcohol delivery",
+  blogInclusions: "Inclusions",
+  blogFaq: "FAQ",
+  blogSpeakableKicker: "Direct answer",
   catBeer: "Beer & cider",
   catBottles: "Bottled drinks",
   catRtd: "Ready to drink",
@@ -147,6 +160,7 @@ const id: { [K in keyof typeof en]: string } = {
   menuTitle: "MadeBrings",
   menuNote: "Chat WhatsApp untuk pesan dan bayar. Tunai atau transfer bank.",
   navShop: "Toko",
+  navDelivery: "Antar alkohol",
   navBeer: "Bir & sider",
   navRtd: "Siap minum",
   navMixers: "Mixer",
@@ -155,12 +169,13 @@ const id: { [K in keyof typeof en]: string } = {
   navBlog: "Blog",
   navAbout: "Tentang kami",
   navContact: "Kontak",
-  heroKicker: "Abianbase · Badung · Bali",
-  heroTitle1: "Toko keluarga.",
+  heroKicker: "Antar alkohol · Abianbase · Bali",
+  heroTitle1: "Antar alkohol di Bali.",
   heroTitle2: "Harga tetangga.",
   heroBody:
-    "MadeBrings adalah layanan antar alkohol di Abianbase, Badung, dikelola {owner}. Pesan bir, minuman keras, mixer, es, dan cemilan, lalu chat WhatsApp untuk checkout. Bayar tunai atau transfer — kami antar ke villa atau rumah Anda.",
+    "MadeBrings toko keluarga Made Hendrik di Abianbase. WhatsApp untuk bir, Ice, Coke, air, dan es ke villa sekitar Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot. Bayar tunai atau transfer bank.",
   heroBrowse: "Lihat toko",
+  heroDelivery: "Antar alkohol",
   heroAlt:
     "Layanan antar alkohol MadeBrings di Bali: kurir berudeng di skuter membawa kotak dengan emblem MadeBrings",
   step1Title: "Harga lokal yang bersahabat",
@@ -175,7 +190,7 @@ const id: { [K in keyof typeof en]: string } = {
   featuredKicker: "Dari pendingin",
   featuredTitle: "Yang sering ditanya",
   journalKicker: "Catatan",
-  journalTitle: "Liburan Bali, pemandu, dan arak",
+  journalTitle: "Minuman villa, Canggu, dan catatan Bali",
   journalAll: "Semua tulisan",
   howTitle: "Cara beli dari kami",
   how1: "Harga lokal yang bersahabat — bir, minuman keras, dan mixer dengan tarif tetangga.",
@@ -191,6 +206,11 @@ const id: { [K in keyof typeof en]: string } = {
   footerPay: "Bayar tunai atau transfer bank",
   footerAge: "Harus {age}+ untuk membeli alkohol",
   footerShop: "Toko",
+  footerAi: "Indeks AI",
+  footerLlms: "llms.txt",
+  footerLlmsFull: "llms-full.txt",
+  footerCompare: "Cara kami membandingkan",
+  footerPress: "Kit pers",
   footerBlurb:
     "Toko keluarga di Abianbase, Badung, Bali, dikelola {owner}. Layanan antar alkohol untuk bir, minuman keras, mixer, es, dan kebutuhan harian. Chat untuk pesan.",
   footerLegal:
@@ -204,6 +224,7 @@ const id: { [K in keyof typeof en]: string } = {
   shopHeading: "Toko",
   shopIntro:
     "Lihat bir, Smirnoff Ice, mixer, es, dan cemilan dari toko kami di Abianbase. Ini stok biasa kami — chat untuk konfirmasi, lalu kami atur pengantaran ke rumah.",
+  shopMoneyLink: "Perlu diantar ke villa? Buka halaman antar alkohol.",
   shopSearch: "Cari di rak",
   shopAll: "Semua",
   shopEmpty:
@@ -224,7 +245,7 @@ const id: { [K in keyof typeof en]: string } = {
   aboutP4:
     "Tidak ada keranjang belanja di sini. Chat kami untuk pesan dan checkout. Kami cek rak, lalu terima tunai atau transfer. Pengantaran ke rumah diatur di chat.",
   aboutP5:
-    "Kalau dekat Abianbase, mampir. Kalau butuh antar minuman keras di Badung, Canggu, Seminyak, atau villa sekitar, chat dulu. Anda beli dari toko keluarga Made Hendrik — bukan gudang di seberang pulau.",
+    "Kalau dekat Abianbase, mampir. Kalau butuh antar alkohol sekitar Canggu, Seminyak, Kuta, Ubud, Tanah Lot, atau villa sekitar, chat dulu. Anda beli dari toko keluarga Made Hendrik — bukan gudang di seberang pulau.",
   aboutMaps: "Buka Google Maps",
   contactKicker: "Hubungi toko",
   contactTitle: "Kontak MadeBrings",
@@ -243,11 +264,16 @@ const id: { [K in keyof typeof en]: string } = {
     "Mungkin dipindah, atau memang bukan halaman toko kecil ini. Kembali ke rak atau chat kami di WhatsApp.",
   notFoundCta: "Kembali ke toko",
   waGreeting:
-    "Halo MadeBrings, saya ingin pesan dari layanan antar alkohol di Abianbase. Mohon konfirmasi stok dan pengantaran ke villa atau rumah saya.",
+    "Halo MadeBrings, saya ingin antar alkohol dari Abianbase. Mohon konfirmasi stok dan apakah bisa antar ke villa atau rumah saya di sekitar Canggu, Seminyak, Kuta, Ubud, atau Tanah Lot.",
   blogIndexKicker: "Dari Abianbase",
-  blogIndexTitle: "Blog",
+  blogIndexTitle: "Panduan antar alkohol",
   blogIndexBody:
-    "Catatan praktis untuk liburan Bali, siapa yang dihubungi untuk pemandu, dan bagaimana keluarga Bali memakai arak. Ditulis toko kecil — bukan brosur wisata.",
+    "Halaman niat tinggi untuk antar alkohol Canggu, alkohol terdekat, antar bir, Ubud dan Tanah Lot, plus restok kulkas villa — dan catatan lebih lambat soal liburan, pemandu, dan arak.",
+  blogRead: "Baca panduan",
+  blogBook: "Pesan antar alkohol",
+  blogInclusions: "Yang termasuk",
+  blogFaq: "FAQ",
+  blogSpeakableKicker: "Jawaban langsung",
   catBeer: "Bir & sider",
   catBottles: "Minuman botol",
   catRtd: "Siap minum",

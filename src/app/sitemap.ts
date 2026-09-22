@@ -16,20 +16,34 @@ function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {})
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact"];
+  const staticPaths = [
+    "/",
+    "/alcohol-delivery-service",
+    "/shop",
+    "/blog",
+    "/about",
+    "/contact",
+    "/press",
+    "/compare-alcohol-delivery-bali",
+  ];
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
     {
       ...entry(path, {
         lastModified: now,
         changeFrequency: "weekly",
-        priority: path === "/" ? 1 : 0.9,
+        priority: path === "/" ? 1 : path === "/alcohol-delivery-service" ? 0.98 : 0.9,
       }),
     },
     {
       url: absoluteUrl(localizedPath("id", path)),
       lastModified: now,
       changeFrequency: "weekly" as const,
-      priority: path === "/" ? 0.95 : 0.85,
+      priority:
+        path === "/"
+          ? 0.95
+          : path === "/alcohol-delivery-service"
+            ? 0.93
+            : 0.85,
       alternates: { languages: languageAlternates(path, "id").languages },
     },
   ]);
