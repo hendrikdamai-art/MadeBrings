@@ -1,10 +1,12 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { LocaleLink } from "@/components/locale-link";
 import { CategoryPills, ProductGrid } from "@/components/product-grid";
 import { Input } from "@/components/ui/input";
 import { useLocale } from "@/components/locale-provider";
 import { searchProducts, type Product } from "@/lib/commerce";
+import { MONEY_PATH } from "@/lib/seo-paths";
 import { categoryIntroKey, categoryNameKey, type MessageKey } from "@/lib/i18n";
 
 export function ShopBrowser({
@@ -47,6 +49,14 @@ export function ShopBrowser({
           {heading}
         </h1>
         <p className="text-base leading-relaxed text-foreground/80 sm:text-lg">{intro}</p>
+        <p className="text-sm">
+          <LocaleLink
+            href={MONEY_PATH}
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            {t("shopMoneyLink")}
+          </LocaleLink>
+        </p>
       </div>
       <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
         <CategoryPills active={activeCategory} />

@@ -51,6 +51,8 @@ export function LocaleProvider({
   const [locale, setLocaleState] = useState<Locale>(initialLocale);
 
   useEffect(() => {
+    /* Locale follows the /id prefix and a saved preference; this is client sync, not derived render state. */
+    /* eslint-disable react-hooks/set-state-in-effect -- pathname/localStorage locale sync */
     const path = browserPathname(nextPathname);
     const fromPath = localeFromPathname(path);
     if (fromPath === "id") {
@@ -60,6 +62,7 @@ export function LocaleProvider({
     }
     const stored = window.localStorage.getItem(LOCALE_STORAGE_KEY);
     if (stored === "en" || stored === "id") setLocaleState(stored);
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [nextPathname]);
 
   useEffect(() => {

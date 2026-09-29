@@ -38,6 +38,7 @@ Copy `.env.example` to `.env.local`.
 | `NEXT_PUBLIC_TRIPADVISOR_URL` | TripAdvisor listing. |
 | `NEXT_PUBLIC_MAPS_URL` | Google Maps / Business Profile link for the shop. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Token from Google Search Console HTML-tag verification. |
+| `CRON_SECRET` | Shared secret for `/api/seo/cron` and `/api/seo/status`. Vercel Cron sends it as `Authorization: Bearer $CRON_SECRET`. Cron schedules need Vercel Pro. |
 
 Until those social URLs are set, the header and footer still show the five icons using placeholder links.
 
@@ -51,11 +52,15 @@ In Search Console, choose **HTML file** verification and click Verify. Then subm
 
 The site also ships:
 
-- `https://your-domain/sitemap.xml` — pages, categories, and products
-- `https://your-domain/robots.txt` — allows Googlebot and points at the sitemap
+- `https://your-domain/sitemap.xml` — pages, categories, products, and commercial guides
+- `https://your-domain/robots.txt` — allows Googlebot and AI crawlers, points at the sitemap
+- `https://your-domain/alcohol-delivery-bali` — money / booking page for **alcohol delivery Bali** (`/alcohol-delivery-service` 308s here)
+- `https://your-domain/llms.txt` and `/llms-full.txt` — AI citation indexes
 - Unique titles, descriptions, and canonical URLs on every page
-- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`)
-- Blog posts for Bali holiday, tour-guide, and Arak Bali keywords
+- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`, `FAQPage`, `WebPage`, speakable)
+- Commercial posts for Canggu delivery, alcohol near me, beer delivery, Ubud/Tanah Lot, and villa fridge restock
+- Press kit at `/press` and comparison methodology at `/compare-alcohol-delivery-bali`
+- `CRON_SECRET` for the optional bi-daily SEO revalidate cron (`/api/seo/cron`)
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
 
 ## Architecture (ready to grow)
@@ -76,15 +81,24 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/` Home (English)
 - `/id` Indonesian home — crawlable copy for Indonesian Google queries
 - `/id/shop`, `/id/product/[slug]`, `/id/about`, `/id/contact` Indonesian versions of the same pages
+- `/alcohol-delivery-bali` Money page (also `/id/alcohol-delivery-bali`)
 - `/shop` Full shelf
 - `/shop/[category]` Beer & cider, RTD, mixers, ice & water, snacks
 - `/product/[slug]` Product
 - `/about` Family shop story
 - `/contact` WhatsApp + map
+- `/press` Media kit
+- `/compare-alcohol-delivery-bali` Comparison methodology
 - `/blog` Journal
+- `/blog/alcohol-delivery-canggu`
+- `/blog/alcohol-near-me-bali`
+- `/blog/beer-delivery-bali`
+- `/blog/alcohol-delivery-ubud-tanah-lot`
+- `/blog/villa-fridge-restock-bali`
 - `/blog/bali-holiday-guide-badung`
 - `/blog/bali-tour-guide-selaras` (links to [Selaras Bali Guide](https://www.selarasbaliguide.com))
 - `/blog/arak-bali-traditional-drink`
+- `/llms.txt` and `/llms-full.txt` AI indexes
 
 Alcohol sales require confirming you are 21 or older (Indonesian law).
 

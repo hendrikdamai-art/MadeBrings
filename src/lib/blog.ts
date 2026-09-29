@@ -1,30 +1,15 @@
 import { cdnImage } from "@/lib/commerce/images";
+import { commercialArticles } from "@/lib/commercial-articles";
+import type { Locale } from "@/lib/i18n";
+import { MONEY_PATH } from "@/lib/seo-paths";
 import { siteConfig } from "@/lib/site";
+import type { BlogPost, BlogSection } from "@/lib/blog-types";
 
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
 
-export type BlogSection = {
-  heading?: string;
-  paragraphs: string[];
-  list?: string[];
-  link?: { href: string; label: string };
-};
+export type { BlogPost, BlogSection };
 
-export type BlogPost = {
-  slug: string;
-  title: string;
-  description: string;
-  excerpt: string;
-  keywords: string[];
-  datePublished: string;
-  dateModified: string;
-  readingMinutes: number;
-  heroImage: string;
-  heroAlt: string;
-  sections: BlogSection[];
-};
-
-export const blogPosts: BlogPost[] = [
+const editorialPosts: BlogPost[] = [
   {
     slug: "bali-holiday-guide-badung",
     title: "Bali holiday guide 2026: a slower stay in Badung, beyond the beach clubs",
@@ -95,8 +80,8 @@ export const blogPosts: BlogPost[] = [
           "Mosquito coils or repellent for after dusk",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the MadeBrings shop",
+          href: MONEY_PATH,
+          label: "Book alcohol delivery for the villa fridge",
         },
       },
       {
@@ -248,8 +233,8 @@ export const blogPosts: BlogPost[] = [
           "MadeBrings is a small shop. We do not pretend to hold a full arak cellar. If you want a licensed local bottle with your beer and ice, chat first to confirm your order. We will tell you honestly what is on the shelf that day.",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the shop we keep in Abianbase",
+          href: MONEY_PATH,
+          label: "Ask for a licensed bottle with your alcohol delivery",
         },
       },
       {
@@ -266,20 +251,50 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+export const blogPosts: BlogPost[] = [...commercialArticles, ...editorialPosts];
+
 export function getBlogPosts() {
   return blogPosts;
+}
+
+export function getCommercialPosts() {
+  return blogPosts.filter((post) => post.intent === "commercial");
 }
 
 export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
 }
 
-export function getRelatedPosts(slug: string) {
-  return blogPosts.filter((post) => post.slug !== slug);
+export function localizePost(post: BlogPost, locale: Locale): BlogPost {
+  if (locale !== "id" || !post.idCopy) return post;
+  const copy = post.idCopy;
+  return {
+    ...post,
+    title: copy.title,
+    description: copy.description,
+    excerpt: copy.excerpt,
+    sections: copy.sections,
+    speakable: copy.speakable ?? post.speakable,
+    inclusions: copy.inclusions ?? post.inclusions,
+    faqs: copy.faqs ?? post.faqs,
+  };
+}
+
+export function getRelatedPosts(slug: string, locale: Locale = "en") {
+  const current = getBlogPost(slug);
+  const others = blogPosts
+    .filter((post) => post.slug !== slug)
+    .map((post) => localizePost(post, locale));
+  if (!current) return others;
+  const intent = current.intent ?? "editorial";
+  const same = others.filter((post) => (post.intent ?? "editorial") === intent);
+  const rest = others.filter((post) => (post.intent ?? "editorial") !== intent);
+  return [...same, ...rest];
 }
 
 export function blogJsonLd(post: BlogPost) {
-  return {
+  const url = `${siteConfig.url.replace(/\/$/, "")}/blog/${post.slug}`;
+  const posting = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
@@ -299,7 +314,34 @@ export function blogJsonLd(post: BlogPost) {
         url: `${siteConfig.url}/logo.png`,
       },
     },
-    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+    mainEntityOfPage: url,
     keywords: post.keywords.join(", "),
+    speakable: post.speakable
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
+    about: {
+      "@type": "LiquorStore",
+      name: siteConfig.name,
+      url: `${siteConfig.url.replace(/\/$/, "")}${MONEY_PATH}`,
+    },
   };
+  if (!post.faqs?.length) return posting;
+  return [
+    posting,
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: post.faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: faq.answer,
+        },
+      })),
+    },
+  ];
 }

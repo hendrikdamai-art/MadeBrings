@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { useLocale } from "@/components/locale-provider";
+import { MONEY_PATH } from "@/lib/seo-paths";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -49,6 +50,15 @@ export function HomeHero() {
             >
               {t("heroBrowse")}
               <ArrowRight data-icon="inline-end" />
+            </LocaleLink>
+            <LocaleLink
+              href={MONEY_PATH}
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-11 rounded-full border-primary/30 px-5 font-heading text-lg tracking-wide",
+              )}
+            >
+              {t("heroDelivery")}
             </LocaleLink>
             <a
               href={orderHref}

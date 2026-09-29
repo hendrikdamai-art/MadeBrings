@@ -1,7 +1,10 @@
+import { MONEY_PATH } from "@/lib/seo-paths";
+
 export const siteConfig = {
   name: "MadeBrings",
   legalName: "MadeBrings",
-  tagline: "Alcohol delivery service in Abianbase, Bali — beer, liquor, and mixers to your door",
+  tagline:
+    "Alcohol delivery in Bali from Abianbase — beer, cider, mixers, ice, and water to your villa",
   shortPitch:
     "Family alcohol delivery service in Abianbase, Badung. Neighborhood prices on beer, liquor, and mixers. Chat us to order.",
   description:
@@ -52,6 +55,7 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
+  { href: MONEY_PATH, label: "Alcohol delivery" },
   { href: "/shop", label: "Shop" },
   { href: "/shop/beer-cider", label: "Beer & cider" },
   { href: "/shop/rtd", label: "RTD" },
@@ -70,4 +74,4 @@ export function whatsappHref(prefilledText?: string) {
 }
 
 export const defaultWhatsappGreeting =
-  "Hi MadeBrings, I would like to chat first to confirm my order from the shop in Abianbase.";
+  "Hi MadeBrings, I would like alcohol delivery from your Abianbase shop. Please confirm stock and whether you can deliver to my villa or home.";
