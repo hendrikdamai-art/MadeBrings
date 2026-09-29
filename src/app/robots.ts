@@ -4,6 +4,7 @@ import { siteConfig } from "@/lib/site";
 const aiCrawlers = [
   "GPTBot",
   "ChatGPT-User",
+  "OAI-SearchBot",
   "Google-Extended",
   "PerplexityBot",
   "ClaudeBot",

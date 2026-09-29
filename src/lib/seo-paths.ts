@@ -1,4 +1,5 @@
-export const MONEY_PATH = "/alcohol-delivery-service";
+export const MONEY_PATH = "/alcohol-delivery-bali";
+export const MONEY_PATH_LEGACY = "/alcohol-delivery-service";
 export const PRESS_PATH = "/press";
 export const COMPARE_PATH = "/compare-alcohol-delivery-bali";
 export const LLMS_PATH = "/llms.txt";
@@ -13,4 +14,4 @@ export const serviceAreas = [
   "Tanah Lot",
 ] as const;
 
-export const SEO_CONTENT_UPDATED = "2026-09-22";
+export const SEO_CONTENT_UPDATED = "2026-09-29";

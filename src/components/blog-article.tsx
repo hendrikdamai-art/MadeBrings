@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { BookingBand } from "@/components/booking-band";
 import { FaqSection } from "@/components/faq-section";
-import { JsonLd, webPageJsonLd } from "@/components/json-ld";
+import { faqJsonLd, JsonLd, webPageJsonLd } from "@/components/json-ld";
 import { BlogGrid } from "@/components/blog-card";
 import { LocaleLink } from "@/components/locale-link";
 import { SpeakableBlock } from "@/components/speakable-block";
@@ -37,7 +37,8 @@ export function BlogArticle({
             locale,
             dateModified: post.dateModified,
           }),
-        ].flat()}
+          ...(post.faqs?.length ? [faqJsonLd(post.faqs)] : []),
+        ]}
       />
       <p className="text-sm text-muted-foreground">
         <LocaleLink href="/blog" className="hover:text-primary">

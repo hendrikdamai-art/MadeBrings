@@ -5,6 +5,7 @@ import { SocialLinks } from "@/components/social-links";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
 import { useLocale } from "@/components/locale-provider";
+import { MONEY_PATH } from "@/lib/seo-paths";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +26,7 @@ export function ContactContent() {
         </p>
         <p className="mt-3">
           <LocaleLink
-            href="/alcohol-delivery-service"
+            href={MONEY_PATH}
             className="font-medium text-primary underline-offset-4 hover:underline"
           >
             {t("shopMoneyLink")}

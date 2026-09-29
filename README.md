@@ -54,7 +54,7 @@ The site also ships:
 
 - `https://your-domain/sitemap.xml` — pages, categories, products, and commercial guides
 - `https://your-domain/robots.txt` — allows Googlebot and AI crawlers, points at the sitemap
-- `https://your-domain/alcohol-delivery-service` — money / booking page for **alcohol delivery Bali**
+- `https://your-domain/alcohol-delivery-bali` — money / booking page for **alcohol delivery Bali** (`/alcohol-delivery-service` 308s here)
 - `https://your-domain/llms.txt` and `/llms-full.txt` — AI citation indexes
 - Unique titles, descriptions, and canonical URLs on every page
 - Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`, `FAQPage`, `WebPage`, speakable)
@@ -81,7 +81,7 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/` Home (English)
 - `/id` Indonesian home — crawlable copy for Indonesian Google queries
 - `/id/shop`, `/id/product/[slug]`, `/id/about`, `/id/contact` Indonesian versions of the same pages
-- `/alcohol-delivery-service` Money page (also `/id/alcohol-delivery-service`)
+- `/alcohol-delivery-bali` Money page (also `/id/alcohol-delivery-bali`)
 - `/shop` Full shelf
 - `/shop/[category]` Beer & cider, RTD, mixers, ice & water, snacks
 - `/product/[slug]` Product

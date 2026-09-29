@@ -1,3 +1,5 @@
+import { MONEY_PATH } from "@/lib/seo-paths";
+
 export const siteConfig = {
   name: "MadeBrings",
   legalName: "MadeBrings",
@@ -53,7 +55,7 @@ export const siteConfig = {
 } as const;
 
 export const navLinks = [
-  { href: "/alcohol-delivery-service", label: "Alcohol delivery" },
+  { href: MONEY_PATH, label: "Alcohol delivery" },
   { href: "/shop", label: "Shop" },
   { href: "/shop/beer-cider", label: "Beer & cider" },
   { href: "/shop/rtd", label: "RTD" },

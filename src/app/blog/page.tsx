@@ -30,7 +30,7 @@ export default async function BlogIndexPage() {
           description: copy.blogDescription,
           path: "/blog",
           locale,
-          dateModified: posts[0]?.dateModified ?? "2026-09-22",
+          dateModified: posts[0]?.dateModified ?? "2026-09-29",
         })}
       />
       <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">

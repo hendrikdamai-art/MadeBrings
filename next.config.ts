@@ -12,6 +12,20 @@ const nextConfig: NextConfig = {
     ],
   },
   allowedDevOrigins: ["127.0.0.1"],
+  async redirects() {
+    return [
+      {
+        source: "/alcohol-delivery-service",
+        destination: "/alcohol-delivery-bali",
+        permanent: true,
+      },
+      {
+        source: "/id/alcohol-delivery-service",
+        destination: "/id/alcohol-delivery-bali",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

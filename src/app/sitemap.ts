@@ -3,6 +3,7 @@ import { getCategories, getProducts } from "@/lib/commerce";
 import { getBlogPosts } from "@/lib/blog";
 import { localizedPath } from "@/lib/locale-path";
 import { absoluteUrl, languageAlternates } from "@/lib/seo";
+import { COMPARE_PATH, MONEY_PATH, PRESS_PATH } from "@/lib/seo-paths";
 
 function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {}) {
   return {
@@ -18,20 +19,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   const staticPaths = [
     "/",
-    "/alcohol-delivery-service",
+    MONEY_PATH,
     "/shop",
     "/blog",
     "/about",
     "/contact",
-    "/press",
-    "/compare-alcohol-delivery-bali",
+    PRESS_PATH,
+    COMPARE_PATH,
   ];
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
     {
       ...entry(path, {
         lastModified: now,
         changeFrequency: "weekly",
-        priority: path === "/" ? 1 : path === "/alcohol-delivery-service" ? 0.98 : 0.9,
+        priority: path === "/" ? 1 : path === MONEY_PATH ? 0.98 : 0.9,
       }),
     },
     {
@@ -41,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority:
         path === "/"
           ? 0.95
-          : path === "/alcohol-delivery-service"
+          : path === MONEY_PATH
             ? 0.93
             : 0.85,
       alternates: { languages: languageAlternates(path, "id").languages },

@@ -7,6 +7,7 @@ import { HomeHero } from "@/components/home-hero";
 import { useLocale } from "@/components/locale-provider";
 import { ProductGrid } from "@/components/product-grid";
 import { buttonVariants } from "@/components/ui/button";
+import { MONEY_PATH } from "@/lib/seo-paths";
 import { siteConfig } from "@/lib/site";
 import { categoryIntroKey, categoryNameKey } from "@/lib/i18n";
 import { cn } from "@/lib/utils";
@@ -151,7 +152,7 @@ export function HomeContent({
                 {t("aboutFamily")}
               </LocaleLink>
               <LocaleLink
-                href="/alcohol-delivery-service"
+                href={MONEY_PATH}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "lg" }),
                   "h-10 rounded-full border-primary/30 px-4 font-heading tracking-wide",

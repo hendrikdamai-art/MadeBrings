@@ -16,11 +16,12 @@ import {
   SheetTitle,
 } from "@/components/ui/sheet";
 import { navLinks } from "@/lib/site";
+import { MONEY_PATH } from "@/lib/seo-paths";
 import { cn } from "@/lib/utils";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
-  "/alcohol-delivery-service": "navDelivery",
+  [MONEY_PATH]: "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -34,7 +35,7 @@ const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
 
 const headerLinks = navLinks.filter((link) =>
   [
-    "/alcohol-delivery-service",
+    MONEY_PATH,
     "/shop",
     "/blog",
     "/about",

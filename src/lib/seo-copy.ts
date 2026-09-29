@@ -56,7 +56,7 @@ export const seoCopy: Record<
   }
 > = {
   en: {
-    homeTitle: "Alcohol Delivery Bali | Canggu, Seminyak, Ubud",
+    homeTitle: "Alcohol Delivery Bali from Abianbase | MadeBrings",
     homeDescription:
       "WhatsApp alcohol delivery from a family shop in Abianbase. Beer, Smirnoff Ice, Coke, water, and ice to villas around Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Cash or transfer. 21+.",
     shopTitle: "Shop beer, ice & mixers — alcohol delivery Bali",
@@ -77,7 +77,7 @@ export const seoCopy: Record<
     keywords: [...englishKeywords, ...indonesianKeywords],
   },
   id: {
-    homeTitle: "Jasa Antar Alkohol Bali | Canggu, Seminyak, Ubud",
+    homeTitle: "Jasa Antar Alkohol Bali dari Abianbase | MadeBrings",
     homeDescription:
       "Antar alkohol WhatsApp dari toko keluarga di Abianbase. Bir, Smirnoff Ice, Coke, air, dan es ke villa sekitar Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot. Tunai atau transfer. 21+.",
     shopTitle: "Toko bir, es, dan mixer — antar alkohol Bali",

@@ -6,10 +6,17 @@ import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { SocialLinks } from "@/components/social-links";
 import { navLinks, siteConfig } from "@/lib/site";
+import {
+  COMPARE_PATH,
+  LLMS_FULL_PATH,
+  LLMS_PATH,
+  MONEY_PATH,
+  PRESS_PATH,
+} from "@/lib/seo-paths";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
-  "/alcohol-delivery-service": "navDelivery",
+  [MONEY_PATH]: "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -79,14 +86,14 @@ export function SiteFooter() {
             <p className="font-heading text-xl tracking-wide">{t("footerAi")}</p>
             <p>
               <a
-                href="/llms.txt"
+                href={LLMS_PATH}
                 className="text-primary-foreground/80 underline-offset-4 hover:underline"
               >
                 {t("footerLlms")}
               </a>
               {" · "}
               <a
-                href="/llms-full.txt"
+                href={LLMS_FULL_PATH}
                 className="text-primary-foreground/80 underline-offset-4 hover:underline"
               >
                 {t("footerLlmsFull")}
@@ -94,7 +101,7 @@ export function SiteFooter() {
             </p>
             <p>
               <LocaleLink
-                href="/compare-alcohol-delivery-bali"
+                href={COMPARE_PATH}
                 className="text-primary-foreground/80 hover:text-primary-foreground"
               >
                 {t("footerCompare")}
@@ -102,7 +109,7 @@ export function SiteFooter() {
             </p>
             <p>
               <LocaleLink
-                href="/press"
+                href={PRESS_PATH}
                 className="text-primary-foreground/80 hover:text-primary-foreground"
               >
                 {t("footerPress")}
