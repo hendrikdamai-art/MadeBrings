@@ -1,28 +1,13 @@
 import { cdnImage } from "@/lib/commerce/images";
+import { getCommercialBlogPosts } from "@/lib/commercial-articles";
+import type { Locale } from "@/lib/i18n";
+import type { BlogPost } from "@/lib/blog-types";
+import { BOOKING_PATH } from "@/lib/seo-pages";
 import { siteConfig } from "@/lib/site";
 
+export type { BlogPost, BlogSection } from "@/lib/blog-types";
+
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
-
-export type BlogSection = {
-  heading?: string;
-  paragraphs: string[];
-  list?: string[];
-  link?: { href: string; label: string };
-};
-
-export type BlogPost = {
-  slug: string;
-  title: string;
-  description: string;
-  excerpt: string;
-  keywords: string[];
-  datePublished: string;
-  dateModified: string;
-  readingMinutes: number;
-  heroImage: string;
-  heroAlt: string;
-  sections: BlogSection[];
-};
 
 export const blogPosts: BlogPost[] = [
   {
@@ -85,7 +70,7 @@ export const blogPosts: BlogPost[] = [
         heading: "What to put in a Bali villa fridge",
         paragraphs: [
           "You do not need to land with a suitcase of snacks. You do need drinking water, ice, and something cold for the first evening. Bintang, mixers, and a bag of ice are the three things villa groups run out of first. Mosquito coils are a close fourth.",
-          "Chat first to confirm your order. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike.",
+          "Chat first to confirm your order on the alcohol delivery Bali page. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike.",
         ],
         list: [
           "Drinking water (1.5L bottles or a gallon if the villa has a dispenser)",
@@ -95,8 +80,8 @@ export const blogPosts: BlogPost[] = [
           "Mosquito coils or repellent for after dusk",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the MadeBrings shop",
+          href: BOOKING_PATH,
+          label: "Book alcohol delivery in Bali",
         },
       },
       {
@@ -171,11 +156,11 @@ export const blogPosts: BlogPost[] = [
         heading: "How to book a Bali tour guide with Selaras",
         paragraphs: [
           "Open selarasbaliguide.com and use their WhatsApp. Tell them where you are staying (Abianbase, Canggu, Ubud, or elsewhere), how many people, riding experience, and the day you want. No need to treat an enquiry as a payment. Confirm the pickup time, what is included, and what you should wear.",
-          "After the ride, you will want water, ice, and something cold. That is our part. Chat MadeBrings first to confirm your order so the villa is ready when you get back dusty and hungry.",
+          "After the ride, you will want water, ice, and something cold. That is our part. Chat MadeBrings first from the alcohol delivery Bali page so the villa is ready when you get back dusty and hungry.",
         ],
         link: {
-          href: SELARAS_GUIDE_URL,
-          label: "Message Selaras on their website",
+          href: BOOKING_PATH,
+          label: "Restock the villa with MadeBrings",
         },
       },
       {
@@ -248,8 +233,8 @@ export const blogPosts: BlogPost[] = [
           "MadeBrings is a small shop. We do not pretend to hold a full arak cellar. If you want a licensed local bottle with your beer and ice, chat first to confirm your order. We will tell you honestly what is on the shelf that day.",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the shop we keep in Abianbase",
+          href: BOOKING_PATH,
+          label: "Ask for a licensed bottle with your beer and ice",
         },
       },
       {
@@ -266,19 +251,27 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-export function getBlogPosts() {
-  return blogPosts;
+export function getBlogPosts(locale: Locale = "en") {
+  return [...getCommercialBlogPosts(locale), ...blogPosts];
 }
 
-export function getBlogPost(slug: string) {
-  return blogPosts.find((post) => post.slug === slug);
+export function getBlogPost(slug: string, locale: Locale = "en") {
+  return getBlogPosts(locale).find((post) => post.slug === slug);
 }
 
-export function getRelatedPosts(slug: string) {
-  return blogPosts.filter((post) => post.slug !== slug);
+export function getRelatedPosts(slug: string, locale: Locale = "en") {
+  const post = getBlogPost(slug, locale);
+  const posts = getBlogPosts(locale);
+  if (post?.intent === "commercial") {
+    return posts.filter(
+      (item) => item.slug !== slug && item.intent === "commercial",
+    );
+  }
+  return posts.filter((item) => item.slug !== slug).slice(0, 3);
 }
 
 export function blogJsonLd(post: BlogPost) {
+  const url = `${siteConfig.url.replace(/\/$/, "")}/blog/${post.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -287,6 +280,7 @@ export function blogJsonLd(post: BlogPost) {
     image: post.heroImage,
     datePublished: post.datePublished,
     dateModified: post.dateModified,
+    inLanguage: "en-ID",
     author: {
       "@type": "Person",
       name: siteConfig.owner,
@@ -299,7 +293,15 @@ export function blogJsonLd(post: BlogPost) {
         url: `${siteConfig.url}/logo.png`,
       },
     },
-    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+    mainEntityOfPage: url,
+    url,
     keywords: post.keywords.join(", "),
+    speakable: post.speakable
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
+    about: post.query,
   };
 }
