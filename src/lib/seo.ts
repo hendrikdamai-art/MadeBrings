@@ -42,7 +42,18 @@ export function defaultMetadataFor(locale: Locale = "en"): Metadata {
     creator: siteConfig.owner,
     publisher: siteConfig.name,
     category: "shopping",
-    alternates: languageAlternates("/", locale),
+    alternates: {
+      ...languageAlternates("/", locale),
+      types: {
+        "text/plain": [
+          { url: "/llms.txt", title: "LLM index" },
+          { url: "/llms-full.txt", title: "LLM full answers" },
+        ],
+      },
+    },
+    other: {
+      describedby: "/llms.txt",
+    },
     openGraph: {
       type: "website",
       locale: locale === "id" ? "id_ID" : "en_ID",

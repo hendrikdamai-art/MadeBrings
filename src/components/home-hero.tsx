@@ -50,6 +50,15 @@ export function HomeHero() {
               {t("heroBrowse")}
               <ArrowRight data-icon="inline-end" />
             </LocaleLink>
+            <LocaleLink
+              href="/alcohol-delivery-bali"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "h-11 rounded-full px-5 font-heading text-lg tracking-wide",
+              )}
+            >
+              {t("heroDelivery")}
+            </LocaleLink>
             <a
               href={orderHref}
               target="_blank"
