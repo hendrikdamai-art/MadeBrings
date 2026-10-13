@@ -9,6 +9,7 @@ import { navLinks, siteConfig } from "@/lib/site";
 import type { MessageKey } from "@/lib/i18n";
 
 const navKeys: Record<(typeof navLinks)[number]["href"], MessageKey> = {
+  "/alcohol-delivery-bali": "navDelivery",
   "/shop": "navShop",
   "/shop/beer-cider": "navBeer",
   "/shop/rtd": "navRtd",
@@ -74,6 +75,33 @@ export function SiteFooter() {
             ))}
           </ul>
           <LanguageSwitch className="mt-4" />
+          <ul className="mt-6 space-y-2 text-sm">
+            <li>
+              <LocaleLink href="/alcohol-delivery-bali" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerDelivery")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/compare/bali-alcohol-delivery" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerCompare")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/press" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerPress")}
+              </LocaleLink>
+            </li>
+            <li>
+              <a href="/llms.txt" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerAi")}
+              </a>
+            </li>
+            <li>
+              <a href="/llms-full.txt" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerAiFull")}
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
       <div className="border-t border-primary-foreground/15 px-4 py-4 text-center text-xs leading-relaxed text-primary-foreground/70">

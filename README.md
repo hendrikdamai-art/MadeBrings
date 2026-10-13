@@ -38,6 +38,7 @@ Copy `.env.example` to `.env.local`.
 | `NEXT_PUBLIC_TRIPADVISOR_URL` | TripAdvisor listing. |
 | `NEXT_PUBLIC_MAPS_URL` | Google Maps / Business Profile link for the shop. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Token from Google Search Console HTML-tag verification. |
+| `CRON_SECRET` | Shared secret for `GET /api/seo/cron` (Vercel Cron sends `Authorization: Bearer CRON_SECRET`). |
 
 Until those social URLs are set, the header and footer still show the five icons using placeholder links.
 
@@ -51,12 +52,14 @@ In Search Console, choose **HTML file** verification and click Verify. Then subm
 
 The site also ships:
 
-- `https://your-domain/sitemap.xml` — pages, categories, and products
-- `https://your-domain/robots.txt` — allows Googlebot and points at the sitemap
+- `https://your-domain/sitemap.xml` — pages, categories, products, delivery guides
+- `https://your-domain/robots.txt` — allows Googlebot and AI crawlers, points at the sitemap
+- `https://your-domain/llms.txt` and `/llms-full.txt` — AI citation indexes
 - Unique titles, descriptions, and canonical URLs on every page
-- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`)
-- Blog posts for Bali holiday, tour-guide, and Arak Bali keywords
+- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`, `FAQPage`, speakable `WebPage`)
+- Commercial delivery pages for Bali, alcohol near me, Canggu, Seminyak/Kuta, Ubud/Tanah Lot, plus beer and villa-fridge guides
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
+- `CRON_SECRET` for `GET /api/seo/cron` (Vercel Cron every 2 days; **Vercel Pro** required for Cron). `GET /api/seo/status` reports health without leaking the secret. Set `NEXT_PUBLIC_SITE_URL=https://www.madebrings.com` at **build** time so sitemap, robots, and JSON-LD are not inlined with a preview URL.
 
 ## Architecture (ready to grow)
 
@@ -85,6 +88,17 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/blog/bali-holiday-guide-badung`
 - `/blog/bali-tour-guide-selaras` (links to [Selaras Bali Guide](https://www.selarasbaliguide.com))
 - `/blog/arak-bali-traditional-drink`
+- `/alcohol-delivery-bali` Money / booking page for “alcohol delivery Bali”
+- `/blog/alcohol-near-me-bali`
+- `/blog/alcohol-delivery-canggu`
+- `/blog/alcohol-delivery-seminyak-kuta`
+- `/blog/beer-delivery-bali`
+- `/blog/alcohol-delivery-ubud-tanah-lot`
+- `/blog/villa-fridge-drinks-bali`
+- `/compare/bali-alcohol-delivery` Comparison methodology
+- `/press` Media kit
+- `/llms.txt` and `/llms-full.txt` AI citation indexes
+- `/id/...` Indonesian versions of the same pages
 
 Alcohol sales require confirming you are 21 or older (Indonesian law).
 
