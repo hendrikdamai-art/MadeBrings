@@ -1,17 +1,47 @@
 import Image from "next/image";
-import { JsonLd } from "@/components/json-ld";
+import { BookingCta } from "@/components/booking-cta";
+import { FaqList } from "@/components/faq-list";
+import { JsonLd, breadcrumbJsonLd, faqJsonLd, webPageJsonLd } from "@/components/json-ld";
 import { BlogGrid } from "@/components/blog-card";
 import { LocaleLink } from "@/components/locale-link";
-import { buttonVariants } from "@/components/ui/button";
+import { SpeakableAnswer } from "@/components/speakable-answer";
 import { blogJsonLd, getRelatedPosts, type BlogPost } from "@/lib/blog";
-import { cn } from "@/lib/utils";
+import type { Locale } from "@/lib/i18n";
+import { BOOKING_PATH } from "@/lib/seo-pages";
 
-export function BlogArticle({ post }: { post: BlogPost }) {
-  const related = getRelatedPosts(post.slug);
+export function BlogArticle({
+  post,
+  locale = "en",
+}: {
+  post: BlogPost;
+  locale?: Locale;
+}) {
+  const related = getRelatedPosts(post.slug, locale);
+  const bookingPath = post.bookingPath ?? BOOKING_PATH;
 
   return (
     <article className="mx-auto max-w-3xl px-4 py-14">
-      <JsonLd data={blogJsonLd(post)} />
+      <JsonLd data={blogJsonLd(post, locale)} />
+      <JsonLd
+        data={webPageJsonLd({
+          locale,
+          name: post.title,
+          description: post.description,
+          path: `/blog/${post.slug}`,
+          dateModified: post.dateModified,
+        })}
+      />
+      {post.faqs?.length ? <JsonLd data={faqJsonLd(post.faqs)} /> : null}
+      <JsonLd
+        data={breadcrumbJsonLd(
+          [
+            { name: "Home", path: "/" },
+            { name: "Blog", path: "/blog" },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ],
+          locale,
+        )}
+      />
       <p className="text-sm text-muted-foreground">
         <LocaleLink href="/blog" className="hover:text-primary">
           Blog
@@ -25,7 +55,13 @@ export function BlogArticle({ post }: { post: BlogPost }) {
       <p className="mt-4 text-lg leading-relaxed text-foreground/80">{post.excerpt}</p>
       <p className="mt-2 text-xs tracking-[0.18em] text-primary/70 uppercase">
         {post.readingMinutes} min read · Made Hendrik, Abianbase
+        {post.query ? ` · ${post.query}` : ""}
       </p>
+      {post.speakable ? (
+        <div className="mt-6">
+          <SpeakableAnswer>{post.speakable}</SpeakableAnswer>
+        </div>
+      ) : null}
       <div className="relative mt-8 aspect-[16/9] overflow-hidden rounded-3xl bg-[#efe0c4]">
         <Image
           src={post.heroImage}
@@ -36,6 +72,18 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           className="object-cover"
         />
       </div>
+      {post.inclusions?.length ? (
+        <section className="mt-10 rounded-3xl border border-primary/10 bg-card p-6">
+          <h2 className="font-heading text-3xl tracking-wide text-primary">
+            {locale === "id" ? "Yang termasuk" : "What this order can include"}
+          </h2>
+          <ul className="mt-4 list-disc space-y-2 pl-5 text-base text-foreground/80">
+            {post.inclusions.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
+      ) : null}
       <div className="mt-10 space-y-8 text-lg leading-relaxed text-foreground/85">
         {post.sections.map((section) => (
           <section key={section.heading ?? section.paragraphs[0]?.slice(0, 24)}>
@@ -80,26 +128,44 @@ export function BlogArticle({ post }: { post: BlogPost }) {
           </section>
         ))}
       </div>
-      <div className="mt-12 rounded-3xl bg-primary p-6 text-primary-foreground">
-        <h2 className="font-heading text-3xl tracking-wide">Chat first to confirm your order</h2>
-        <p className="mt-2 text-sm text-primary-foreground/80">
-          MadeBrings is a family shop in Abianbase. Tell us what you need on WhatsApp
-          before you count on the shelf.
-        </p>
-        <LocaleLink
-          href="/shop"
-          className={cn(
-            buttonVariants({ size: "lg" }),
-            "mt-4 h-11 rounded-full px-5 font-heading text-lg tracking-wide",
-          )}
-        >
-          Open the shop
-        </LocaleLink>
+      {post.faqs?.length ? (
+        <div className="-mx-4">
+          <FaqList
+            title={locale === "id" ? "Pertanyaan" : "Questions before you book"}
+            faqs={post.faqs}
+          />
+        </div>
+      ) : null}
+      <div className="-mx-4 mt-8">
+        <BookingCta
+          locale={locale}
+          title={
+            locale === "id"
+              ? "Chat dulu untuk konfirmasi pesanan"
+              : "Chat first to confirm your order"
+          }
+          body={
+            locale === "id"
+              ? "Toko keluarga di Abianbase. Kirim pin villa, lalu kami konfirmasi stok dan ongkir."
+              : "Family shop in Abianbase. Send the villa pin, then we confirm stock and delivery cost."
+          }
+          shopLabel={
+            locale === "id" ? "Halaman pesan" : "Alcohol delivery Bali"
+          }
+          waLabel={locale === "id" ? "WhatsApp toko" : "WhatsApp the shop"}
+          secondaryHref={bookingPath}
+        />
       </div>
       {related.length > 0 ? (
         <section className="mt-16">
           <h2 className="mb-6 font-heading text-3xl tracking-wide text-primary">
-            More from the journal
+            {post.intent === "commercial"
+              ? locale === "id"
+                ? "Panduan antar lain"
+                : "More delivery guides"
+              : locale === "id"
+                ? "Dari jurnal"
+                : "More from the journal"}
           </h2>
           <BlogGrid posts={related} />
         </section>
