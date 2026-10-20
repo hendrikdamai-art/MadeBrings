@@ -1,5 +1,16 @@
 import type { NextConfig } from "next";
 
+const llmCache = [
+  {
+    key: "Cache-Control",
+    value: "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800",
+  },
+  {
+    key: "Content-Type",
+    value: "text/plain; charset=utf-8",
+  },
+];
+
 const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
@@ -10,6 +21,26 @@ const nextConfig: NextConfig = {
     ],
   },
   allowedDevOrigins: ["127.0.0.1"],
+  async redirects() {
+    return [
+      {
+        source: "/alcohol-delivery-service",
+        destination: "/alcohol-delivery-bali",
+        permanent: true,
+      },
+      {
+        source: "/id/alcohol-delivery-service",
+        destination: "/id/alcohol-delivery-bali",
+        permanent: true,
+      },
+    ];
+  },
+  async headers() {
+    return [
+      { source: "/llms.txt", headers: llmCache },
+      { source: "/llms-full.txt", headers: llmCache },
+    ];
+  },
 };
 
 export default nextConfig;
