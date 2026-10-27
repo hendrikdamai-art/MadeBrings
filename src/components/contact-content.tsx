@@ -3,6 +3,7 @@
 import { SocialLinks } from "@/components/social-links";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,14 @@ export function ContactContent() {
         </h1>
         <p className="mt-4 text-lg leading-relaxed text-foreground/80">
           {t("contactLead")}
+        </p>
+        <p className="mt-3">
+          <LocaleLink
+            href="/alcohol-delivery-bali"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            {t("contactDeliveryLink")}
+          </LocaleLink>
         </p>
       </div>
 

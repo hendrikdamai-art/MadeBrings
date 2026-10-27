@@ -9,14 +9,14 @@ type Props = {
 };
 
 export function generateStaticParams() {
-  return getBlogPosts().map((post) => ({ slug: post.slug }));
+  return getBlogPosts("en").map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: Props) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
-  if (!post) return {};
   const locale = await getRequestLocale();
+  const post = getBlogPost(slug, locale);
+  if (!post) return {};
   return pageMetadata({
     title: post.title,
     description: post.description,
@@ -29,7 +29,8 @@ export async function generateMetadata({ params }: Props) {
 
 export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
-  const post = getBlogPost(slug);
+  const locale = await getRequestLocale();
+  const post = getBlogPost(slug, locale);
   if (!post) notFound();
-  return <BlogArticle post={post} />;
+  return <BlogArticle post={post} locale={locale} />;
 }
