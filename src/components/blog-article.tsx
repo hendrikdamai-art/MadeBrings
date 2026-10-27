@@ -1,7 +1,13 @@
 import Image from "next/image";
 import { BookingCta } from "@/components/booking-cta";
 import { FaqList } from "@/components/faq-list";
-import { JsonLd, breadcrumbJsonLd, faqJsonLd, webPageJsonLd } from "@/components/json-ld";
+import {
+  JsonLd,
+  breadcrumbJsonLd,
+  faqJsonLd,
+  howToJsonLd,
+  webPageJsonLd,
+} from "@/components/json-ld";
 import { BlogGrid } from "@/components/blog-card";
 import { LocaleLink } from "@/components/locale-link";
 import { SpeakableAnswer } from "@/components/speakable-answer";
@@ -32,6 +38,17 @@ export function BlogArticle({
         })}
       />
       {post.faqs?.length ? <JsonLd data={faqJsonLd(post.faqs)} /> : null}
+      {post.howTo ? (
+        <JsonLd
+          data={howToJsonLd({
+            name: post.howTo.name,
+            description: post.description,
+            steps: post.howTo.steps,
+            locale,
+            path: `/blog/${post.slug}`,
+          })}
+        />
+      ) : null}
       <JsonLd
         data={breadcrumbJsonLd(
           [

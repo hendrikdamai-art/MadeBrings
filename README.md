@@ -57,7 +57,7 @@ The site also ships:
 - `https://your-domain/llms.txt` and `/llms-full.txt` — AI citation indexes
 - Unique titles, descriptions, and canonical URLs on every page
 - Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`, `FAQPage`, speakable `WebPage`)
-- Commercial delivery pages for Bali, alcohol near me, Canggu, Seminyak/Kuta, Ubud/Tanah Lot, plus beer, villa-fridge, and ice/Coke/water guides
+- Commercial delivery pages for Bali, alcohol near me, Canggu, Seminyak/Kuta, Ubud/Tanah Lot, beer, villa-fridge, ice/Coke/water, where to buy alcohol, and first-night drinks after landing
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
 - `CRON_SECRET` for `GET /api/seo/cron` (Vercel Cron every 2 days; **Vercel Pro** required for Cron). `GET /api/seo/status` reports health without leaking the secret. Set `NEXT_PUBLIC_SITE_URL=https://www.madebrings.com` at **build** time so sitemap, robots, and JSON-LD are not inlined with a preview URL.
 
@@ -96,6 +96,8 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/blog/alcohol-delivery-ubud-tanah-lot`
 - `/blog/villa-fridge-drinks-bali`
 - `/blog/ice-mixer-delivery-bali`
+- `/blog/where-to-buy-alcohol-bali`
+- `/blog/first-night-drinks-bali`
 - `/compare/bali-alcohol-delivery` Comparison methodology
 - `/press` Media kit
 - `/llms.txt` and `/llms-full.txt` AI citation indexes

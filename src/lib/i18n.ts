@@ -123,7 +123,7 @@ const en = {
   blogIndexKicker: "From Abianbase",
   blogIndexTitle: "Blog",
   blogIndexBody:
-    "High-intent notes for alcohol near me, Canggu, Seminyak, Kuta, Ubud, and Tanah Lot, plus beer prices, ice/Coke/water runs, and how to stock a villa fridge. Older journal posts on holidays, guides, and arak sit underneath.",
+    "High-intent notes for alcohol near me, where to buy drinks in Bali, first night after landing, Canggu, Seminyak, Kuta, Ubud, and Tanah Lot, plus beer prices and ice/Coke/water runs. Older journal posts on holidays, guides, and arak sit underneath.",
   catBeer: "Beer & cider",
   catBottles: "Bottled drinks",
   catRtd: "Ready to drink",
@@ -267,7 +267,7 @@ const id: { [K in keyof typeof en]: string } = {
   blogIndexKicker: "Dari Abianbase",
   blogIndexTitle: "Blog",
   blogIndexBody:
-    "Catatan berintent tinggi untuk alkohol terdekat, Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot, plus harga bir, rute es/kola/air, dan cara isi kulkas villa. Tulisan jurnal lama tentang liburan, pemandu, dan arak ada di bawahnya.",
+    "Catatan berintent tinggi untuk alkohol terdekat, di mana beli minuman di Bali, malam pertama setelah mendarat, Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot, plus harga bir dan rute es/kola/air. Tulisan jurnal lama tentang liburan, pemandu, dan arak ada di bawahnya.",
   catBeer: "Bir & sider",
   catBottles: "Minuman botol",
   catRtd: "Siap minum",

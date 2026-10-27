@@ -30,7 +30,7 @@ export const blogPosts: BlogPost[] = [
       "Bali family holiday",
     ],
     datePublished: "2026-08-27",
-    dateModified: "2026-08-27",
+    dateModified: "2026-10-27",
     readingMinutes: 8,
     heroImage: cdnImage("photo-1537996194471-e657df975ab4"),
     heroAlt: "Temple gates and tropical trees on a Bali holiday",
@@ -70,7 +70,7 @@ export const blogPosts: BlogPost[] = [
         heading: "What to put in a Bali villa fridge",
         paragraphs: [
           "You do not need to land with a suitcase of snacks. You do need drinking water, ice, and something cold for the first evening. Bintang, mixers, and a bag of ice are the three things villa groups run out of first. Mosquito coils are a close fourth.",
-          "Chat first to confirm your order on the alcohol delivery Bali page. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike.",
+          "Chat first to confirm your order on the alcohol delivery Bali page. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike. If you do not know the streets yet, read where to buy alcohol in Bali, then send the pin.",
         ],
         list: [
           "Drinking water (1.5L bottles or a gallon if the villa has a dispenser)",
@@ -80,8 +80,8 @@ export const blogPosts: BlogPost[] = [
           "Mosquito coils or repellent for after dusk",
         ],
         link: {
-          href: BOOKING_PATH,
-          label: "Book alcohol delivery in Bali",
+          href: "/blog/where-to-buy-alcohol-bali",
+          label: "Where to buy alcohol in Bali if you do not know the area",
         },
       },
       {

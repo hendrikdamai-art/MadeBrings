@@ -9,7 +9,7 @@ export const PRESS_PATH = "/press";
 export const LLMS_PATH = "/llms.txt";
 export const LLMS_FULL_PATH = "/llms-full.txt";
 
-export const CONTENT_UPDATED = "2026-10-20";
+export const CONTENT_UPDATED = "2026-10-27";
 
 export const SERVICE_AREAS = [
   "Abianbase",

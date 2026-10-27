@@ -8,6 +8,11 @@ import {
   type FaqItem,
 } from "@/lib/seo-pages";
 
+export type HowToStep = {
+  name: string;
+  text: string;
+};
+
 export type CommercialCopy = {
   title: string;
   description: string;
@@ -16,6 +21,10 @@ export type CommercialCopy = {
   inclusions: string[];
   faqs: FaqItem[];
   sections: BlogSection[];
+  howTo?: {
+    name: string;
+    steps: HowToStep[];
+  };
 };
 
 export type CommercialArticle = {
@@ -32,6 +41,7 @@ export type CommercialArticle = {
 
 const DATE = "2026-10-13";
 const UPDATED = "2026-10-20";
+const THIS_RUN = "2026-10-27";
 
 function extraFaqs(locale: Locale, items: FaqItem[]): FaqItem[] {
   const shared = sharedFaqs[locale].filter(
@@ -812,6 +822,27 @@ export const commercialArticles: CommercialArticle[] = [
               "Yes. Aqua boxes and ice bags are on the public shelf. Age 21 applies when the order includes alcohol.",
           },
         ]),
+        howTo: {
+          name: "How to stock a Bali villa fridge",
+          steps: [
+            {
+              name: "Water",
+              text: "Aqua 600ml box of 24 at Rp65,000. Put water in the chat before beer.",
+            },
+            {
+              name: "Ice",
+              text: "4kg ice bag Rp25,000. Optional 3-day ice-box rental Rp150,000, ice sold separately.",
+            },
+            {
+              name: "Beer or ready-to-drink",
+              text: "Bintang or Singaraja six-pack Rp200,000, or Smirnoff Ice 275ml Rp35,000.",
+            },
+            {
+              name: "Mixers and snacks",
+              text: "Coca-Cola 250ml Rp9,000, then crisps. WhatsApp the villa pin. Confirm stock. 21+ if alcohol is in the bag.",
+            },
+          ],
+        },
         sections: [
           {
             paragraphs: [
@@ -900,6 +931,27 @@ export const commercialArticles: CommercialArticle[] = [
               "Ya. Dus Aqua dan es ada di rak publik. Batas 21 tahun berlaku jika pesanan mengandung alkohol.",
           },
         ]),
+        howTo: {
+          name: "Cara isi kulkas villa Bali",
+          steps: [
+            {
+              name: "Air",
+              text: "Dus Aqua 600ml isi 24 Rp65.000. Masukkan air di chat sebelum bir.",
+            },
+            {
+              name: "Es",
+              text: "Es 4kg Rp25.000. Sewa esky 3 hari opsional Rp150.000, es dijual terpisah.",
+            },
+            {
+              name: "Bir atau siap minum",
+              text: "Pak isi enam Bintang atau Singaraja Rp200.000, atau Smirnoff Ice 275ml Rp35.000.",
+            },
+            {
+              name: "Mixer dan cemilan",
+              text: "Coca-Cola 250ml Rp9.000, lalu keripik. WhatsApp pin villa. Konfirmasi stok. 21+ jika ada alkohol.",
+            },
+          ],
+        },
         sections: [
           {
             paragraphs: [
@@ -1141,6 +1193,432 @@ export const commercialArticles: CommercialArticle[] = [
       },
     },
   },
+  {
+    slug: "where-to-buy-alcohol-bali",
+    query: "where to buy alcohol in Bali",
+    keywords: [
+      "where to buy alcohol in Bali",
+      "where to buy beer in Canggu",
+      "buy alcohol Bali tourist",
+      "toko alkohol Bali",
+      "beli bir Canggu",
+      "minimarket vs alcohol delivery Bali",
+      "where to buy drinks villa Bali",
+    ],
+    datePublished: THIS_RUN,
+    dateModified: THIS_RUN,
+    readingMinutes: 7,
+    heroImage: cdnImage("photo-1514933651103-005eec06c04b"),
+    heroAlt: "A shop cooler of bottled drinks, the kind of shelf tourists look for after landing in Bali",
+    copy: {
+      en: {
+        title: "Where to buy alcohol in Bali: minimarket, 24/7 app, or a family shop",
+        description:
+          "Tourists search where to buy alcohol in Bali and where to buy beer in Canggu. Compare a minimarket, a 24/7 Canggu app, and WhatsApp delivery from MadeBrings in Abianbase. Catalog prices. 21+.",
+        excerpt:
+          "If you do not know the area, you do not need a scavenger hunt. Screenshot neighborhood beer prices, send a villa pin, and skip a night walk to a new minimarket.",
+        speakable:
+          "Where to buy alcohol in Bali depends on what you need tonight. A minimarket sells warm singles. Twenty-four hour Canggu apps sell speed and a spirits catalog. MadeBrings is a family shop in Abianbase, Badung, owned by Made Hendrik. WhatsApp a villa pin around Canggu, Seminyak, Kuta, Ubud, or Tanah Lot. We confirm beer, Smirnoff Ice, Coca-Cola, water, and ice from the public catalog. Bintang 330ml is Rp35,000, a six-pack Rp200,000, Coca-Cola 250ml Rp9,000, 4kg ice Rp25,000. We are not 24/7. Pay cash or bank transfer. You must be 21. Start on the alcohol delivery Bali page instead of walking a new neighborhood after dark.",
+        inclusions: [
+          "Honest comparison of minimarket vs 24/7 delivery vs Abianbase family shop",
+          "Public catalog prices you can screenshot before you chat",
+          "WhatsApp pin check for Canggu, Seminyak, Kuta, Ubud, Tanah Lot",
+          "Beer, Ice, Coke, water, and ice on the same run when stock is there",
+        ],
+        faqs: extraFaqs("en", [
+          {
+            question: "Where should a tourist buy beer in Canggu?",
+            answer:
+              "If you already know Batu Bolong and want a night walk, a local bottle shop is fine. If you do not know the streets, WhatsApp a pin. MadeBrings confirms stock from Abianbase and quotes delivery for that villa.",
+          },
+          {
+            question: "Is a minimarket cheaper than delivery?",
+            answer:
+              "Singles at a convenience store can look cheap until you add a taxi and warm stock. Our catalog lists Singaraja 330ml at Rp22,000 and Bintang 330ml at Rp35,000. Delivery cost is quoted for your pin — we do not invent a flat island fee.",
+          },
+        ]),
+        howTo: {
+          name: "How to buy alcohol in Bali without knowing the streets",
+          steps: [
+            {
+              name: "Decide the job",
+              text: "One warm can is a minimarket. A villa fridge for the week is a shop with public prices and a WhatsApp pin.",
+            },
+            {
+              name: "Screenshot the shelf",
+              text: "Open the MadeBrings shop. Note beer, Ice, Coke, water, and ice with the rupiah prices on the page.",
+            },
+            {
+              name: "Send the pin",
+              text: "WhatsApp the villa name or Google pin from the alcohol delivery Bali page. Say cash or bank transfer.",
+            },
+            {
+              name: "Confirm before anyone rides",
+              text: "Wait for stock and the delivery cost. You must be 21. We are a family shop, not a 24/7 warehouse.",
+            },
+          ],
+        },
+        sections: [
+          {
+            paragraphs: [
+              "“Where to buy alcohol in Bali” is what people type in the airport queue and again when the villa fridge is empty. The SERP is full of 24/7 Canggu brands. This page is the map, not another speed slogan.",
+              "Three real options: a minimarket you can walk to if you already know the street; a 24-hour delivery app if you need spirits at 3am; or a family shop in Abianbase that publishes beer and mixer prices and confirms on WhatsApp.",
+            ],
+            link: {
+              href: BOOKING_PATH,
+              label: "Book on the alcohol delivery Bali page",
+            },
+          },
+          {
+            heading: "Minimarket vs delivery vs a shop you can chat",
+            paragraphs: [
+              "A Circle K or Indomaret is useful when you are already on the pavement. It is a poor first-night plan if you landed after dark in a villa compound you cannot yet name.",
+              "24/7 operators in Kerobokan and Canggu publish speed claims. We quote those claims on the comparison page. We do not copy them. MadeBrings will not pretend to be open all night.",
+            ],
+            list: [
+              "Minimarket: walkable singles, limited cold stock, you must know the street",
+              "24/7 Canggu app: spirits catalogs and night-hour slogans on their sites",
+              "MadeBrings: public beer/mixer prices, WhatsApp confirmation, inland Badung pin",
+            ],
+            link: {
+              href: "/compare/bali-alcohol-delivery",
+              label: "See the comparison method (no fake ratings)",
+            },
+          },
+          {
+            heading: "If you are in Canggu, Seminyak, Kuta, Ubud, or Tanah Lot",
+            paragraphs: [
+              "Send the pin. Canggu villas in Batu Bolong, Berawa, Pererenan, Echo Beach, and Babakan are a normal question for us. Seminyak and Kuta are the first-night tourist pins. Ubud and Tanah Lot are inland runs we confirm in chat, not on a fake island-wide timer.",
+            ],
+            link: {
+              href: "/blog/alcohol-delivery-canggu",
+              label: "Canggu villa delivery notes",
+            },
+          },
+          {
+            heading: "Prices you can screenshot",
+            paragraphs: [
+              "Singaraja 330ml Rp22,000. Bintang 330ml Rp35,000. Six-pack Rp200,000. Coca-Cola 250ml Rp9,000. 4kg ice Rp25,000. Aqua 600ml box Rp65,000. Stock moves. Chat first.",
+            ],
+            link: {
+              href: "/blog/beer-delivery-bali",
+              label: "Full beer delivery price notes",
+            },
+          },
+        ],
+      },
+      id: {
+        title: "Di mana beli alkohol di Bali: minimarket, aplikasi 24/7, atau toko keluarga",
+        description:
+          "Wisatawan mencari di mana beli alkohol di Bali dan beli bir di Canggu. Bandingkan minimarket, aplikasi 24/7, dan antar WhatsApp dari MadeBrings di Abianbase. Harga katalog. 21+.",
+        excerpt:
+          "Kalau belum kenal area, tidak perlu keliling. Screenshot harga bir tetangga, kirim pin villa, dan lewati jalan malam ke minimarket baru.",
+        speakable:
+          "Di mana beli alkohol di Bali tergantung kebutuhan malam ini. Minimarket jual satuan hangat. Aplikasi Canggu 24 jam jual kecepatan dan katalog minuman keras. MadeBrings toko keluarga di Abianbase, Badung, milik Made Hendrik. WhatsApp pin villa sekitar Canggu, Seminyak, Kuta, Ubud, atau Tanah Lot. Kami konfirmasi bir, Smirnoff Ice, Coca-Cola, air, dan es dari katalog publik. Bintang 330ml Rp35.000, pak isi enam Rp200.000, Coca-Cola 250ml Rp9.000, es 4kg Rp25.000. Kami bukan 24/7. Bayar tunai atau transfer. Harus 21 tahun. Mulai di halaman jasa antar alkohol Bali, jangan jalan malam di kampung yang belum dikenal.",
+        inclusions: [
+          "Perbandingan jujur minimarket vs antar 24/7 vs toko keluarga Abianbase",
+          "Harga katalog publik yang bisa di-screenshot sebelum chat",
+          "Cek pin WhatsApp untuk Canggu, Seminyak, Kuta, Ubud, Tanah Lot",
+          "Bir, Ice, kola, air, dan es dalam satu rute jika stok ada",
+        ],
+        faqs: extraFaqs("id", [
+          {
+            question: "Di mana wisatawan harus beli bir di Canggu?",
+            answer:
+              "Kalau sudah hafal Batu Bolong dan mau jalan malam, toko botol lokal boleh. Kalau belum kenal jalan, kirim pin WhatsApp. MadeBrings konfirmasi stok dari Abianbase dan sebut ongkir untuk villa itu.",
+          },
+          {
+            question: "Apakah minimarket lebih murah daripada antar?",
+            answer:
+              "Satuan di minimarket bisa terlihat murah sampai ditambah taksi dan stok hangat. Katalog kami: Singaraja 330ml Rp22.000, Bintang 330ml Rp35.000. Ongkir dikutip untuk pin — kami tidak mengada-ada tarif datar se-pulau.",
+          },
+        ]),
+        howTo: {
+          name: "Cara beli alkohol di Bali tanpa hafal jalan",
+          steps: [
+            {
+              name: "Tentukan kebutuhan",
+              text: "Satu kaleng hangat cukup minimarket. Kulkas villa untuk seminggu butuh toko dengan harga publik dan pin WhatsApp.",
+            },
+            {
+              name: "Screenshot rak",
+              text: "Buka toko MadeBrings. Catat bir, Ice, kola, air, dan es beserta harga rupiah di halaman.",
+            },
+            {
+              name: "Kirim pin",
+              text: "WhatsApp nama villa atau pin Google dari halaman jasa antar alkohol Bali. Sebut tunai atau transfer.",
+            },
+            {
+              name: "Konfirmasi sebelum berangkat",
+              text: "Tunggu stok dan ongkir. Harus 21 tahun. Kami toko keluarga, bukan gudang 24/7.",
+            },
+          ],
+        },
+        sections: [
+          {
+            paragraphs: [
+              "“Di mana beli alkohol di Bali” diketik di antrean bandara dan lagi saat kulkas villa kosong. SERP penuh merek 24/7 Canggu. Halaman ini peta, bukan slogan kecepatan.",
+              "Tiga opsi nyata: minimarket yang bisa dijalan jika sudah kenal gang; aplikasi antar 24 jam jika butuh minuman keras jam 3 pagi; atau toko keluarga di Abianbase yang memasang harga bir dan mixer lalu konfirmasi di WhatsApp.",
+            ],
+            link: {
+              href: BOOKING_PATH,
+              label: "Pesan di halaman jasa antar alkohol Bali",
+            },
+          },
+          {
+            heading: "Minimarket vs antar vs toko yang bisa di-chat",
+            paragraphs: [
+              "Circle K atau Indomaret berguna jika Anda sudah di trotoar. Itu rencana malam pertama yang buruk jika mendarat malam di kompleks villa yang belum bisa disebut namanya.",
+              "Operator 24/7 di Kerobokan dan Canggu memasang klaim kecepatan. Kami kutip klaim itu di halaman perbandingan. Kami tidak menirunya. MadeBrings tidak berpura-pura buka semalaman.",
+            ],
+            list: [
+              "Minimarket: satuan yang bisa dijalan, stok dingin terbatas, harus kenal jalan",
+              "Aplikasi 24/7 Canggu: katalog minuman keras dan slogan jam malam di situs mereka",
+              "MadeBrings: harga bir/mixer publik, konfirmasi WhatsApp, pin Badung darat",
+            ],
+            link: {
+              href: "/compare/bali-alcohol-delivery",
+              label: "Lihat metode perbandingan (tanpa rating palsu)",
+            },
+          },
+          {
+            heading: "Jika Anda di Canggu, Seminyak, Kuta, Ubud, atau Tanah Lot",
+            paragraphs: [
+              "Kirim pin. Villa Canggu di Batu Bolong, Berawa, Pererenan, Echo Beach, dan Babakan pertanyaan biasa. Seminyak dan Kuta pin wisatawan malam pertama. Ubud dan Tanah Lot rute darat yang kami konfirmasi di chat, bukan timer se-pulau fiktif.",
+            ],
+            link: {
+              href: "/blog/alcohol-delivery-canggu",
+              label: "Catatan antar villa Canggu",
+            },
+          },
+          {
+            heading: "Harga yang bisa di-screenshot",
+            paragraphs: [
+              "Singaraja 330ml Rp22.000. Bintang 330ml Rp35.000. Pak isi enam Rp200.000. Coca-Cola 250ml Rp9.000. Es 4kg Rp25.000. Dus Aqua 600ml Rp65.000. Stok bergerak. Chat dulu.",
+            ],
+            link: {
+              href: "/blog/beer-delivery-bali",
+              label: "Catatan harga antar bir",
+            },
+          },
+        ],
+      },
+    },
+  },
+  {
+    slug: "first-night-drinks-bali",
+    query: "alcohol delivery after landing Bali",
+    keywords: [
+      "alcohol delivery near airport Bali",
+      "first night drinks Bali",
+      "drinks after landing DPS",
+      "Kuta villa beer delivery",
+      "airport alcohol delivery Bali",
+      "first night villa fridge Bali",
+      "antar minuman bandara Bali",
+    ],
+    datePublished: THIS_RUN,
+    dateModified: THIS_RUN,
+    readingMinutes: 6,
+    heroImage: cdnImage("photo-1436491865332-7a61a109cc05"),
+    heroAlt: "An aircraft over tropical water, the first-night landing that starts a Bali villa drinks run",
+    copy: {
+      en: {
+        title: "First-night drinks after landing in Bali: beer, ice, and water to the villa",
+        description:
+          "Landed at DPS and need alcohol delivery near the airport or a Kuta/Seminyak villa tonight? WhatsApp MadeBrings in Abianbase for beer, Coke, ice, and Aqua. Confirm stock. 21+.",
+        excerpt:
+          "The first night is not a spirits cellar. It is cold beer, ice, and water after a long flight — ordered with a pin, not a taxi hunt in Kuta traffic.",
+        speakable:
+          "First-night drinks after landing in Bali are beer, ice, and water, not a full bar. MadeBrings is a family shop in Abianbase, Badung. Tourists who land at Ngurah Rai and stay in Kuta, Seminyak, or a Canggu villa can WhatsApp the pin from the alcohol delivery Bali page. We confirm Bintang, Singaraja, Smirnoff Ice, Coca-Cola, 4kg ice, and Aqua from the public catalog. Bintang 330ml is Rp35,000, a six-pack Rp200,000, Coca-Cola 250ml Rp9,000, ice Rp25,000, Aqua box Rp65,000. We are not 24/7 and we do not promise a tarmac pickup. Pay cash or transfer. You must be 21. Chat before you count on the cooler.",
+        inclusions: [
+          "First-night villa list: beer or Ice, 4kg ice, Aqua, optional Coke",
+          "WhatsApp pin from Kuta, Seminyak, Canggu, or a nearby villa after DPS",
+          "Catalog prices before you pay",
+          "Cash or transfer after we confirm stock and the delivery cost",
+        ],
+        faqs: extraFaqs("en", [
+          {
+            question: "Do you meet people at the airport with beer?",
+            answer:
+              "No. We deliver to a villa or home pin, not to the arrivals hall. Land, get to the villa, send the pin, then we confirm whether the run still works.",
+          },
+          {
+            question: "What should I order for the first night?",
+            answer:
+              "A Bintang six-pack (Rp200,000), a 4kg ice bag (Rp25,000), and an Aqua 600ml box (Rp65,000) cover most groups. Add Coca-Cola 250ml at Rp9,000 if you already have a bottle in the cupboard.",
+          },
+        ]),
+        howTo: {
+          name: "How to stock a Bali villa on the first night after landing",
+          steps: [
+            {
+              name: "Get to the villa, then send the pin",
+              text: "We do not wait at DPS. Open WhatsApp with the villa name or Google pin once you are on the property.",
+            },
+            {
+              name: "Order the first-night three",
+              text: "Beer or Smirnoff Ice, 4kg ice, and drinking water. Add Coke only if you will mix.",
+            },
+            {
+              name: "Confirm stock and cost",
+              text: "Wait for MadeBrings to say what is in the cooler and the delivery cost for that pin. Pay cash or transfer.",
+            },
+            {
+              name: "Be 21 and stay put",
+              text: "Indonesian law is 21+. Skip a night taxi hunt in Kuta if you do not know the streets.",
+            },
+          ],
+        },
+        sections: [
+          {
+            paragraphs: [
+              "Ngurah Rai dumps tired people into Kuta traffic. The useful search is not “cheapest whiskey in Bali.” It is “cold beer, ice, and water at the villa without getting lost.”",
+              "MadeBrings sits in Abianbase, inland Badung — between the airport road, Canggu, and Mengwi. We are a family shop. Chat first. If the hour or the pin does not work, we say no.",
+            ],
+            link: {
+              href: BOOKING_PATH,
+              label: "Start the first-night chat on the booking page",
+            },
+          },
+          {
+            heading: "A first-night list that fits a scooter",
+            paragraphs: [
+              "Do not order a spirits cellar before you have slept. The catalog three that actually land cold: beer, ice, water. Mixers wait until morning if the fridge is already full of airport snacks.",
+            ],
+            list: [
+              "Bintang 330ml six-pack — Rp200,000",
+              "Singaraja 330ml — Rp22,000 if you want the local everyday bottle",
+              "4kg ice — Rp25,000",
+              "Aqua 600ml box (24) — Rp65,000",
+              "Coca-Cola 250ml — Rp9,000",
+            ],
+            link: {
+              href: "/shop",
+              label: "Open the public shelf",
+            },
+          },
+          {
+            heading: "Kuta and Seminyak pins after a flight",
+            paragraphs: [
+              "If the villa is in Kuta, Legian, or Seminyak, use the south-Bali notes, then still book from the money page so one WhatsApp holds the order. Canggu first nights (Berawa, Pererenan) use the Canggu guide.",
+            ],
+            link: {
+              href: "/blog/alcohol-delivery-seminyak-kuta",
+              label: "Seminyak and Kuta delivery notes",
+            },
+          },
+          {
+            heading: "Fill the rest of the fridge tomorrow",
+            paragraphs: [
+              "Day two is mixers, more ice, and snacks. The villa-fridge guide is the step-by-step. Tonight is only the three things that stop a thirsty landing.",
+            ],
+            link: {
+              href: "/blog/villa-fridge-drinks-bali",
+              label: "How to stock the villa fridge after night one",
+            },
+          },
+        ],
+      },
+      id: {
+        title: "Minuman malam pertama setelah mendarat di Bali: bir, es, dan air ke villa",
+        description:
+          "Mendarat di DPS dan butuh antar alkohol dekat bandara atau villa Kuta/Seminyak malam ini? WhatsApp MadeBrings di Abianbase untuk bir, kola, es, dan Aqua. Konfirmasi stok. 21+.",
+        excerpt:
+          "Malam pertama bukan gudang minuman keras. Itu bir dingin, es, dan air setelah pesawat panjang — dipesan dengan pin, bukan taksi keliling macet Kuta.",
+        speakable:
+          "Minuman malam pertama setelah mendarat di Bali adalah bir, es, dan air, bukan bar lengkap. MadeBrings toko keluarga di Abianbase, Badung. Wisatawan yang mendarat di Ngurah Rai dan menginap di Kuta, Seminyak, atau villa Canggu bisa WhatsApp pin dari halaman jasa antar alkohol Bali. Kami konfirmasi Bintang, Singaraja, Smirnoff Ice, Coca-Cola, es 4kg, dan Aqua dari katalog publik. Bintang 330ml Rp35.000, pak isi enam Rp200.000, Coca-Cola 250ml Rp9.000, es Rp25.000, dus Aqua Rp65.000. Kami bukan 24/7 dan tidak menjemput di landasan. Bayar tunai atau transfer. Harus 21 tahun. Chat sebelum mengandalkan pendingin.",
+        inclusions: [
+          "Daftar malam pertama: bir atau Ice, es 4kg, Aqua, kola opsional",
+          "Pin WhatsApp dari Kuta, Seminyak, Canggu, atau villa dekat setelah DPS",
+          "Harga katalog sebelum bayar",
+          "Tunai atau transfer setelah kami konfirmasi stok dan ongkir",
+        ],
+        faqs: extraFaqs("id", [
+          {
+            question: "Apakah menjemput di bandara dengan bir?",
+            answer:
+              "Tidak. Kami antar ke pin villa atau rumah, bukan ke aula kedatangan. Mendarat, sampai villa, kirim pin, lalu kami konfirmasi apakah rutenya masih bisa.",
+          },
+          {
+            question: "Apa yang dipesan untuk malam pertama?",
+            answer:
+              "Pak isi enam Bintang (Rp200.000), es 4kg (Rp25.000), dan dus Aqua 600ml (Rp65.000) cukup untuk kebanyakan grup. Tambah Coca-Cola 250ml Rp9.000 jika sudah ada botol di lemari.",
+          },
+        ]),
+        howTo: {
+          name: "Cara isi villa Bali di malam pertama setelah mendarat",
+          steps: [
+            {
+              name: "Sampai villa, lalu kirim pin",
+              text: "Kami tidak menunggu di DPS. Buka WhatsApp dengan nama villa atau pin Google setelah Anda di properti.",
+            },
+            {
+              name: "Pesan tiga malam pertama",
+              text: "Bir atau Smirnoff Ice, es 4kg, dan air minum. Tambah kola hanya jika akan meracik.",
+            },
+            {
+              name: "Konfirmasi stok dan ongkir",
+              text: "Tunggu MadeBrings bilang isi pendingin dan ongkir untuk pin itu. Bayar tunai atau transfer.",
+            },
+            {
+              name: "Harus 21 dan tetap di villa",
+              text: "Hukum Indonesia 21+. Lewati taksi malam di Kuta jika belum kenal jalan.",
+            },
+          ],
+        },
+        sections: [
+          {
+            paragraphs: [
+              "Ngurah Rai menurunkan orang capek ke macet Kuta. Pencarian yang berguna bukan “wiski termurah di Bali.” Itu “bir dingin, es, dan air di villa tanpa tersesat.”",
+              "MadeBrings di Abianbase, Badung darat — antara jalan bandara, Canggu, dan Mengwi. Kami toko keluarga. Chat dulu. Kalau jam atau pin tidak masuk, kami bilang tidak.",
+            ],
+            link: {
+              href: BOOKING_PATH,
+              label: "Mulai chat malam pertama di halaman pesan",
+            },
+          },
+          {
+            heading: "Daftar malam pertama yang muat di motor",
+            paragraphs: [
+              "Jangan pesan gudang minuman keras sebelum tidur. Tiga katalog yang benar-benar sampai dingin: bir, es, air. Mixer bisa pagi jika kulkas sudah penuh camilan bandara.",
+            ],
+            list: [
+              "Pak isi enam Bintang 330ml — Rp200.000",
+              "Singaraja 330ml — Rp22.000 jika mau botol harian lokal",
+              "Es 4kg — Rp25.000",
+              "Dus Aqua 600ml (24) — Rp65.000",
+              "Coca-Cola 250ml — Rp9.000",
+            ],
+            link: {
+              href: "/shop",
+              label: "Buka rak publik",
+            },
+          },
+          {
+            heading: "Pin Kuta dan Seminyak setelah pesawat",
+            paragraphs: [
+              "Jika villa di Kuta, Legian, atau Seminyak, pakai catatan Bali selatan, lalu tetap pesan dari halaman utama agar satu WhatsApp memegang pesanan. Malam pertama Canggu (Berawa, Pererenan) pakai panduan Canggu.",
+            ],
+            link: {
+              href: "/blog/alcohol-delivery-seminyak-kuta",
+              label: "Catatan antar Seminyak dan Kuta",
+            },
+          },
+          {
+            heading: "Isi sisa kulkas besok",
+            paragraphs: [
+              "Hari kedua: mixer, es lagi, cemilan. Panduan kulkas villa langkah demi langkah. Malam ini hanya tiga hal yang menahan dahaga setelah mendarat.",
+            ],
+            link: {
+              href: "/blog/villa-fridge-drinks-bali",
+              label: "Cara isi kulkas villa setelah malam pertama",
+            },
+          },
+        ],
+      },
+    },
+  },
 ];
 
 export function getCommercialArticle(slug: string) {
@@ -1170,6 +1648,7 @@ export function commercialToBlogPost(
     inclusions: copy.inclusions,
     faqs: copy.faqs,
     bookingPath: BOOKING_PATH,
+    howTo: copy.howTo,
   };
 }
 

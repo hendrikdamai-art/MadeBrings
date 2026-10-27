@@ -52,12 +52,14 @@ export function localBusinessJsonLd(locale: Locale = "en") {
             "antar bir Canggu",
             "antar alkohol Seminyak",
             "pesan bir WhatsApp",
+            "di mana beli alkohol Bali",
             "toko bir Abianbase",
           ]
         : [
             "alcohol delivery Bali",
             "alcohol delivery Canggu",
             "beer delivery Bali",
+            "where to buy alcohol in Bali",
             "villa drinks delivery",
           ],
     availableLanguage: ["id", "en"],
@@ -193,6 +195,35 @@ export function breadcrumbJsonLd(
       position: index + 1,
       name: item.name,
       item: absoluteUrl(localizedPath(locale, item.path)),
+    })),
+  };
+}
+
+export function howToJsonLd({
+  name,
+  description,
+  steps,
+  locale = "en",
+  path,
+}: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+  locale?: Locale;
+  path: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    inLanguage: locale === "id" ? "id-ID" : "en-ID",
+    url: absoluteUrl(localizedPath(locale, path)),
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
     })),
   };
 }

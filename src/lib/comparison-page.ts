@@ -53,9 +53,9 @@ export const comparisonCopy: Record<Locale, ComparisonCopy> = {
         criterion: "Hours",
         madebrings: "Family shop. Chat first. Not 24/7.",
         typical24h:
-          "Boogaloo and Love Anchor public FAQs say 24/7 (Boogaloo excludes Nyepi). Raja Botol’s homepage slogan is “24/7 Bali cheapest alcohol delivery.” GoDrinks Bali’s public site (Oct 2026) says 9 AM–4 AM with a 30–45 minute claim — not 24/7.",
+          "Boogaloo and Love Anchor public FAQs say 24/7 (Boogaloo excludes Nyepi). Raja Botol’s homepage slogan is 24-hour liquor delivery. Canggu Beverage’s homepage (Oct 2026) says 24/7 with a 20–40 minute claim. WowBooze’s about page aims for under 30 minutes, 24/7 except Nyepi. GoDrinks Bali’s public site says 9 AM–4 AM with a 30–45 minute claim — not 24/7.",
         sourceNote:
-          "theboogaloobali.com/pages/faqs · rajabotol.com · godrinksbali.com",
+          "theboogaloobali.com · rajabotol.com · canggubeverage.com · wowbooze.com/about-us · godrinksbali.com",
       },
       {
         criterion: "Areas named on-site",
@@ -145,9 +145,9 @@ export const comparisonCopy: Record<Locale, ComparisonCopy> = {
         criterion: "Jam",
         madebrings: "Toko keluarga. Chat dulu. Bukan 24/7.",
         typical24h:
-          "FAQ publik Boogaloo dan Love Anchor menyebut 24/7 (Boogaloo kecuali Nyepi). Slogan beranda Raja Botol: “24/7 Bali cheapest alcohol delivery.” Situs publik GoDrinks Bali (Okt 2026) menyebut 09.00–04.00 dengan klaim 30–45 menit — bukan 24/7.",
+          "FAQ publik Boogaloo dan Love Anchor menyebut 24/7 (Boogaloo kecuali Nyepi). Beranda Raja Botol: antar 24 jam. Beranda Canggu Beverage (Okt 2026) 24/7 dengan klaim 20–40 menit. Halaman about WowBooze: di bawah 30 menit, 24/7 kecuali Nyepi. Situs publik GoDrinks Bali: 09.00–04.00 dengan klaim 30–45 menit — bukan 24/7.",
         sourceNote:
-          "theboogaloobali.com/pages/faqs · rajabotol.com · godrinksbali.com",
+          "theboogaloobali.com · rajabotol.com · canggubeverage.com · wowbooze.com/about-us · godrinksbali.com",
       },
       {
         criterion: "Wilayah di situs",

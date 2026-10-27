@@ -25,4 +25,8 @@ export type BlogPost = {
   inclusions?: string[];
   faqs?: FaqItem[];
   bookingPath?: string;
+  howTo?: {
+    name: string;
+    steps: { name: string; text: string }[];
+  };
 };
