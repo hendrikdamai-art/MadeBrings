@@ -16,13 +16,27 @@ function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {})
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact"];
+  const staticPaths = [
+    "/",
+    "/shop",
+    "/blog",
+    "/about",
+    "/contact",
+    "/alcohol-delivery-bali",
+    "/compare/bali-alcohol-delivery",
+    "/press",
+  ];
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
     {
       ...entry(path, {
         lastModified: now,
         changeFrequency: "weekly",
-        priority: path === "/" ? 1 : 0.9,
+        priority:
+          path === "/"
+            ? 1
+            : path === "/alcohol-delivery-bali"
+              ? 0.98
+              : 0.9,
       }),
     },
     {
