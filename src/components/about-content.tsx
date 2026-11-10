@@ -4,16 +4,17 @@ import Image from "next/image";
 import { JsonLd, localBusinessJsonLd } from "@/components/json-ld";
 import { WhatsAppIcon, whatsappButtonClass } from "@/components/whatsapp-icon";
 import { buttonVariants } from "@/components/ui/button";
+import { LocaleLink } from "@/components/locale-link";
 import { useLocale } from "@/components/locale-provider";
 import { siteConfig } from "@/lib/site";
 import { cn } from "@/lib/utils";
 
 export function AboutContent() {
-  const { t, orderHref } = useLocale();
+  const { t, orderHref, locale } = useLocale();
 
   return (
     <div className="mx-auto max-w-3xl px-4 py-14">
-      <JsonLd data={localBusinessJsonLd()} />
+      <JsonLd data={localBusinessJsonLd(locale)} />
       <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
         {t("aboutKicker")}
       </p>
@@ -35,6 +36,14 @@ export function AboutContent() {
         <p>{t("aboutP3")}</p>
         <p>{t("aboutP4")}</p>
         <p>{t("aboutP5")}</p>
+        <p>
+          <LocaleLink
+            href="/alcohol-delivery-bali"
+            className="font-medium text-primary underline-offset-4 hover:underline"
+          >
+            {t("aboutDeliveryLink")}
+          </LocaleLink>
+        </p>
       </div>
       <div className="mt-10 flex flex-wrap gap-3">
         <a

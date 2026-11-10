@@ -16,8 +16,9 @@ export async function generateMetadata() {
   });
 }
 
-export default function BlogIndexPage() {
-  const posts = getBlogPosts();
+export default async function BlogIndexPage() {
+  const locale = await getRequestLocale();
+  const posts = getBlogPosts(locale);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-14">
