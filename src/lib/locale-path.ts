@@ -16,9 +16,12 @@ export function localeFromPathname(pathname: string): Locale {
 }
 
 export function localizedPath(locale: Locale, path: string): string {
-  const raw = path.startsWith("/") ? path : `/${path}`;
-  const stripped = stripLocalePrefix(raw);
-  if (locale !== "id") return stripped;
-  if (stripped === "/") return "/id";
-  return `/id${stripped}`;
+  const hashIndex = path.indexOf("#");
+  const hash = hashIndex >= 0 ? path.slice(hashIndex) : "";
+  const withoutHash = hashIndex >= 0 ? path.slice(0, hashIndex) : path;
+  const raw = withoutHash.startsWith("/") ? withoutHash : `/${withoutHash}`;
+  const stripped = stripLocalePrefix(raw) || "/";
+  const localized =
+    locale !== "id" ? stripped : stripped === "/" ? "/id" : `/id${stripped}`;
+  return `${localized}${hash}`;
 }
