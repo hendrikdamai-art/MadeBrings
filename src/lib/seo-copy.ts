@@ -82,7 +82,7 @@ export const seoCopy: Record<
       "Chat MadeBrings on WhatsApp to order alcohol delivery in Canggu, Seminyak, Kuta, Ubud, or Tanah Lot. Confirm stock, pin, and cash or bank transfer.",
     blogTitle: "Bali alcohol delivery guides",
     blogDescription:
-      "How to order alcohol delivery in Canggu, beer delivery in Seminyak, and a Kuta arrival run from MadeBrings in Abianbase. Prices, inclusions, and WhatsApp booking.",
+      "Alcohol delivery guides for Canggu, Seminyak, Kuta, Ubud, and Tanah Lot from MadeBrings in Abianbase. Prices, inclusions, and WhatsApp booking.",
     ogTitle: "Alcohol delivery in Canggu, Seminyak & Bali · MadeBrings",
     shortPitch:
       "Family alcohol delivery in Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Neighborhood beer prices. Chat WhatsApp to order.",
@@ -103,7 +103,7 @@ export const seoCopy: Record<
       "Chat MadeBrings di WhatsApp untuk pesan antar alkohol di Canggu, Seminyak, Kuta, Ubud, atau Tanah Lot. Konfirmasi stok, pin, dan tunai atau transfer.",
     blogTitle: "Panduan antar alkohol Bali",
     blogDescription:
-      "Cara pesan antar alkohol di Canggu, antar bir di Seminyak, dan pesanan tiba di Kuta dari MadeBrings di Abianbase. Harga, yang termasuk, dan booking WhatsApp.",
+      "Panduan antar alkohol untuk Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot dari MadeBrings di Abianbase. Harga, yang termasuk, dan booking WhatsApp.",
     ogTitle: "Antar alkohol di Canggu, Seminyak, dan Bali · MadeBrings",
     shortPitch:
       "Antar alkohol keluarga di Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot. Harga bir tetangga. Chat WhatsApp untuk pesan.",

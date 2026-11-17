@@ -333,6 +333,117 @@ export const commercialPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "alcohol-delivery-ubud-tanah-lot",
+    intent: "commercial",
+    query: "alcohol delivery Ubud",
+    bookingHref: "/",
+    priceProductIds: [
+      "bintang-330-6pack",
+      "singaraja-pilsner-330",
+      "ice-bag-4kg",
+      "aqua-mineral-600-box",
+      "rent-ice-box-3-days",
+    ],
+    inclusions: [
+      "WhatsApp confirmation before anyone rides inland or west to your pin",
+      "Beer, mixers, ice, and water from the listed Abianbase shop",
+      "Delivery to Ubud-area and Tanah Lot-area villas when Made says the distance works today",
+      "Cash or bank transfer, 21+",
+    ],
+    answer:
+      "MadeBrings can arrange alcohol delivery to Ubud and Tanah Lot from the family shop in Abianbase, Badung. These pins are farther than Canggu or Seminyak, so the honest offer is a planned villa restock, not a 20-minute scooter. WhatsApp Made Hendrik with the villa name, a map pin, beer or Ice, ice bags, and water, plus cash or bank transfer. Listed prices still apply: Singaraja from Rp 22.000, a Bintang six-pack at Rp 200.000, a 4kg ice bag at Rp 25.000, Aqua 24×600ml at Rp 65.000, and a 3-day ice-box rental at Rp 150.000. We confirm stock and whether that inland or west-coast run is possible today. We do not claim 24/7 Ubud coverage. You must be 21 or older. If you are actually staying in Canggu or Seminyak, use those closer guides instead.",
+    faqs: [
+      {
+        question: "Do you deliver alcohol to Ubud?",
+        answer:
+          "When WhatsApp confirms the pin and the stock. Ubud is farther from Abianbase than Canggu. Treat it as a planned drop-off, not an instant app.",
+      },
+      {
+        question: "Can you deliver toward Tanah Lot?",
+        answer:
+          "Yes, for villas and homes around Tanah Lot when Made agrees the run. Send the pin after sunset plans are set so ice still makes sense.",
+      },
+      {
+        question: "Why is this slower than Canggu delivery?",
+        answer:
+          "Distance. Abianbase sits in inland Badung. Canggu and Seminyak are the short tourist hops. Ubud and Tanah Lot need a clearer window and a confirmed fee in the chat.",
+      },
+      {
+        question: "What should an Ubud villa order?",
+        answer:
+          "A six-pack or a Singaraja run, ice, and water. Add the 3-day ice box if the villa has no esky. Ask on WhatsApp if you need a licensed arak bottle — that shelf is short.",
+      },
+    ],
+    title: "Alcohol delivery in Ubud and Tanah Lot: planned villa restocks",
+    description:
+      "Alcohol delivery to Ubud and Tanah Lot from MadeBrings in Abianbase. WhatsApp for beer, ice, and water. Farther pins, neighborhood prices, 21+. Not 24/7.",
+    excerpt:
+      "Staying in Ubud or near Tanah Lot? Chat MadeBrings for a planned beer, ice, and water drop from Abianbase — farther than Canggu, still neighborhood prices.",
+    keywords: [
+      "alcohol delivery Ubud",
+      "alcohol delivery Tanah Lot",
+      "beer delivery Ubud",
+      "Tanah Lot drinks delivery",
+      "Ubud villa alcohol",
+      "Mengwi alcohol delivery",
+      "Abianbase beer delivery",
+      "jasa antar alkohol Ubud",
+    ],
+    datePublished: "2026-11-17",
+    dateModified: "2026-11-17",
+    readingMinutes: 6,
+    heroImage: cdnImage("photo-1537996194471-e657df975ab4"),
+    heroAlt: "Temple gates and tropical trees inland of Bali — the Ubud and Tanah Lot kind of stay",
+    sections: [
+      {
+        paragraphs: [
+          "Ubud and Tanah Lot are the searches people type when the villa is not in Canggu. Alcohol delivery Ubud is a real need; it is also a longer ride from Abianbase. This page tells the truth about that distance and still offers the same listed beer, ice, and water prices.",
+          "Tanah Lot evenings empty a fridge fast. If you want ice that still exists after sunset, order earlier in the day and let Made confirm the west-coast pin.",
+        ],
+      },
+      {
+        heading: "Ubud: planned, not instant",
+        paragraphs: [
+          "Send the villa name in Ubud, Nyuh Kuning, or nearby Gianyar only if you can wait for a confirmed window. We will not publish a fake 30-minute Ubud SLA. If the cooler is short that day, we say so.",
+        ],
+        link: {
+          href: "/shop/beer-cider",
+          label: "See listed beer and cider prices",
+        },
+      },
+      {
+        heading: "Tanah Lot and west-coast villas",
+        paragraphs: [
+          "Pins toward Tanah Lot, Kediri, and that stretch of Tabanan work when the chat agrees. Combine beer with ice bags or the 3-day ice-box rental so the sunset table is not warm cans.",
+        ],
+        link: {
+          href: "/shop/ice-water",
+          label: "Add ice, water, or an ice box",
+        },
+      },
+      {
+        heading: "How to book from Ubud or Tanah Lot",
+        paragraphs: [
+          "Use the money page, tap Order now, and write the area in the first message. Made replies with stock, whether the distance works today, and cash or transfer. 21+ only.",
+        ],
+        link: {
+          href: "/",
+          label: "Book alcohol delivery from Abianbase",
+        },
+      },
+      {
+        heading: "Closer stays",
+        paragraphs: [
+          "If you are actually in Canggu, Seminyak, or Kuta, those guides are the better match. The comparison page explains when a 24/7 warehouse is the better tool than a family shop.",
+        ],
+        link: {
+          href: "/compare/bali-alcohol-delivery",
+          label: "Neighborhood shop vs 24/7 alcohol delivery",
+        },
+      },
+    ],
+  },
 ];
 
 export function getCommercialPosts() {
