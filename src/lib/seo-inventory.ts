@@ -89,5 +89,6 @@ export function getSeoInventory() {
     speakableOutOfRange: speakable.filter(
       (block) => block.words < 130 || block.words > 170,
     ),
+    aiIndex: [absoluteUrl("/llms.txt"), absoluteUrl("/llms-full.txt")],
   };
 }

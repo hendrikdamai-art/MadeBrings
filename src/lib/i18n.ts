@@ -60,6 +60,8 @@ const en = {
   guideUbud: "Ubud & Tanah Lot delivery",
   footerCompare: "Shop vs 24/7",
   footerPress: "Press kit",
+  footerAiIndex: "AI index",
+  footerAiFull: "Full Q&A for AI",
   howToTitle: "How to restock a villa fridge",
   howToLead:
     "Four steps from the listed beer shelf to WhatsApp confirmation. Same prices as the shop. 21+ only.",
@@ -230,6 +232,8 @@ const id: { [K in keyof typeof en]: string } = {
   guideUbud: "Antar Ubud & Tanah Lot",
   footerCompare: "Toko vs 24 jam",
   footerPress: "Kit pers",
+  footerAiIndex: "Indeks AI",
+  footerAiFull: "Tanya jawab penuh untuk AI",
   howToTitle: "Cara isi ulang kulkas villa",
   howToLead:
     "Empat langkah dari rak bir tertera ke konfirmasi WhatsApp. Harga sama dengan toko. 21+ saja.",

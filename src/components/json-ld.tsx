@@ -11,6 +11,10 @@ import {
 } from "@/lib/delivery";
 import { absoluteUrl } from "@/lib/seo";
 
+function aiIndexUrls() {
+  return [absoluteUrl("/llms.txt"), absoluteUrl("/llms-full.txt")];
+}
+
 export function localBusinessJsonLd(locale: Locale = "en") {
   const copy = seoCopy[locale];
   const url =
@@ -84,7 +88,9 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       siteConfig.social.facebook,
       siteConfig.social.tripadvisor,
       siteConfig.social.maps,
+      ...aiIndexUrls(),
     ],
+    describedBy: absoluteUrl("/llms.txt"),
   };
 }
 
@@ -136,6 +142,12 @@ export function webPageJsonLd({
       "@type": "Service",
       name:
         locale === "id" ? "Jasa antar alkohol Bali" : "Alcohol delivery Bali",
+    },
+    describedBy: absoluteUrl("/llms.txt"),
+    subjectOf: {
+      "@type": "CreativeWork",
+      name: "MadeBrings AI index",
+      url: absoluteUrl("/llms.txt"),
     },
     speakable: speakable
       ? {
