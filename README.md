@@ -90,6 +90,9 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/blog/alcohol-delivery-canggu`
 - `/blog/beer-delivery-seminyak`
 - `/blog/alcohol-delivery-kuta`
+- `/blog/alcohol-delivery-ubud-tanah-lot`
+- `/compare/bali-alcohol-delivery` neighborhood shop vs 24/7 (methodology)
+- `/press` media kit
 - `/blog/bali-holiday-guide-badung`
 - `/blog/bali-tour-guide-selaras` (links to [Selaras Bali Guide](https://www.selarasbaliguide.com))
 - `/blog/arak-bali-traditional-drink`

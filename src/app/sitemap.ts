@@ -16,7 +16,15 @@ function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {})
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact"];
+  const staticPaths = [
+    "/",
+    "/shop",
+    "/blog",
+    "/about",
+    "/contact",
+    "/press",
+    "/compare/bali-alcohol-delivery",
+  ];
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
     {
       ...entry(path, {

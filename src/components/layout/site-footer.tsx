@@ -99,6 +99,21 @@ export function SiteFooter() {
                 {t("guideKuta")}
               </LocaleLink>
             </li>
+            <li>
+              <LocaleLink href="/blog/alcohol-delivery-ubud-tanah-lot" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("guideUbud")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/compare/bali-alcohol-delivery" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerCompare")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/press" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerPress")}
+              </LocaleLink>
+            </li>
           </ul>
         </div>
       </div>

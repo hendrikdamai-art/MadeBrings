@@ -57,6 +57,12 @@ const en = {
   guideCanggu: "Canggu alcohol delivery",
   guideSeminyak: "Seminyak beer delivery",
   guideKuta: "Kuta arrival drinks",
+  guideUbud: "Ubud & Tanah Lot delivery",
+  footerCompare: "Shop vs 24/7",
+  footerPress: "Press kit",
+  howToTitle: "How to restock a villa fridge",
+  howToLead:
+    "Four steps from the listed beer shelf to WhatsApp confirmation. Same prices as the shop. 21+ only.",
   pricesTitle: "Starter prices from the shelf",
   pricesBody:
     "These are the listed shop prices, not a beach-club menu. Stock moves. Ice and water can go in the same WhatsApp order as the beer.",
@@ -221,6 +227,12 @@ const id: { [K in keyof typeof en]: string } = {
   guideCanggu: "Antar alkohol Canggu",
   guideSeminyak: "Antar bir Seminyak",
   guideKuta: "Minuman tiba di Kuta",
+  guideUbud: "Antar Ubud & Tanah Lot",
+  footerCompare: "Toko vs 24 jam",
+  footerPress: "Kit pers",
+  howToTitle: "Cara isi ulang kulkas villa",
+  howToLead:
+    "Empat langkah dari rak bir tertera ke konfirmasi WhatsApp. Harga sama dengan toko. 21+ saja.",
   pricesTitle: "Harga awal dari rak",
   pricesBody:
     "Ini harga toko yang tertera, bukan menu beach club. Stok bergerak. Es dan air bisa masuk chat WhatsApp yang sama dengan bir.",

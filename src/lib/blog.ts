@@ -1,6 +1,8 @@
 import { commercialPosts } from "@/lib/commercial-posts";
+import { commercialIdCopy } from "@/lib/commercial-i18n";
 import { cdnImage } from "@/lib/commerce/images";
 import type { FaqItem } from "@/lib/delivery";
+import type { Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
 
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
@@ -287,6 +289,13 @@ export function getCommercialBlogPosts() {
 
 export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
+}
+
+export function localizeBlogPost(post: BlogPost, locale: Locale): BlogPost {
+  if (locale !== "id") return post;
+  const copy = commercialIdCopy[post.slug];
+  if (!copy) return post;
+  return { ...post, ...copy };
 }
 
 export function getRelatedPosts(slug: string) {
