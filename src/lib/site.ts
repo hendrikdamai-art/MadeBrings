@@ -1,11 +1,12 @@
 export const siteConfig = {
   name: "MadeBrings",
   legalName: "MadeBrings",
-  tagline: "Alcohol delivery service in Abianbase, Bali — beer, liquor, and mixers to your door",
+  tagline:
+    "Alcohol delivery in Canggu, Seminyak, Kuta, Ubud, and Tanah Lot — beer, mixers, and ice to your villa",
   shortPitch:
-    "Family alcohol delivery service in Abianbase, Badung. Neighborhood prices on beer, liquor, and mixers. Chat us to order.",
+    "Family alcohol delivery from Abianbase to Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Neighborhood beer prices. Chat WhatsApp to order.",
   description:
-    "MadeBrings is a family-run alcohol delivery service in Abianbase, Badung, Bali. Order beer, liquor, mixers, ice, and snacks on WhatsApp. We deliver to your villa or home. Pay cash or bank transfer.",
+    "MadeBrings is a family-run alcohol delivery service in Abianbase, Badung, Bali. Order beer, mixers, ice, and snacks on WhatsApp for villas in Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Pay cash or bank transfer.",
   owner: "Made Hendrik",
   address: {
     line1: "Abianbase",
