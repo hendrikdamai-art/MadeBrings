@@ -99,5 +99,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  return [...staticRoutes, ...categories, ...products, ...posts];
+  const aiIndex: MetadataRoute.Sitemap = [
+    {
+      url: absoluteUrl("/llms.txt"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.4,
+    },
+    {
+      url: absoluteUrl("/llms-full.txt"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.3,
+    },
+  ];
+
+  return [...staticRoutes, ...categories, ...products, ...posts, ...aiIndex];
 }

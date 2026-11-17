@@ -341,5 +341,6 @@ export function blogJsonLd(post: BlogPost) {
         }
       : undefined,
     about: post.query,
+    describedBy: `${siteConfig.url.replace(/\/$/, "")}/llms.txt`,
   };
 }

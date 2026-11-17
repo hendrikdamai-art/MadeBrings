@@ -114,6 +114,16 @@ export function SiteFooter() {
                 {t("footerPress")}
               </LocaleLink>
             </li>
+            <li>
+              <a href="/llms.txt" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerAiIndex")}
+              </a>
+            </li>
+            <li>
+              <a href="/llms-full.txt" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("footerAiFull")}
+              </a>
+            </li>
           </ul>
         </div>
       </div>

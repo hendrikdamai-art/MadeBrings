@@ -61,6 +61,8 @@ The site also ships:
 - Commercial guides for Canggu, Seminyak, and Kuta
 - `GET /api/seo/status` — public SEO inventory (no secrets)
 - `GET /api/cron/seo-maintenance` — secured by `CRON_SECRET`, every 2 days via `vercel.json`
+- `/llms.txt` and `/llms-full.txt` — AI citation indexes (CDN cached)
+- `robots.txt` allows GPTBot, OAI-SearchBot, Claude, Perplexity, and Google-Extended
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
 
 ## Architecture (ready to grow)
@@ -98,6 +100,8 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/blog/arak-bali-traditional-drink`
 - `/api/seo/status` SEO health JSON
 - `/api/cron/seo-maintenance` secured maintenance cron
+- `/llms.txt` short AI index with query→URL table
+- `/llms-full.txt` full Q&A for citations
 
 Alcohol sales require confirming you are 21 or older (Indonesian law).
 
