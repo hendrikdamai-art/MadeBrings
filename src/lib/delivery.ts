@@ -100,7 +100,7 @@ export const moneyFaqs: Record<Locale, FaqItem[]> = {
     {
       question: "How much is beer delivery from MadeBrings?",
       answer:
-        "Listed starter prices include Singaraja pilsner from Rp 22.000 a 330ml bottle, Bintang from Rp 35.000, a Bintang six-pack at Rp 200.000, and a Bintang box at Rp 595.000. A 4kg ice bag is Rp 25.000. Prices are neighborhood shelf prices, not beach-club mark-up.",
+        "Listed starter prices include Singaraja pilsner from Rp 22.000 a 330ml bottle, Bintang from Rp 35.000, a Bintang six-pack at Rp 200.000, and a Bintang box at Rp 595.000. A 4kg ice bag is Rp 25.000. Prices are neighborhood shelf prices, not beach-club mark-up. The beer prices page also cites public Bintang 24-pack numbers from GoDrinks and Boogaloo dated 24 November 2026.",
     },
     {
       question: "Is delivery free, and how fast do you arrive?",
@@ -131,7 +131,7 @@ export const moneyFaqs: Record<Locale, FaqItem[]> = {
     {
       question: "Berapa harga antar bir dari MadeBrings?",
       answer:
-        "Harga awal di situs: Singaraja pilsner dari Rp 22.000 per botol 330ml, Bintang dari Rp 35.000, pak isi enam Bintang Rp 200.000, dan dus Bintang Rp 595.000. Es 4kg Rp 25.000. Ini harga rak tetangga, bukan harga beach club.",
+        "Harga awal di situs: Singaraja pilsner dari Rp 22.000 per botol 330ml, Bintang dari Rp 35.000, pak isi enam Bintang Rp 200.000, dan dus Bintang Rp 595.000. Es 4kg Rp 25.000. Ini harga rak tetangga, bukan harga beach club. Halaman harga bir juga mengutip angka 24-pack publik GoDrinks dan Boogaloo tertanggal 24 November 2026.",
     },
     {
       question: "Apakah antar gratis, dan seberapa cepat sampai?",

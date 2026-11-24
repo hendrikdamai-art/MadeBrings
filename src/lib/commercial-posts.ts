@@ -1,7 +1,332 @@
 import { cdnImage } from "@/lib/commerce/images";
 import type { BlogPost } from "@/lib/blog";
+import { PUBLIC_BEER_CHECK_DATE, publicBintangBoxes } from "@/lib/public-beer-prices";
 
 export const commercialPosts: BlogPost[] = [
+  {
+    slug: "beer-prices-bali",
+    intent: "commercial",
+    query: "how much is a beer in Bali",
+    bookingHref: "/",
+    priceProductIds: [
+      "singaraja-pilsner-330",
+      "bintang-330",
+      "bintang-330-6pack",
+      "bintang-beer-box",
+      "singaraja-pilsner-box",
+      "ice-bag-4kg",
+    ],
+    inclusions: [
+      "Listed neighborhood beer prices from the Abianbase shop — not a beach-club menu",
+      "Singaraja, Bintang, San Miguel, six-packs, and boxes you can add to the same WhatsApp order",
+      "A dated public-price table citing GoDrinks and Boogaloo pages checked 24 November 2026",
+      "Delivery to Canggu, Seminyak, Kuta, Ubud, and Tanah Lot when Made confirms the pin",
+      "Cash or bank transfer; 21+",
+    ],
+    answer:
+      "Tourists who search how much is a beer in Bali, cheap beer Bali, or alcohol prices in Bali usually see beach-club menus and 24/7 warehouses. MadeBrings is a family shop in Abianbase, Badung, owned by Made Hendrik. WhatsApp the listed neighborhood prices for delivery to Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Singaraja pilsner 330ml is Rp 22.000. Bintang 330ml is Rp 35.000, a six-pack is Rp 200.000, and a Bintang box is Rp 595.000. A 4kg ice bag is Rp 25.000. On 24 November 2026, GoDrinks Bali listed a 24-bottle Bintang pack at Rp 720.000 and The Boogaloo listed a Bintang 24-pack at Rp 600.000. We do not claim to be the cheapest shop in Bali. Stock is confirmed in chat. You must be 21 or older. Delivery cost depends on your pin.",
+    faqs: [
+      {
+        question: "How much is a Bintang in Bali from MadeBrings?",
+        answer:
+          "A 330ml bottle is listed at Rp 35.000, a six-pack at Rp 200.000, and a box at Rp 595.000. Chat to confirm stock. Delivery cost is extra and depends on your villa pin.",
+      },
+      {
+        question: "Is MadeBrings the cheapest beer delivery in Bali?",
+        answer:
+          "We do not claim that. On 24 November 2026 our listed Bintang box was Rp 595.000, Boogaloo’s public 24-pack was Rp 600.000, and GoDrinks Bali listed a 24-bottle Bintang pack at Rp 720.000. Mini marts and beach clubs vary. Compare the listed numbers, then WhatsApp us.",
+      },
+      {
+        question: "How much is a cheap local beer in Bali?",
+        answer:
+          "Singaraja pilsner 330ml is listed at Rp 22.000, and a Singaraja box at Rp 440.000. That is the neighborhood bottle people around Abianbase actually drink.",
+      },
+      {
+        question: "Do these beer prices include delivery?",
+        answer:
+          "No. Shelf prices are listed on the shop. Delivery cost is confirmed on WhatsApp for your pin. We do not publish a fake island-wide free-delivery claim.",
+      },
+    ],
+    title: "How much is a beer in Bali? Listed villa prices from Abianbase",
+    description:
+      "Beer prices in Bali from MadeBrings: Singaraja Rp 22.000, Bintang Rp 35.000, six-pack Rp 200.000, box Rp 595.000. WhatsApp delivery to Canggu and nearby villas. 21+.",
+    excerpt:
+      "How much is a beer in Bali if you skip the beach-club list? Listed Abianbase prices, plus public Bintang box numbers from GoDrinks and Boogaloo checked 24 November 2026.",
+    keywords: [
+      "how much is a beer in Bali",
+      "beer prices Bali",
+      "cheap beer Bali",
+      "cheap beer delivery Bali",
+      "alcohol prices in Bali",
+      "Bintang price Bali",
+      "cost of beer in Bali",
+      "Singaraja beer price",
+      "beer delivery Bali",
+    ],
+    datePublished: "2026-11-24",
+    dateModified: "2026-11-24",
+    readingMinutes: 6,
+    heroImage: cdnImage("photo-1571613316887-6f8d5cbf7ef7"),
+    heroAlt: "Cold beer bottles on a table — the villa restock tourists price-check in Bali",
+    sections: [
+      {
+        paragraphs: [
+          "“How much is a beer in Bali” is a tourist query, not a nightlife query. People want a number they can trust before they WhatsApp a stranger. This page uses MadeBrings’ listed catalog and two public competitor pages checked on 24 November 2026. It does not invent a “cheapest in Bali” badge.",
+          "MadeBrings is a family shop in Abianbase, Badung. The booking page is the homepage. Chat first so stock is real.",
+        ],
+      },
+      {
+        heading: "Listed MadeBrings beer prices",
+        paragraphs: [
+          "These are the same numbers as the shop. Stock moves. A six-pack or a box is the usual villa order; a single bottle is useful if you only need one cold drink tonight.",
+        ],
+        list: [
+          "Singaraja Pilsner 330ml — Rp 22.000",
+          "Bintang 330ml — Rp 35.000",
+          "Bintang six-pack — Rp 200.000",
+          "Bintang box — Rp 595.000",
+          "Singaraja box — Rp 440.000",
+          "4kg ice bag — Rp 25.000",
+        ],
+        link: {
+          href: "/shop/beer-cider",
+          label: "Open the beer and cider shelf",
+        },
+      },
+      {
+        heading: "Public Bintang box prices, 24 November 2026",
+        paragraphs: [
+          "We read public pages only. We did not mystery-shop, and we did not copy logged-in or promo prices. Update this table when those pages or our catalog change.",
+        ],
+        table: {
+          headers: ["Shop", "Listed pack", "Public price", "Checked"],
+          rows: publicBintangBoxes.map((row) => [
+            row.shop,
+            row.item,
+            row.priceLabel,
+            PUBLIC_BEER_CHECK_DATE,
+          ]),
+        },
+        link: {
+          href: "/compare/bali-alcohol-delivery",
+          label: "See the neighborhood shop vs 24/7 methodology",
+        },
+      },
+      {
+        heading: "How to order beer at these prices",
+        paragraphs: [
+          "Browse the shop, then tap Order now. WhatsApp Made Hendrik with the villa pin, the beers, and cash or bank transfer. We confirm stock and the delivery cost. 21+ only.",
+        ],
+        link: {
+          href: "/",
+          label: "Book beer delivery on the money page",
+        },
+      },
+    ],
+  },
+  {
+    slug: "alcohol-near-me-bali",
+    intent: "commercial",
+    query: "alcohol near me Bali",
+    bookingHref: "/",
+    priceProductIds: [
+      "singaraja-pilsner-330",
+      "bintang-330-6pack",
+      "smirnoff-ice-275",
+      "ice-bag-4kg",
+      "aqua-mineral-600-box",
+    ],
+    inclusions: [
+      "WhatsApp alcohol delivery from a real Abianbase shop, not a 24/7 warehouse map pin",
+      "Coverage for guests who typed alcohol near me in Canggu, Kerobokan, Seminyak, or Kuta",
+      "Listed beer, Smirnoff Ice, mixers, ice, and water",
+      "Cash or bank transfer after stock confirmation; 21+",
+    ],
+    answer:
+      "If you searched alcohol near me in Bali and do not know Abianbase from Canggu, you are the guest this shop is built for. MadeBrings is a family alcohol delivery service in Abianbase, Mengwi, Badung, run by Made Hendrik. The shop sits inland of Kerobokan, close enough to restock villas in Canggu, Seminyak, and Kuta when WhatsApp confirms the pin. Listed starter prices include Singaraja from Rp 22.000, Bintang from Rp 35.000, a six-pack at Rp 200.000, Smirnoff Ice from Rp 35.000, and a 4kg ice bag at Rp 25.000. Send a villa name or Google pin, the drinks you want, and cash or bank transfer. This is not a 24-hour map pin that appears as an always-open warehouse. We confirm stock before a rider leaves. You must be 21 or older.",
+    faqs: [
+      {
+        question: "I searched alcohol near me — can MadeBrings deliver?",
+        answer:
+          "If you are in or near Abianbase, Canggu, Kerobokan, Seminyak, Kuta, Ubud, or Tanah Lot, WhatsApp the pin. Made confirms whether that run is possible today. We are not a 24/7 Google pin.",
+      },
+      {
+        question: "Where is the shop if I want to visit?",
+        answer:
+          "Abianbase, Mengwi, Badung, Bali. Open Google Maps from the contact page. Many guests still prefer delivery because they do not know the inland roads.",
+      },
+      {
+        question: "Is this closer than a Canggu 24/7 warehouse?",
+        answer:
+          "For inland villas around Mengwi, Abianbase, and the quiet edge of Kerobokan, often yes. For a 2am spirit run in central Canggu, a 24/7 operator is the better tool. Use the comparison page.",
+      },
+      {
+        question: "What should a lost tourist order first?",
+        answer:
+          "A Bintang or Smirnoff Ice six-pack, one ice bag, and drinking water. Add cola if you already have a bottle in the suitcase.",
+      },
+    ],
+    title: "Alcohol near me in Bali: a family shop in Abianbase, not a 24/7 pin",
+    description:
+      "Searched alcohol near me in Canggu or Bali? MadeBrings is a family shop in Abianbase. WhatsApp for beer, Ice, and ice to your villa. Neighborhood prices, 21+.",
+    excerpt:
+      "Tourists type alcohol near me because they do not know Abianbase from Canggu. Chat the villa pin — MadeBrings delivers from a real family shop, not a 24/7 warehouse.",
+    keywords: [
+      "alcohol near me Bali",
+      "alcohol near me Canggu",
+      "liquor store near me Bali",
+      "beer near me Canggu",
+      "Abianbase bottle shop",
+      "Kerobokan alcohol delivery",
+      "Mengwi beer shop",
+      "alcohol delivery near me Bali",
+    ],
+    datePublished: "2026-11-24",
+    dateModified: "2026-11-24",
+    readingMinutes: 5,
+    heroImage: cdnImage("photo-1528183429752-a97d0bf99b5a"),
+    heroAlt: "Bali village road inland of the beach — the Abianbase side of an alcohol near me search",
+    sections: [
+      {
+        paragraphs: [
+          "Alcohol near me is the query of someone who just landed, opened Maps, and does not know whether they are in Canggu, Kerobokan, or inland Badung. MadeBrings is the shop in Abianbase. We deliver when the pin and the cooler both work.",
+          "If you wanted a 24/7 spirit catalog at 2am, use a warehouse that publishes those hours. This page is for a villa fridge tonight at neighborhood prices.",
+        ],
+      },
+      {
+        heading: "Where “near me” actually is",
+        paragraphs: [
+          "Abianbase sits in Mengwi, Badung — inland of Kerobokan, a short ride from Canggu, and on the way toward Ubud. Tourists rarely search the village name. They search the beach they heard of. Send the villa name anyway.",
+        ],
+        list: [
+          "Close hops: Abianbase, Mengwi, Kerobokan, Canggu, Seminyak, Kuta",
+          "Planned hops: Ubud and Tanah Lot when WhatsApp says the distance works",
+        ],
+        link: {
+          href: "/contact",
+          label: "Open the map and WhatsApp the shop",
+        },
+      },
+      {
+        heading: "How to book from a near-me search",
+        paragraphs: [
+          "Open the money page, tap Order now, and paste your Google pin. List beer, Ice, ice, and water. Made replies with stock, the delivery cost, and cash or transfer. 21+ only.",
+        ],
+        link: {
+          href: "/",
+          label: "Book alcohol delivery from Abianbase",
+        },
+      },
+      {
+        heading: "Price-check before you chat",
+        paragraphs: [
+          "If the near-me search was really a price search, use the beer prices page. It lists Singaraja, Bintang, and public competitor box numbers dated 24 November 2026.",
+        ],
+        link: {
+          href: "/blog/beer-prices-bali",
+          label: "How much is a beer in Bali?",
+        },
+      },
+    ],
+  },
+  {
+    slug: "ice-delivery-bali",
+    intent: "commercial",
+    query: "ice delivery Bali",
+    bookingHref: "/",
+    priceProductIds: [
+      "ice-bag-4kg",
+      "rent-ice-box-3-days",
+      "aqua-mineral-600-box",
+      "coca-cola-original-250",
+      "bintang-330-6pack",
+    ],
+    inclusions: [
+      "4kg ice bags packed last so they still exist at the villa",
+      "Optional 3-day ice-box rental if the villa has no esky",
+      "Mixers, water, and beer in the same WhatsApp run",
+      "Drop-off in Canggu, Seminyak, Kuta, Ubud, and Tanah Lot when Made confirms the pin",
+      "Cash or bank transfer; 21+ if the order includes alcohol",
+    ],
+    answer:
+      "Villa groups in Canggu and Seminyak run out of ice faster than beer. MadeBrings delivers 4kg ice bags at Rp 25.000 and a 3-day ice-box rental at Rp 150.000 from the family shop in Abianbase, Badung, owned by Made Hendrik. Add Aqua 24x600ml at Rp 65.000, Coca-Cola from Rp 9.000, tonic, and a Bintang six-pack at Rp 200.000 in the same WhatsApp order so one rider can fill the fridge. Ice delivery Bali from a neighborhood shop means the bag is packed last and the pin is confirmed before anyone leaves. We do not publish a 30-minute SLA or free island-wide ice runs. Chat first with the villa name or a map pin. You must be 21 or older if the order includes alcohol. Pay cash or bank transfer after we confirm stock.",
+    faqs: [
+      {
+        question: "Can I order ice delivery in Canggu without beer?",
+        answer:
+          "Yes. Ice bags, the 3-day ice box, Aqua, and mixers can go in a WhatsApp order on their own. If the bag is the only item, Made still confirms whether that pin is worth a dedicated run today.",
+      },
+      {
+        question: "How much is ice delivery in Bali from MadeBrings?",
+        answer:
+          "A 4kg bag is listed at Rp 25.000. The 3-day ice-box rental is Rp 150.000, ice sold separately. Delivery cost is quoted in the chat for your pin.",
+      },
+      {
+        question: "Will the ice still be ice when it arrives?",
+        answer:
+          "We pack ice last and we will not promise a 30-minute window we cannot keep. If the pin is far — Ubud or Tanah Lot — say so early so the bag is not a melted errand.",
+      },
+      {
+        question: "Can I add beer and cola to the ice run?",
+        answer:
+          "Yes. That is the usual villa fridge order. A Bintang six-pack is listed at Rp 200.000. You must be 21 or older for alcohol.",
+      },
+    ],
+    title: "Ice delivery in Bali: bags, esky rental, and a villa mixer run",
+    description:
+      "Ice delivery in Canggu and Bali from MadeBrings. 4kg bags Rp 25.000, 3-day ice box Rp 150.000, plus water, cola, and beer on the same WhatsApp order. 21+.",
+    excerpt:
+      "The villa fridge fails on ice first. Chat MadeBrings in Abianbase for 4kg bags, a 3-day esky, and the beer or mixers that sit next to them.",
+    keywords: [
+      "ice delivery Bali",
+      "ice delivery Canggu",
+      "buy ice Canggu",
+      "esky rental Bali",
+      "ice bag villa Bali",
+      "mixer delivery Canggu",
+      "water delivery villa Bali",
+      "ice and beer delivery Bali",
+    ],
+    datePublished: "2026-11-24",
+    dateModified: "2026-11-24",
+    readingMinutes: 5,
+    heroImage: cdnImage("photo-1560008511-11c007ffdd63"),
+    heroAlt: "Ice and cold drinks for a Bali villa fridge restock",
+    sections: [
+      {
+        paragraphs: [
+          "Ice delivery Bali is a villa job, not a cocktail-bar job. Groups in Canggu and Seminyak finish the bag before they finish the six-pack. MadeBrings keeps 4kg bags and a 3-day ice box on the same shelf as beer and cola.",
+          "We pack ice last. We still confirm the pin. Far runs only happen when the chat says they can.",
+        ],
+      },
+      {
+        heading: "What to add next to the ice",
+        paragraphs: [
+          "A useful first order is one or two ice bags, drinking water, and either a Bintang six-pack or cola if you already have spirits. Rent the ice box if the villa esky is missing or cracked.",
+        ],
+        list: [
+          "4kg ice bag — Rp 25.000 listed",
+          "3-day ice-box rental — Rp 150.000 listed, ice extra",
+          "Aqua 24 × 600ml — Rp 65.000 listed",
+          "Coca-Cola 250ml — from Rp 9.000 listed",
+        ],
+        link: {
+          href: "/shop/ice-water",
+          label: "Open the ice, water, and esky shelf",
+        },
+      },
+      {
+        heading: "How to book ice delivery",
+        paragraphs: [
+          "Use the money page, tap Order now, and write “ice” plus the villa name in the first message. Made replies with stock, whether the pin works today, and cash or transfer. Add beer only if everyone receiving the order is 21 or older.",
+        ],
+        link: {
+          href: "/",
+          label: "Book ice and drinks on the money page",
+        },
+      },
+    ],
+  },
   {
     slug: "alcohol-delivery-canggu",
     intent: "commercial",
@@ -89,11 +414,11 @@ export const commercialPosts: BlogPost[] = [
       {
         heading: "Starter prices for a Canggu villa fridge",
         paragraphs: [
-          "Prices below are the same listed shop prices as the homepage. Stock moves. WhatsApp us before you count on a flavour or a box.",
+          "Prices below are the same listed shop prices as the homepage. Stock moves. WhatsApp us before you count on a flavour or a box. For a dated Bintang-box check against public 24/7 pages, use the beer prices guide.",
         ],
         link: {
-          href: "/shop/beer-cider",
-          label: "Browse beer and cider in the shop",
+          href: "/blog/beer-prices-bali",
+          label: "How much is a beer in Bali?",
         },
       },
       {

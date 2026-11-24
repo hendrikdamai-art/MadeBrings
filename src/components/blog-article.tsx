@@ -91,6 +91,32 @@ export function BlogArticle({
                 ))}
               </ul>
             ) : null}
+            {section.table ? (
+              <div className="mt-4 overflow-x-auto rounded-2xl border border-primary/10">
+                <table className="w-full text-left text-sm">
+                  <thead className="bg-primary text-primary-foreground">
+                    <tr>
+                      {section.table.headers.map((header) => (
+                        <th key={header} className="px-3 py-2 font-heading text-base tracking-wide">
+                          {header}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {section.table.rows.map((row) => (
+                      <tr key={row.join("|")} className="border-t border-primary/10">
+                        {row.map((cell) => (
+                          <td key={cell} className="px-3 py-2">
+                            {cell}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : null}
             {section.link ? (
               <p className="mt-4">
                 {section.link.href.startsWith("http") ? (

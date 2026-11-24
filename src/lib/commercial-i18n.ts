@@ -12,6 +12,190 @@ type IdCopy = Pick<
 >;
 
 export const commercialIdCopy: Record<string, IdCopy> = {
+  "beer-prices-bali": {
+    title: "Berapa harga bir di Bali? Harga villa tertera dari Abianbase",
+    description:
+      "Harga bir Bali dari MadeBrings: Singaraja Rp 22.000, Bintang Rp 35.000, pak isi enam Rp 200.000, dus Rp 595.000. Antar WhatsApp ke Canggu dan villa sekitar. 21+.",
+    excerpt:
+      "Berapa harga bir di Bali jika bukan menu beach club? Harga Abianbase tertera, plus angka dus Bintang publik dari GoDrinks dan Boogaloo pada 24 November 2026.",
+    answer:
+      "Wisatawan yang mencari berapa harga bir di Bali, bir murah Bali, atau harga alkohol Bali biasanya melihat menu beach club dan gudang 24 jam. MadeBrings adalah toko keluarga di Abianbase, Badung, milik Made Hendrik. Chat WhatsApp untuk harga rak tetangga dan pengantaran ke Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot. Singaraja pilsner 330ml tertera Rp 22.000. Bintang 330ml Rp 35.000, pak isi enam Rp 200.000, dan dus Bintang Rp 595.000. Es batu 4kg Rp 25.000. Pada 24 November 2026, situs publik GoDrinks Bali menampilkan pak 24 botol Bintang seharga Rp 720.000 dan The Boogaloo menampilkan Bintang 24-pack Rp 600.000. Kami tidak mengklaim sebagai toko termurah di seluruh Bali. Stok dikonfirmasi di chat sebelum kurir berangkat. Anda harus berusia 21 tahun atau lebih. Ongkir tergantung pin villa yang Anda kirim hari ini.",
+    inclusions: [
+      "Harga bir rak tetangga dari toko Abianbase — bukan menu beach club",
+      "Singaraja, Bintang, San Miguel, pak isi enam, dan dus di pesanan WhatsApp yang sama",
+      "Tabel harga publik bertanggal yang mengutip halaman GoDrinks dan Boogaloo 24 November 2026",
+      "Antar ke Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot jika Made konfirmasi pin",
+      "Tunai atau transfer; 21+",
+    ],
+    faqs: [
+      {
+        question: "Berapa harga Bintang di Bali dari MadeBrings?",
+        answer:
+          "Botol 330ml tertera Rp 35.000, pak isi enam Rp 200.000, dus Rp 595.000. Chat untuk stok. Ongkir tambahan tergantung pin villa.",
+      },
+      {
+        question: "Apakah MadeBrings antar bir termurah di Bali?",
+        answer:
+          "Kami tidak mengklaim itu. Pada 24 November 2026 dus Bintang kami Rp 595.000, 24-pack publik Boogaloo Rp 600.000, dan GoDrinks Bali menampilkan pak 24 botol Bintang Rp 720.000. Mini mart dan beach club berbeda-beda. Bandingkan angka tertera, lalu WhatsApp kami.",
+      },
+      {
+        question: "Berapa harga bir lokal yang lebih murah di Bali?",
+        answer:
+          "Singaraja pilsner 330ml tertera Rp 22.000, dus Singaraja Rp 440.000. Itu botol tetangga yang benar-benar diminum di sekitar Abianbase.",
+      },
+      {
+        question: "Apakah harga bir ini termasuk ongkir?",
+        answer:
+          "Tidak. Harga rak tertera di toko. Ongkir dikonfirmasi di WhatsApp untuk pin Anda. Kami tidak memasang klaim antar gratis sepulau.",
+      },
+    ],
+    sections: [
+      {
+        paragraphs: [
+          "“Berapa harga bir di Bali” adalah pencarian wisatawan, bukan pencarian nightlife. Orang ingin angka yang bisa dipercaya sebelum chat orang asing. Halaman ini memakai katalog MadeBrings dan dua halaman kompetitor publik yang dicek 24 November 2026. Tidak ada lencana “termurah di Bali”.",
+        ],
+      },
+      {
+        heading: "Harga bir MadeBrings yang tertera",
+        paragraphs: [
+          "Angka ini sama dengan toko. Stok bergerak. Pak isi enam atau dus pesanan villa yang biasa; botol satuan berguna jika hanya butuh satu minuman dingin malam ini.",
+        ],
+        link: {
+          href: "/shop/beer-cider",
+          label: "Buka rak bir dan sider",
+        },
+      },
+      {
+        heading: "Cara pesan bir dengan harga ini",
+        paragraphs: [
+          "Lihat toko, lalu ketuk Pesan sekarang. WhatsApp Made Hendrik dengan pin villa, bir, dan tunai atau transfer. Kami konfirmasi stok dan ongkir. 21+ saja.",
+        ],
+        link: {
+          href: "/",
+          label: "Pesan antar bir di halaman booking",
+        },
+      },
+    ],
+  },
+  "alcohol-near-me-bali": {
+    title: "Alkohol di dekat saya di Bali: toko keluarga di Abianbase, bukan pin 24 jam",
+    description:
+      "Cari alkohol di dekat saya di Canggu atau Bali? MadeBrings toko keluarga di Abianbase. WhatsApp untuk bir, Ice, dan es ke villa. Harga tetangga, 21+.",
+    excerpt:
+      "Wisatawan mengetik alkohol di dekat saya karena belum membedakan Abianbase dari Canggu. Chat pin villa — MadeBrings antar dari toko keluarga sungguhan, bukan gudang 24 jam.",
+    answer:
+      "Jika Anda mencari alkohol di dekat saya di Bali dan belum membedakan Abianbase dari Canggu, Anda tamu yang toko ini layani. MadeBrings adalah layanan antar alkohol keluarga di Abianbase, Mengwi, Badung, dikelola Made Hendrik. Toko berada di pedalaman Kerobokan, cukup dekat untuk mengisi villa di Canggu, Seminyak, dan Kuta jika WhatsApp mengonfirmasi pin peta. Harga awal tertera: Singaraja dari Rp 22.000, Bintang dari Rp 35.000, pak isi enam Rp 200.000, Smirnoff Ice dari Rp 35.000, dan kantong es 4kg Rp 25.000. Kirim nama villa atau pin Google, minuman yang diinginkan, serta tunai atau transfer bank. Ini bukan pin peta 24 jam yang tampil sebagai gudang selalu buka. Stok dikonfirmasi sebelum kurir meninggalkan Abianbase hari ini. Anda harus berusia 21 tahun atau lebih. Buka halaman booking sekarang, lalu chat untuk konfirmasi.",
+    inclusions: [
+      "Antar alkohol WhatsApp dari toko Abianbase sungguhan, bukan pin peta gudang 24 jam",
+      "Untuk tamu yang mengetik alkohol di dekat saya di Canggu, Kerobokan, Seminyak, atau Kuta",
+      "Bir, Smirnoff Ice, mixer, es, dan air yang tertera",
+      "Tunai atau transfer setelah stok dikonfirmasi; 21+",
+    ],
+    faqs: [
+      {
+        question: "Saya mencari alkohol di dekat saya — bisakah MadeBrings antar?",
+        answer:
+          "Jika Anda di atau dekat Abianbase, Canggu, Kerobokan, Seminyak, Kuta, Ubud, atau Tanah Lot, WhatsApp pin-nya. Made konfirmasi apakah rute itu bisa hari ini. Kami bukan pin Google 24 jam.",
+      },
+      {
+        question: "Di mana tokonya jika ingin mampir?",
+        answer:
+          "Abianbase, Mengwi, Badung, Bali. Buka Google Maps dari halaman kontak. Banyak tamu tetap pilih antar karena belum kenal jalan pedalaman.",
+      },
+      {
+        question: "Apakah ini lebih dekat daripada gudang 24 jam Canggu?",
+        answer:
+          "Untuk villa pedalaman sekitar Mengwi, Abianbase, dan tepi tenang Kerobokan, sering ya. Untuk spirit jam 2 pagi di Canggu tengah, operator 24 jam lebih tepat. Pakai halaman perbandingan.",
+      },
+      {
+        question: "Apa yang dipesan wisatawan yang baru mendarat?",
+        answer:
+          "Pak isi enam Bintang atau Smirnoff Ice, satu kantong es, dan air minum. Tambah kola jika sudah ada botol di koper.",
+      },
+    ],
+    sections: [
+      {
+        paragraphs: [
+          "Alkohol di dekat saya adalah pencarian orang yang baru mendarat, membuka Maps, dan belum tahu apakah mereka di Canggu, Kerobokan, atau Badung pedalaman. MadeBrings tokonya di Abianbase. Kami antar jika pin dan pendingin keduanya memungkinkan.",
+        ],
+      },
+      {
+        heading: "Cara pesan dari pencarian di dekat saya",
+        paragraphs: [
+          "Buka halaman booking, ketuk Pesan sekarang, dan tempel pin Google. Sebutkan bir, Ice, es, dan air. Made membalas stok, ongkir, dan tunai atau transfer. 21+ saja.",
+        ],
+        link: {
+          href: "/",
+          label: "Pesan antar alkohol dari Abianbase",
+        },
+      },
+      {
+        heading: "Cek harga sebelum chat",
+        paragraphs: [
+          "Jika pencarian di dekat saya sebenarnya pencarian harga, buka halaman harga bir. Ada Singaraja, Bintang, dan angka dus kompetitor publik bertanggal 24 November 2026.",
+        ],
+        link: {
+          href: "/blog/beer-prices-bali",
+          label: "Berapa harga bir di Bali?",
+        },
+      },
+    ],
+  },
+  "ice-delivery-bali": {
+    title: "Antar es di Bali: kantong, sewa esky, dan mixer villa",
+    description:
+      "Antar es di Canggu dan Bali dari MadeBrings. Kantong 4kg Rp 25.000, esky 3 hari Rp 150.000, plus air, kola, dan bir di pesanan WhatsApp yang sama. 21+.",
+    excerpt:
+      "Kulkas villa gagal di es lebih dulu. Chat MadeBrings di Abianbase untuk kantong 4kg, esky 3 hari, dan bir atau mixer di sampingnya.",
+    answer:
+      "Kelompok villa di Canggu dan Seminyak kehabisan es batu lebih cepat daripada bir dingin. MadeBrings mengantar kantong es 4kg seharga Rp 25.000 dan sewa kotak es tiga hari seharga Rp 150.000 dari toko keluarga di Abianbase, Badung, milik Made Hendrik. Tambahkan dus Aqua 24 botol 600ml Rp 65.000, Coca-Cola dari Rp 9.000, air tonik, dan pak isi enam Bintang Rp 200.000 di pesanan WhatsApp yang sama agar satu kurir mengisi kulkas. Antar es Bali dari toko tetangga berarti kantong dikemas terakhir dan pin dikonfirmasi sebelum siapa pun berangkat. Kami tidak memasang janji 30 menit atau antar es gratis sepulau. Chat dulu dengan nama villa atau pin peta. Anda harus berusia 21 tahun atau lebih jika pesanan berisi alkohol. Bayar tunai atau transfer bank setelah stok dikonfirmasi pada hari ini juga.",
+    inclusions: [
+      "Kantong es 4kg dikemas terakhir agar masih es saat sampai villa",
+      "Sewa esky 3 hari jika villa tidak punya esky",
+      "Mixer, air, dan bir di rute WhatsApp yang sama",
+      "Antar di Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot jika Made konfirmasi pin",
+      "Tunai atau transfer; 21+ jika pesanan berisi alkohol",
+    ],
+    faqs: [
+      {
+        question: "Bisakah pesan antar es di Canggu tanpa bir?",
+        answer:
+          "Ya. Kantong es, esky 3 hari, Aqua, dan mixer bisa masuk pesanan WhatsApp sendiri. Jika kantong satu-satunya item, Made tetap konfirmasi apakah pin itu layak rute khusus hari ini.",
+      },
+      {
+        question: "Berapa harga antar es di Bali dari MadeBrings?",
+        answer:
+          "Kantong 4kg tertera Rp 25.000. Sewa esky 3 hari Rp 150.000, es dijual terpisah. Ongkir dikutip di chat untuk pin Anda.",
+      },
+      {
+        question: "Apakah es masih es saat sampai?",
+        answer:
+          "Kami kemas es terakhir dan tidak menjanjikan jendela 30 menit yang tidak bisa dipegang. Jika pin jauh — Ubud atau Tanah Lot — bilang lebih awal agar kantong bukan tugas yang meleleh.",
+      },
+      {
+        question: "Bisakah bir dan kola ditambah ke pengantaran es?",
+        answer:
+          "Ya. Itu pesanan kulkas villa yang biasa. Pak isi enam Bintang tertera Rp 200.000. Harus 21 tahun atau lebih untuk alkohol.",
+      },
+    ],
+    sections: [
+      {
+        paragraphs: [
+          "Antar es Bali adalah pekerjaan villa, bukan pekerjaan bar koktail. Kelompok di Canggu dan Seminyak menghabiskan kantong sebelum pak isi enam. MadeBrings menyimpan kantong 4kg dan esky 3 hari di rak yang sama dengan bir dan kola.",
+        ],
+      },
+      {
+        heading: "Cara pesan antar es",
+        paragraphs: [
+          "Pakai halaman booking, ketuk Pesan sekarang, dan tulis “es” plus nama villa di pesan pertama. Made membalas stok, apakah pin bisa hari ini, dan tunai atau transfer. Tambah bir hanya jika semua yang menerima pesanan berusia 21 tahun atau lebih.",
+        ],
+        link: {
+          href: "/",
+          label: "Pesan es dan minuman di halaman booking",
+        },
+      },
+    ],
+  },
   "alcohol-delivery-canggu": {
     title: "Antar alkohol di Canggu: harga villa dari toko keluarga",
     description:

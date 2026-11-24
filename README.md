@@ -93,6 +93,9 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/blog/beer-delivery-seminyak`
 - `/blog/alcohol-delivery-kuta`
 - `/blog/alcohol-delivery-ubud-tanah-lot`
+- `/blog/beer-prices-bali` how much is a beer in Bali (dated public box prices)
+- `/blog/alcohol-near-me-bali`
+- `/blog/ice-delivery-bali`
 - `/compare/bali-alcohol-delivery` neighborhood shop vs 24/7 (methodology)
 - `/press` media kit
 - `/blog/bali-holiday-guide-badung`

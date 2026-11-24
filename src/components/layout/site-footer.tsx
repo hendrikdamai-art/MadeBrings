@@ -105,6 +105,21 @@ export function SiteFooter() {
               </LocaleLink>
             </li>
             <li>
+              <LocaleLink href="/blog/beer-prices-bali" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("guideBeerPrices")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/blog/alcohol-near-me-bali" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("guideNearMe")}
+              </LocaleLink>
+            </li>
+            <li>
+              <LocaleLink href="/blog/ice-delivery-bali" className="text-primary-foreground/80 hover:text-primary-foreground">
+                {t("guideIce")}
+              </LocaleLink>
+            </li>
+            <li>
               <LocaleLink href="/compare/bali-alcohol-delivery" className="text-primary-foreground/80 hover:text-primary-foreground">
                 {t("footerCompare")}
               </LocaleLink>

@@ -11,6 +11,7 @@ export type BlogSection = {
   heading?: string;
   paragraphs: string[];
   list?: string[];
+  table?: { headers: string[]; rows: string[][] };
   link?: { href: string; label: string };
 };
 

@@ -83,6 +83,24 @@ export function MoneySections() {
             {t("guideUbud")}
           </LocaleLink>
           <LocaleLink
+            href="/blog/beer-prices-bali"
+            className="text-primary underline-offset-4 hover:underline"
+          >
+            {t("guideBeerPrices")}
+          </LocaleLink>
+          <LocaleLink
+            href="/blog/alcohol-near-me-bali"
+            className="text-primary underline-offset-4 hover:underline"
+          >
+            {t("guideNearMe")}
+          </LocaleLink>
+          <LocaleLink
+            href="/blog/ice-delivery-bali"
+            className="text-primary underline-offset-4 hover:underline"
+          >
+            {t("guideIce")}
+          </LocaleLink>
+          <LocaleLink
             href="/compare/bali-alcohol-delivery"
             className="text-primary underline-offset-4 hover:underline"
           >

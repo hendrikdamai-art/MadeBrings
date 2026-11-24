@@ -48,6 +48,24 @@ export function directAnswers(): DirectAnswer[] {
         "Planned villa restock to Ubud and Tanah Lot. Farther than Canggu. Same listed beer and ice prices.",
     },
     {
+      query: "how much is a beer in Bali",
+      url: absoluteUrl("/blog/beer-prices-bali"),
+      summary:
+        "Listed Singaraja Rp 22.000, Bintang Rp 35.000, six-pack Rp 200.000, box Rp 595.000. Public GoDrinks 24-pack Rp 720.000 and Boogaloo 24-pack Rp 600.000 on 24 Nov 2026. Not a cheapest-in-Bali claim.",
+    },
+    {
+      query: "alcohol near me Bali",
+      url: absoluteUrl("/blog/alcohol-near-me-bali"),
+      summary:
+        "Family shop in Abianbase, Mengwi. WhatsApp a villa pin for Canggu, Kerobokan, Seminyak, or Kuta. Not a 24/7 map pin.",
+    },
+    {
+      query: "ice delivery Bali",
+      url: absoluteUrl("/blog/ice-delivery-bali"),
+      summary:
+        "4kg ice bags Rp 25.000 and a 3-day ice box Rp 150.000, packed last. Add water, cola, and beer in the same chat.",
+    },
+    {
       query: "neighborhood shop vs 24/7 alcohol delivery Bali",
       url: absoluteUrl("/compare/bali-alcohol-delivery"),
       summary:
@@ -59,7 +77,7 @@ export function directAnswers(): DirectAnswer[] {
       summary: `Owner ${siteConfig.owner}, Abianbase, Badung. No invented reviews.`,
     },
     ...posts
-      .filter((post) => post.query && !["alcohol delivery Canggu", "beer delivery Seminyak", "alcohol delivery Kuta", "alcohol delivery Ubud"].includes(post.query))
+      .filter((post) => post.query && !["alcohol delivery Canggu", "beer delivery Seminyak", "alcohol delivery Kuta", "alcohol delivery Ubud", "how much is a beer in Bali", "alcohol near me Bali", "ice delivery Bali"].includes(post.query))
       .map((post) => ({
         query: post.query as string,
         url: absoluteUrl(`/blog/${post.slug}`),
@@ -106,6 +124,9 @@ ${serviceAreas.join(", ")}
 - [Seminyak beer delivery](${absoluteUrl("/blog/beer-delivery-seminyak")})
 - [Kuta alcohol delivery](${absoluteUrl("/blog/alcohol-delivery-kuta")})
 - [Ubud and Tanah Lot](${absoluteUrl("/blog/alcohol-delivery-ubud-tanah-lot")})
+- [Beer prices in Bali](${absoluteUrl("/blog/beer-prices-bali")})
+- [Alcohol near me](${absoluteUrl("/blog/alcohol-near-me-bali")})
+- [Ice delivery](${absoluteUrl("/blog/ice-delivery-bali")})
 - [Neighborhood vs 24/7](${absoluteUrl("/compare/bali-alcohol-delivery")})
 - [Press kit](${absoluteUrl("/press")})
 - [Indonesian home](${absoluteUrl("/id")})

@@ -14,6 +14,10 @@ export const indonesianKeywords = [
   "delivery alkohol Badung",
   "toko minuman keras Mengwi",
   "harga bir Bali",
+  "berapa harga bir Bali",
+  "bir murah Bali",
+  "alkohol dekat saya Bali",
+  "antar es Canggu",
   "antar Bintang Bali",
   "es batu antar villa",
   "Smirnoff Ice Bali",
@@ -45,6 +49,11 @@ export const englishKeywords = [
   "WhatsApp alcohol order Bali",
   "Bintang delivery Bali",
   "alcohol near me Bali",
+  "how much is a beer in Bali",
+  "beer prices Bali",
+  "cheap beer delivery Bali",
+  "ice delivery Canggu",
+  "ice delivery Bali",
   "Arak Bali",
   "family shop Bali",
 ];
@@ -82,7 +91,7 @@ export const seoCopy: Record<
       "Chat MadeBrings on WhatsApp to order alcohol delivery in Canggu, Seminyak, Kuta, Ubud, or Tanah Lot. Confirm stock, pin, and cash or bank transfer.",
     blogTitle: "Bali alcohol delivery guides",
     blogDescription:
-      "Alcohol delivery guides for Canggu, Seminyak, Kuta, Ubud, and Tanah Lot from MadeBrings in Abianbase. Prices, inclusions, and WhatsApp booking.",
+      "Alcohol delivery guides for Canggu, Seminyak, Kuta, Ubud, and Tanah Lot from MadeBrings in Abianbase. Beer prices, near-me help, ice delivery, and WhatsApp booking.",
     ogTitle: "Alcohol delivery in Canggu, Seminyak & Bali · MadeBrings",
     shortPitch:
       "Family alcohol delivery in Canggu, Seminyak, Kuta, Ubud, and Tanah Lot. Neighborhood beer prices. Chat WhatsApp to order.",
@@ -103,7 +112,7 @@ export const seoCopy: Record<
       "Chat MadeBrings di WhatsApp untuk pesan antar alkohol di Canggu, Seminyak, Kuta, Ubud, atau Tanah Lot. Konfirmasi stok, pin, dan tunai atau transfer.",
     blogTitle: "Panduan antar alkohol Bali",
     blogDescription:
-      "Panduan antar alkohol untuk Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot dari MadeBrings di Abianbase. Harga, yang termasuk, dan booking WhatsApp.",
+      "Panduan antar alkohol untuk Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot dari MadeBrings di Abianbase. Harga bir, pencarian di dekat saya, antar es, dan booking WhatsApp.",
     ogTitle: "Antar alkohol di Canggu, Seminyak, dan Bali · MadeBrings",
     shortPitch:
       "Antar alkohol keluarga di Canggu, Seminyak, Kuta, Ubud, dan Tanah Lot. Harga bir tetangga. Chat WhatsApp untuk pesan.",
