@@ -38,6 +38,8 @@ Copy `.env.example` to `.env.local`.
 | `NEXT_PUBLIC_TRIPADVISOR_URL` | TripAdvisor listing. |
 | `NEXT_PUBLIC_MAPS_URL` | Google Maps / Business Profile link for the shop. |
 | `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` | Token from Google Search Console HTML-tag verification. |
+| `CRON_SECRET` | Shared secret for `GET /api/cron/seo-maintenance`. Required in production if you enable the bi-daily Vercel cron. Vercel Cron sends `Authorization: Bearer $CRON_SECRET`. |
+| `INDEXNOW_KEY` | Optional. If set, the SEO cron pings IndexNow with the commercial URLs. Host `https://your-domain/<INDEXNOW_KEY>.txt` as well. |
 
 Until those social URLs are set, the header and footer still show the five icons using placeholder links.
 
@@ -54,8 +56,13 @@ The site also ships:
 - `https://your-domain/sitemap.xml` — pages, categories, and products
 - `https://your-domain/robots.txt` — allows Googlebot and points at the sitemap
 - Unique titles, descriptions, and canonical URLs on every page
-- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`)
-- Blog posts for Bali holiday, tour-guide, and Arak Bali keywords
+- Open Graph tags and JSON-LD (`LiquorStore`, `Product`, `BlogPosting`, `FAQPage`, `WebPage`)
+- Money page on `/` for **alcohol delivery Canggu / Bali**, with prices, inclusions, and FAQs
+- Commercial guides for Canggu, Seminyak, and Kuta
+- `GET /api/seo/status` — public SEO inventory (no secrets)
+- `GET /api/cron/seo-maintenance` — secured by `CRON_SECRET`, every 2 days via `vercel.json`
+- `/llms.txt` and `/llms-full.txt` — AI citation indexes (CDN cached)
+- `robots.txt` allows GPTBot, OAI-SearchBot, Claude, Perplexity, and Google-Extended
 - `NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION` if you prefer the HTML-tag method instead
 
 ## Architecture (ready to grow)
@@ -81,10 +88,23 @@ Checkout is already a separate adapter. Replacing WhatsApp with another payment 
 - `/product/[slug]` Product
 - `/about` Family shop story
 - `/contact` WhatsApp + map
-- `/blog` Journal
+- `/blog` Journal + delivery guides
+- `/blog/alcohol-delivery-canggu`
+- `/blog/beer-delivery-seminyak`
+- `/blog/alcohol-delivery-kuta`
+- `/blog/alcohol-delivery-ubud-tanah-lot`
+- `/blog/beer-prices-bali` how much is a beer in Bali (dated public box prices)
+- `/blog/alcohol-near-me-bali`
+- `/blog/ice-delivery-bali`
+- `/compare/bali-alcohol-delivery` neighborhood shop vs 24/7 (methodology)
+- `/press` media kit
 - `/blog/bali-holiday-guide-badung`
 - `/blog/bali-tour-guide-selaras` (links to [Selaras Bali Guide](https://www.selarasbaliguide.com))
 - `/blog/arak-bali-traditional-drink`
+- `/api/seo/status` SEO health JSON
+- `/api/cron/seo-maintenance` secured maintenance cron
+- `/llms.txt` short AI index with query→URL table
+- `/llms-full.txt` full Q&A for citations
 
 Alcohol sales require confirming you are 21 or older (Indonesian law).
 

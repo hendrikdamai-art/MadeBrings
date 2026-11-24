@@ -16,7 +16,15 @@ function entry(path: string, extra: Partial<MetadataRoute.Sitemap[number]> = {})
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticPaths = ["/", "/shop", "/blog", "/about", "/contact"];
+  const staticPaths = [
+    "/",
+    "/shop",
+    "/blog",
+    "/about",
+    "/contact",
+    "/press",
+    "/compare/bali-alcohol-delivery",
+  ];
   const staticRoutes: MetadataRoute.Sitemap = staticPaths.flatMap((path) => [
     {
       ...entry(path, {
@@ -91,5 +99,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ];
   });
 
-  return [...staticRoutes, ...categories, ...products, ...posts];
+  const aiIndex: MetadataRoute.Sitemap = [
+    {
+      url: absoluteUrl("/llms.txt"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.4,
+    },
+    {
+      url: absoluteUrl("/llms-full.txt"),
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.3,
+    },
+  ];
+
+  return [...staticRoutes, ...categories, ...products, ...posts, ...aiIndex];
 }

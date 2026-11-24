@@ -32,9 +32,8 @@ export function HomeHero() {
             {t("heroKicker")}
           </p>
           <h1 className="font-heading text-5xl leading-[0.95] tracking-wide text-primary sm:text-7xl">
-            {t("heroTitle1")}
-            <br />
-            {t("heroTitle2")}
+            <span className="block">{t("heroTitle1")}</span>{" "}
+            <span className="block">{t("heroTitle2")}</span>
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-foreground/80">
             {t("heroBody", { owner: siteConfig.owner })}

@@ -1,4 +1,8 @@
+import { commercialPosts } from "@/lib/commercial-posts";
+import { commercialIdCopy } from "@/lib/commercial-i18n";
 import { cdnImage } from "@/lib/commerce/images";
+import type { FaqItem } from "@/lib/delivery";
+import type { Locale } from "@/lib/i18n";
 import { siteConfig } from "@/lib/site";
 
 export const SELARAS_GUIDE_URL = "https://www.selarasbaliguide.com";
@@ -7,6 +11,7 @@ export type BlogSection = {
   heading?: string;
   paragraphs: string[];
   list?: string[];
+  table?: { headers: string[]; rows: string[][] };
   link?: { href: string; label: string };
 };
 
@@ -22,9 +27,16 @@ export type BlogPost = {
   heroImage: string;
   heroAlt: string;
   sections: BlogSection[];
+  intent?: "commercial" | "journal";
+  query?: string;
+  answer?: string;
+  inclusions?: string[];
+  faqs?: FaqItem[];
+  priceProductIds?: string[];
+  bookingHref?: string;
 };
 
-export const blogPosts: BlogPost[] = [
+const journalPosts: BlogPost[] = [
   {
     slug: "bali-holiday-guide-badung",
     title: "Bali holiday guide 2026: a slower stay in Badung, beyond the beach clubs",
@@ -85,7 +97,7 @@ export const blogPosts: BlogPost[] = [
         heading: "What to put in a Bali villa fridge",
         paragraphs: [
           "You do not need to land with a suitcase of snacks. You do need drinking water, ice, and something cold for the first evening. Bintang, mixers, and a bag of ice are the three things villa groups run out of first. Mosquito coils are a close fourth.",
-          "Chat first to confirm your order. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike.",
+          "Chat first to confirm your order. Tell us the villa name or a pin, what you want on the shelf, and whether you will pay cash or bank transfer. We are a small shop, so we confirm what is actually here today before anyone gets on a bike. If you are in Canggu, Seminyak, or Kuta, use the alcohol delivery guides — those pages list the starter prices.",
         ],
         list: [
           "Drinking water (1.5L bottles or a gallon if the villa has a dispenser)",
@@ -95,8 +107,8 @@ export const blogPosts: BlogPost[] = [
           "Mosquito coils or repellent for after dusk",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the MadeBrings shop",
+          href: "/blog/alcohol-delivery-canggu",
+          label: "Order alcohol delivery in Canggu, Seminyak, or Kuta",
         },
       },
       {
@@ -248,8 +260,8 @@ export const blogPosts: BlogPost[] = [
           "MadeBrings is a small shop. We do not pretend to hold a full arak cellar. If you want a licensed local bottle with your beer and ice, chat first to confirm your order. We will tell you honestly what is on the shelf that day.",
         ],
         link: {
-          href: "/shop",
-          label: "Browse the shop we keep in Abianbase",
+          href: "/",
+          label: "Book beer and ice delivery from the Abianbase shop",
         },
       },
       {
@@ -266,19 +278,41 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+export const blogPosts: BlogPost[] = [...commercialPosts, ...journalPosts];
+
 export function getBlogPosts() {
   return blogPosts;
+}
+
+export function getCommercialBlogPosts() {
+  return blogPosts.filter((post) => post.intent === "commercial");
 }
 
 export function getBlogPost(slug: string) {
   return blogPosts.find((post) => post.slug === slug);
 }
 
+export function localizeBlogPost(post: BlogPost, locale: Locale): BlogPost {
+  if (locale !== "id") return post;
+  const copy = commercialIdCopy[post.slug];
+  if (!copy) return post;
+  return { ...post, ...copy };
+}
+
 export function getRelatedPosts(slug: string) {
-  return blogPosts.filter((post) => post.slug !== slug);
+  const current = getBlogPost(slug);
+  const rest = blogPosts.filter((post) => post.slug !== slug);
+  if (current?.intent === "commercial") {
+    return [
+      ...rest.filter((post) => post.intent === "commercial"),
+      ...rest.filter((post) => post.intent !== "commercial"),
+    ];
+  }
+  return rest;
 }
 
 export function blogJsonLd(post: BlogPost) {
+  const url = `${siteConfig.url.replace(/\/$/, "")}/blog/${post.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -299,7 +333,15 @@ export function blogJsonLd(post: BlogPost) {
         url: `${siteConfig.url}/logo.png`,
       },
     },
-    mainEntityOfPage: `${siteConfig.url}/blog/${post.slug}`,
+    mainEntityOfPage: url,
     keywords: post.keywords.join(", "),
+    speakable: post.answer
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
+    about: post.query,
+    describedBy: `${siteConfig.url.replace(/\/$/, "")}/llms.txt`,
   };
 }

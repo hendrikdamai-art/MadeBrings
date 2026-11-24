@@ -1,7 +1,23 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
 
+const aiCrawlers = [
+  "GPTBot",
+  "OAI-SearchBot",
+  "ChatGPT-User",
+  "ClaudeBot",
+  "Claude-SearchBot",
+  "Claude-User",
+  "PerplexityBot",
+  "Perplexity-User",
+  "Google-Extended",
+  "Applebot-Extended",
+  "Amazonbot",
+  "CCBot",
+];
+
 export default function robots(): MetadataRoute.Robots {
+  const origin = siteConfig.url.replace(/\/$/, "");
   return {
     rules: [
       {
@@ -12,8 +28,12 @@ export default function robots(): MetadataRoute.Robots {
         userAgent: "Googlebot",
         allow: "/",
       },
+      ...aiCrawlers.map((userAgent) => ({
+        userAgent,
+        allow: "/",
+      })),
     ],
-    sitemap: `${siteConfig.url.replace(/\/$/, "")}/sitemap.xml`,
-    host: siteConfig.url.replace(/\/$/, ""),
+    sitemap: `${origin}/sitemap.xml`,
+    host: origin,
   };
 }

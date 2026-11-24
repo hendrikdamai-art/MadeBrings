@@ -4,6 +4,7 @@ import { LocaleLink } from "@/components/locale-link";
 import { Banknote, MessageCircle, Truck } from "lucide-react";
 import { BlogGrid } from "@/components/blog-card";
 import { HomeHero } from "@/components/home-hero";
+import { MoneySections } from "@/components/money-sections";
 import { useLocale } from "@/components/locale-provider";
 import { ProductGrid } from "@/components/product-grid";
 import { buttonVariants } from "@/components/ui/button";
@@ -17,10 +18,12 @@ export function HomeContent({
   featured,
   categories,
   posts,
+  commercialPosts,
 }: {
   featured: Product[];
   categories: Category[];
   posts: BlogPost[];
+  commercialPosts: BlogPost[];
 }) {
   const { t } = useLocale();
   const steps = [
@@ -46,6 +49,8 @@ export function HomeContent({
           ))}
         </div>
       </section>
+
+      <MoneySections />
 
       <section className="mx-auto max-w-6xl px-4 py-14">
         <div className="mb-8 flex items-end justify-between gap-4">
@@ -95,6 +100,23 @@ export function HomeContent({
         <div className="mb-8 flex items-end justify-between gap-4">
           <div>
             <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
+              {t("guidesKicker")}
+            </p>
+            <h2 className="font-heading text-4xl tracking-wide text-primary">
+              {t("guidesTitle")}
+            </h2>
+          </div>
+          <LocaleLink href="/blog" className="text-sm font-medium text-primary underline-offset-4 hover:underline">
+            {t("guidesAll")}
+          </LocaleLink>
+        </div>
+        <BlogGrid posts={commercialPosts} />
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 pb-16">
+        <div className="mb-8 flex items-end justify-between gap-4">
+          <div>
+            <p className="text-xs font-medium tracking-[0.22em] text-primary/70 uppercase">
               {t("journalKicker")}
             </p>
             <h2 className="font-heading text-4xl tracking-wide text-primary">
@@ -105,7 +127,7 @@ export function HomeContent({
             {t("journalAll")}
           </LocaleLink>
         </div>
-        <BlogGrid posts={posts} />
+        <BlogGrid posts={posts.filter((post) => post.intent !== "commercial")} />
       </section>
 
       <section className="bg-primary/95 text-primary-foreground">

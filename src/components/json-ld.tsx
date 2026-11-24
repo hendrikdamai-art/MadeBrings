@@ -4,6 +4,16 @@ import { productCopy } from "@/lib/commerce";
 import type { Locale } from "@/lib/i18n";
 import { localizedPath } from "@/lib/locale-path";
 import { seoCopy } from "@/lib/seo-copy";
+import {
+  MONEY_PAGE_MODIFIED,
+  type FaqItem,
+  serviceAreas,
+} from "@/lib/delivery";
+import { absoluteUrl } from "@/lib/seo";
+
+function aiIndexUrls() {
+  return [absoluteUrl("/llms.txt"), absoluteUrl("/llms-full.txt")];
+}
 
 export function localBusinessJsonLd(locale: Locale = "en") {
   const copy = seoCopy[locale];
@@ -32,24 +42,28 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       addressCountry: "ID",
     },
     hasMap: siteConfig.social.maps,
-    areaServed: ["Abianbase", "Badung", "Bali", "Canggu", "Seminyak", "Mengwi"],
+    areaServed: serviceAreas.map((name) => ({
+      "@type": "AdministrativeArea",
+      name,
+    })),
     priceRange: "Rp",
     paymentAccepted: locale === "id" ? "Tunai, Transfer Bank" : "Cash, Bank Transfer",
     currenciesAccepted: "IDR",
     knowsAbout:
       locale === "id"
         ? [
-            "jasa antar alkohol",
+            "jasa antar alkohol Canggu",
             "antar bir Bali",
             "kirim minuman keras Bali",
             "pesan bir WhatsApp",
             "toko bir Abianbase",
           ]
         : [
-            "alcohol delivery service",
+            "alcohol delivery Canggu",
+            "alcohol delivery Seminyak",
             "beer delivery Bali",
-            "liquor delivery Bali",
-            "mixers",
+            "alcohol delivery Kuta",
+            "villa drinks delivery",
           ],
     availableLanguage: ["id", "en"],
     makesOffer: {
@@ -57,10 +71,12 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       itemOffered: {
         "@type": "Service",
         name:
-          locale === "id" ? "Jasa antar alkohol" : "Alcohol delivery service",
+          locale === "id"
+            ? "Jasa antar alkohol Canggu, Seminyak, dan Bali"
+            : "Alcohol delivery in Canggu, Seminyak, and Bali",
         serviceType:
           locale === "id" ? "Pengantaran alkohol" : "Alcohol delivery",
-        areaServed: "Badung, Bali",
+        areaServed: serviceAreas.join(", "),
         provider: {
           "@type": "Organization",
           name: siteConfig.name,
@@ -72,7 +88,115 @@ export function localBusinessJsonLd(locale: Locale = "en") {
       siteConfig.social.facebook,
       siteConfig.social.tripadvisor,
       siteConfig.social.maps,
+      ...aiIndexUrls(),
     ],
+    describedBy: absoluteUrl("/llms.txt"),
+  };
+}
+
+export function faqJsonLd(faqs: FaqItem[]) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.answer,
+      },
+    })),
+  };
+}
+
+export function webPageJsonLd({
+  locale = "en",
+  path = "/",
+  name,
+  description,
+  dateModified = MONEY_PAGE_MODIFIED,
+  speakable = true,
+}: {
+  locale?: Locale;
+  path?: string;
+  name: string;
+  description: string;
+  dateModified?: string;
+  speakable?: boolean;
+}) {
+  const url = absoluteUrl(localizedPath(locale, path));
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name,
+    description,
+    url,
+    inLanguage: locale === "id" ? "id-ID" : "en-ID",
+    dateModified,
+    isPartOf: {
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    about: {
+      "@type": "Service",
+      name:
+        locale === "id" ? "Jasa antar alkohol Bali" : "Alcohol delivery Bali",
+    },
+    describedBy: absoluteUrl("/llms.txt"),
+    subjectOf: {
+      "@type": "CreativeWork",
+      name: "MadeBrings AI index",
+      url: absoluteUrl("/llms.txt"),
+    },
+    speakable: speakable
+      ? {
+          "@type": "SpeakableSpecification",
+          cssSelector: ["[data-speakable]"],
+        }
+      : undefined,
+  };
+}
+
+export function howToJsonLd({
+  name,
+  description,
+  steps,
+  url,
+}: {
+  name: string;
+  description: string;
+  steps: { name: string; text: string }[];
+  url: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name,
+    description,
+    url,
+    step: steps.map((step, index) => ({
+      "@type": "HowToStep",
+      position: index + 1,
+      name: step.name,
+      text: step.text,
+    })),
+  };
+}
+
+export function breadcrumbJsonLd(
+  items: { name: string; path: string }[],
+  locale: Locale = "en",
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(localizedPath(locale, item.path)),
+    })),
   };
 }
 

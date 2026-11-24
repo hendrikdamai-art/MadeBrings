@@ -100,6 +100,8 @@ export function pageMetadata({
   keywords,
   type = "website",
   locale = "en",
+  datePublished,
+  dateModified,
 }: {
   title: string;
   description: string;
@@ -107,6 +109,8 @@ export function pageMetadata({
   keywords?: string[];
   type?: "website" | "article";
   locale?: Locale;
+  datePublished?: string;
+  dateModified?: string;
 }): Metadata {
   const localized = localizedPath(locale, path);
   const url = absoluteUrl(localized);
@@ -123,6 +127,8 @@ export function pageMetadata({
       locale: locale === "id" ? "id_ID" : "en_ID",
       alternateLocale: locale === "id" ? ["en_ID"] : ["id_ID"],
       type,
+      ...(datePublished ? { publishedTime: datePublished } : {}),
+      ...(dateModified ? { modifiedTime: dateModified } : {}),
     },
   };
 }

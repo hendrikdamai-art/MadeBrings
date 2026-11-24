@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { BlogArticle } from "@/components/blog-article";
-import { getBlogPost, getBlogPosts } from "@/lib/blog";
+import { getBlogPost, getBlogPosts, localizeBlogPost } from "@/lib/blog";
 import { getRequestLocale } from "@/lib/request-locale";
 import { pageMetadata } from "@/lib/seo";
 
@@ -17,13 +17,16 @@ export async function generateMetadata({ params }: Props) {
   const post = getBlogPost(slug);
   if (!post) return {};
   const locale = await getRequestLocale();
+  const localized = localizeBlogPost(post, locale);
   return pageMetadata({
-    title: post.title,
-    description: post.description,
+    title: localized.title,
+    description: localized.description,
     path: `/blog/${post.slug}`,
     keywords: post.keywords,
     type: "article",
     locale,
+    datePublished: localized.datePublished,
+    dateModified: localized.dateModified,
   });
 }
 
@@ -31,5 +34,6 @@ export default async function BlogPostPage({ params }: Props) {
   const { slug } = await params;
   const post = getBlogPost(slug);
   if (!post) notFound();
-  return <BlogArticle post={post} />;
+  const locale = await getRequestLocale();
+  return <BlogArticle post={localizeBlogPost(post, locale)} locale={locale} />;
 }
